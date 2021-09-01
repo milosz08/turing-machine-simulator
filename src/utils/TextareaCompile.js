@@ -8,7 +8,7 @@ class TextareaCompile {
     }
 
     createArrayFromArea() {
-        return this.fullString.replace(/  +/g, ' ').split('\n');
+        return this.fullString.replace(/\t/g, ' ').replace(/  +/g, ' ').split('\n');
     }
 
     convertIntoObject() {
@@ -48,19 +48,43 @@ class TextareaCompile {
     validateData(el, i, label, danger = SYNTAX_ERRORS.ERROR_LEVEL, syntax = SYNTAX_ERRORS.ILLEGAL_SYMBOLS) {
         if(el) {
             this.problemsArray.push({
-                lineIndex: i + 1,
+                lineIndex: String(i + 1),
                 problemType: syntax,
                 danger: danger,
                 labelIndex: label
             });
         }
     }
+    
+    // Validate initial machine state
+    findInitialStateLabel(array) {
+        const response = array.filter(el => String(el) === this.initialState);
+        
+        if(response.length === 0) {
+            this.problemsArray.push({
+                lineIndex: 1,
+                problemType: SYNTAX_ERRORS.MISSING_INITIAL_STATE,
+                danger: SYNTAX_ERRORS.ERROR_LEVEL,
+                labelIndex: 'current state'
+            });
+        }
+    }
+
+    reverseArray(arrayToReverse, elementIndex) {
+        const reverseArray = [];
+        for(let i = 0; i < arrayToReverse.length; i++) {
+            if(arrayToReverse[i][elementIndex] !== '') {
+                reverseArray.push(arrayToReverse[i][elementIndex]);
+            }
+        }
+        return reverseArray;
+    }
 
     validateCodeArea() {
         const createArray = this.createArrayFromArea();
         const splitAllElements = createArray.map(line => line.split(' '));
 
-        // Validation Errors
+        // Validation Errors    
         for(let i = 0; i < splitAllElements.length; i++) {
             if(splitAllElements[i][0] !== '') {
                 if(splitAllElements[i][0].indexOf(COM_INDICATION) === 0 && splitAllElements[i][0].length > 1) {
@@ -97,18 +121,26 @@ class TextareaCompile {
                     } else {
                         this.validateData( // Illegal symbol in <direction> label
                             (direction !== 'r' && direction !== 'l' && direction !== '*' && direction) || direction === '',
-                            i, 'direction', SYNTAX_ERRORS.ILLEGAL_DIRECTION
+                            i, 'direction', SYNTAX_ERRORS.ERROR_LEVEL
                         );
-                        this.validateData(initIllegalState, i, 'current state'); // Illegal symbol in <current state> label
-                        this.validateData(nextIllegalState, i, 'next state'); // Illegal symbol in <next state> label
-                        this.validateData(currentIllegalSymbol, i, 'current symbol'); // Illegal symbol in <current symbol>
-                        this.validateData(newIllegalSymbol, i, 'new symbol'); // Illegal symbol in <new symbol>
+                        // Illegal symbol in <current state> label
+                        this.validateData(initIllegalState, i, 'current state');
+                        // Illegal symbol in <next state> label
+                        this.validateData(nextIllegalState, i, 'next state');
+                        // Illegal symbol in <current symbol>
+                        this.validateData(currentIllegalSymbol || removeBlankSpaces[1].length > 1, i, 'current symbol');
+                        // Illegal symbol in <new symbol>
+                        this.validateData(newIllegalSymbol || removeBlankSpaces[2].length > 1, i, 'new symbol');
                     }
                 }
             }
-            
+
             // Validation Warnings
-        }
+        }   
+        
+        // Validate if machine not have initial state or initial state is duplicated
+        this.findInitialStateLabel(this.reverseArray(splitAllElements, 0));
+
         // If all good
         if(this.problemsArray.length === 0) {
             this.convertIntoObject();
@@ -119,12 +151,13 @@ class TextareaCompile {
 };
 
 export const SYNTAX_ERRORS = {
-    TOO_MANY_ARGUMENTS: 'too-many-arguments',
-    TOO_FEW_ARGUMENTS: 'too-few-arguments',
-    ILLEGAL_SYMBOLS: 'illegal-symbol',
-    ILLEGAL_DIRECTION: 'illegal-direction',
-    WARNING_LEVEL: 'warning-level',
-    ERROR_LEVEL: 'error-level'
+    TOO_MANY_ARGUMENTS: 'Too many arguments. There are too many arguments on the line. Expected comment',
+    TOO_FEW_ARGUMENTS: 'Too few arguments. There are too few arguments on this line. Expected comment',
+    ILLEGAL_SYMBOLS: 'Illegal symbols. There are illegal symbols on the label',
+    MISSING_INITIAL_STATE: 'Missing Initial State. Program must have a declared Initial State label',
+    DUPLICATE_INITIAL_STATE: 'Duplicate Initial State. There can only be one Initial State label in single program',
+    WARNING_LEVEL: 'Warning',
+    ERROR_LEVEL: 'Error'
 };
 
 export const ILLEGAL_STATE = [ ';', '*', '_', '', ' ' ];
