@@ -1,13 +1,24 @@
+/**
+ * @file ErrorInfo.styles.js
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @brief JavaScript Styled Component file.
+ *
+ * @projectName "turing-machine-simulator-react-js"
+ * @version "^0.1.0"
+ *
+ * @date 09/03/2021
+ */
+
 import styled from 'styled-components';
-import STYLED_CONSTANTS from '../../../utils/StylesConstants';
+import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
 
 export const ErrorInfoContainer = styled.div`
-    width: calc(100% - 60px);
-    margin-left: 60px;
-    border: 1px solid ${STYLED_CONSTANTS.DARK_GRAY_COLOUR};
+    width: calc(100% - 120px);
+    margin: 0 60px;
+    border: 1px solid ${NON_CHANGE_VALUES.BORDER_COLOUR};
     border-top: none;
     font-size: .8rem;
-    font-weight: 100;
+    font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
     padding: 15px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
@@ -22,12 +33,11 @@ export const List = styled.ul`
 
 export const ListElement = styled.li`
     margin-left: 20px;
-    color: ${STYLED_CONSTANTS.GRAY_COLOUR};
+    color: ${({ theme }) => theme.TEXT};
     span {
         color: ${props => props.labelInfoColour};
-        font-weight: 400;
     }
     strong {
-        font-weight: 100;
+        font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
     }
 `;

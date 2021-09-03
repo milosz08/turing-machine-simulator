@@ -1,11 +1,24 @@
+/**
+ * @file Codearea.styles.js
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @brief JavaScript Styled Component file.
+ *
+ * @projectName "turing-machine-simulator-react-js"
+ * @version "^0.1.0"
+ *
+ * @date 09/03/2021
+ */
+
 import styled from 'styled-components';
+import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
+
+import { ControlButton } from '../Controls/Controls.styles';
 import { CodeareaMode } from './Codearea';
-import STYLED_CONSTANTS from '../../../utils/StylesConstants';
 
 export const CodeareaContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1300px;
+    width: calc(1300px - 60px);
     max-height: fit-content;
 `;
 
@@ -14,50 +27,69 @@ export const CodeareaWrapper = styled.div`
     display: flex;
     flex-grow: 1;
     overflow: hidden;
-    padding-left: 60px;
+    padding: 0 60px;
     font-size: 1rem;
-    height: 600px;
+    min-height: 500px;
+`;
+
+export const CompileButton = styled(ControlButton)`
+    margin: 0 auto 30px auto;
+    width: fit-content;
+    font-weight: ${({ theme }) => theme.BUTTON_FONT_WEIGHT};
 `;
 
 export const CodeareaField = styled.div`
     position: relative;
-    border: 1px solid ${STYLED_CONSTANTS.DARK_GRAY_COLOUR};
+    border: 1px solid ${({ theme }) => theme.BODY_TINT2};
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     border-bottom: 0;
+    margin-bottom: -5px;
     z-index: 2;
     width: 100%;
     height: 100%;
+    min-height: 500px;
     textarea {
         font-weight: 500;
         width: calc(100% - 40px);
         height: 100%;
+        min-height: 500px;
         background-color: transparent;
-        color: ${STYLED_CONSTANTS.GRAY_COLOUR};
-        padding: 6px;
+        color: ${({ theme }) => theme.TEXT_TINT1};
+        padding: 6px 6px 0 6px;
         margin-left: 40px;
         font-size: 1rem;
         border: none;
         outline: none;
-        resize: none;
+        resize: vertical;
+        cursor: auto;
         ::-webkit-scrollbar {
-            width: 2px;
+            width: 15px;
             height: 2px;
             background-color: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background-color: ${STYLED_CONSTANTS.GRAY_COLOUR};
+            background-color: ${({ theme }) => theme.BODY_TINT2};
+        }
+        ::-webkit-resizer {
+            background-color: ${({ theme }) => theme.BODY};
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent ${({ theme }) => theme.BODY_TINT2} ${({ theme }) => theme.BODY_TINT2} transparent;
         }
     }
 `;
 
 export const CodeInspections = styled.div`
-    width: calc(100% - 60px);
-    margin-left: 60px;
+    width: calc(100% - 120px);
+    margin: 0 60px;
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.background.normal};
+    color: ${NON_CHANGE_VALUES.WHITE_COLOUR};
     padding: 0 8px;
-    border-bottom-left-radius: ${props => props.openWindow ? 'none' : '7px'};
-    border-bottom-right-radius: ${props => props.openWindow ? 'none' : '7px'};
+    border-bottom-left-radius: ${props => props.openWindow ? 'none' : '5px'};
+    border-bottom-right-radius: ${props => props.openWindow ? 'none' : '5px'};
 `;
 
 export const CursorPosButton = styled.button`
@@ -65,7 +97,7 @@ export const CursorPosButton = styled.button`
     font-size: .8rem;
     font-weight: 200;
     background-color: transparent;
-    color: ${STYLED_CONSTANTS.WHITE_COLOUR};
+    color: ${NON_CHANGE_VALUES.WHITE_COLOUR};
     border: none;
     cursor: pointer;
     :hover {
@@ -85,7 +117,7 @@ export const TerminalMode = styled.div`
 export const RowsContainer = styled.div`
     position: absolute;
     z-index: 0;
-    width: 100%;
+    width: calc(100% - 80px);
     height: 100%;
     border-radius: 7px;
 `;
@@ -99,8 +131,7 @@ export const SingleRow = styled.div`
         width: 40px;
         left: 0;
         padding: 0 6px;
-        background-color: ${STYLED_CONSTANTS.DARK_GRAY_COLOUR};
-        color: ${STYLED_CONSTANTS.GRAY_COLOUR};
+        color: ${({ theme }) => theme.TEXT_TINT1};
         font-weight: 700;
     }
     aside {
@@ -109,11 +140,12 @@ export const SingleRow = styled.div`
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         height: 21px;
+        opacity: .5;
         background-color: ${props => {
             if(props.prev) {
-                return STYLED_CONSTANTS.DEBUG_BAR_COLOUR;
+                return NON_CHANGE_VALUES.DEBUG_BAR_COLOUR;
             } else if(props.next) {
-                return STYLED_CONSTANTS.STATUS_BAR_COLOUR;
+                return NON_CHANGE_VALUES.STATUS_BAR_COLOUR;
             }
         }};
     }
@@ -126,9 +158,9 @@ export const SingleRow = styled.div`
         height: 20px;
         left: -59px;
         background-color: ${props => (
-            props.prev ? STYLED_CONSTANTS.DEBUG_BAR_COLOUR : STYLED_CONSTANTS.STATUS_BAR_COLOUR
+            props.prev ? NON_CHANGE_VALUES.DEBUG_BAR_COLOUR : NON_CHANGE_VALUES.STATUS_BAR_COLOUR
         )};
-        color: ${STYLED_CONSTANTS.WHITE_COLOUR};
+        color: ${NON_CHANGE_VALUES.WHITE_COLOUR};
         font-size: .8rem;
         font-weight: 300;
         line-height: 1.6;
@@ -144,11 +176,10 @@ export const SingleRow = styled.div`
             border-top: 10px solid transparent;
             border-bottom: 10px solid transparent;
             border-left: 10px solid ${props => (
-                props.prev ? STYLED_CONSTANTS.DEBUG_BAR_COLOUR : STYLED_CONSTANTS.STATUS_BAR_COLOUR
+                props.prev ? NON_CHANGE_VALUES.DEBUG_BAR_COLOUR : NON_CHANGE_VALUES.STATUS_BAR_COLOUR
             )};
         }
     }
-
     :nth-child(1) {
         span {
             padding-top: 6px;
@@ -163,17 +194,23 @@ export const SingleRow = styled.div`
 `;
 
 export const LeftContent = styled.div`
-  svg {
-    font-weight: 200;
-    font-size: .7rem;
-    margin: 0 15px;
-    animation: ${props => props.animationWorking === CodeareaMode.COMPILING ? 'circle' : 'none'} 3s infinite linear;
-  }
-  @keyframes circle {
-    0% { transform: rotate(0deg) }
-    99% { transform: rotate(360deg) }
-    100% { transform: rotate(0deg) }
-  }
+    svg {
+        font-weight: 200;
+        font-size: .7rem;
+        margin: 0 15px;
+        animation: ${props => props.animationWorking === CodeareaMode.COMPILING ? 'circle' : 'none'} 3s infinite linear;
+    }
+    @keyframes circle {
+        0% {
+            transform: rotate(0deg);
+        }
+        99% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
 `;
 
 export const RowsCounter = styled.div.attrs(props => ({ 
@@ -182,7 +219,7 @@ export const RowsCounter = styled.div.attrs(props => ({
         transform: `translateY(-${props.positionY}px)`
     } 
 }))`
-    padding: 0 6px 6px 0;
+    padding: 0 6px 0 0;
     text-align: right;
     width: calc(100% - 60px);
 `;

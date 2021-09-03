@@ -1,5 +1,16 @@
+/**
+ * @file Controls.styles.js
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @brief JavaScript Styled Component file.
+ *
+ * @projectName "turing-machine-simulator-react-js"
+ * @version "^0.1.0"
+ *
+ * @date 09/03/2021
+ */
+
 import styled from 'styled-components';
-import STYLED_CONSTANTS from '../../../utils/StylesConstants';
+import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
 
 export const ContainerStyled = styled.div`
     display: flex;
@@ -17,12 +28,12 @@ export const ControlButton = styled.button`
     border-radius: 5px;
     font-size: 1rem;
     letter-spacing: -1px;
-    font-weight: 600;
+    font-weight: ${({ theme }) => theme.BUTTON_FONT_WEIGHT};
     margin: 0 5px;
-    background-color: ${STYLED_CONSTANTS.WHITE_COLOUR};
-    color: ${STYLED_CONSTANTS.LIGHTEN_BLACK_COLOUR};
+    background-color: ${({ theme }) => theme.BUTTON_BACKGROUND};
+    color: ${({ theme }) => theme.BUTTON_COLOUR};
     :disabled {
-        background-color: ${STYLED_CONSTANTS.GRAY_COLOUR};
+        background-color: ${({ theme }) => theme.DIS_BUTTON_BACKGROUND};
         cursor: not-allowed;
     }
 `;
@@ -33,7 +44,7 @@ export const ControlButtonSqr = styled(ControlButton)`
 `;
 
 export const ControlInputContainer = styled.div`
-    border: 1px solid ${STYLED_CONSTANTS.DARK_GRAY_COLOUR};
+    border: 1px solid ${NON_CHANGE_VALUES.BORDER_COLOUR};
     border-radius: 5px;
     padding: 10px;
     width: 300px;
@@ -44,27 +55,29 @@ export const ControlInputContainer = styled.div`
         border: none;
         background-color: transparent;
         padding: 7px 5px 5px;
-        color: ${STYLED_CONSTANTS.GRAY_COLOUR};
+        color: ${({ theme }) => theme.INPUT_COLOUR};
         transition: .2s;
         text-align: center;
         font-size: .9rem;
+        font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
         :focus {
             outline: none;
-            color: ${STYLED_CONSTANTS.WHITE_COLOUR}
+            color: ${({ theme }) => theme.INPUT_FOCUS_COLOUR};
         }
     }
     ::after {
         position: absolute;
         content: '${props => props.pseudoContent}';
         width: fit-content;
-        top: -9px;
+        top: -12px;
         padding: 0 6px;
         left: 50%;
         transform: translateX(-50%);
-        color: ${STYLED_CONSTANTS.WHITE_COLOUR};
-        background-color: ${STYLED_CONSTANTS.BLACK_COLOUR};
+        color: ${({ theme }) => theme.TEXT};
+        background-color: ${({ theme }) => theme.BODY};
+        border: 3px solid ${({ theme }) => theme.BODY};
+        font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
         font-size: .8rem;
-        font-weight: 200;
         text-transform: uppercase;
     }
 `;
