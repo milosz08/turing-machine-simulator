@@ -2,7 +2,7 @@ import React, {  Fragment, useContext } from 'react';
 import { StoreContext } from '../../store/StoreProvider';
 
 import { SYNTAX_ERRORS } from '../../../utils/TextareaCompile';
-import STYLED_CONSTANTS from '../../../utils/StylesConstants';
+import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
 
 import { ErrorInfoContainer, ListElement, List } from './ErrorInfo.styles';
 
@@ -11,7 +11,7 @@ const ErrorInfo = () => {
     const { labelsArrays } = useContext(StoreContext);
 
     const { errors } = labelsArrays;
-    const { WARNING_COLOUR, ERROR_COLOUR } = STYLED_CONSTANTS;
+    const { WARNING_COLOUR, ERROR_COLOUR } = NON_CHANGE_VALUES;
 
     const generateErrorsList = errors.map(error => (
         <ListElement 
