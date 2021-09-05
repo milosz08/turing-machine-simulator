@@ -43,5 +43,5 @@ $ git clone https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator
 All packages with dependencies used in the project can be found in the `package.json`. In addition, in each component I have included information about what packages I use and version of this packages.
 
 ## License
-This application is on MIT License [terms of use](https://en.wikipedia.org/wiki/MIT_License).
+This application is on MIT License [terms of use](https://en.wikipedia.org/wiki/MIT_License).<br>
 Turing Machine Icon created by Attilio Baghino
