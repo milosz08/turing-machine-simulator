@@ -10,9 +10,6 @@
  * @date 09/05/2021
  */
 
-/**
- * Object stores all possible modes of the machine.
- */
 export const CODEAREA_MODES = {
     DEBUGGING: 'debugging',
     COMPILING: 'compiled',
@@ -21,9 +18,6 @@ export const CODEAREA_MODES = {
     COMPILE_FAILURE: 'Failure'
 };
 
-/**
- * Object stores all machine messages.
- */
 export const MACHINE_MESSAGES = {
     CODEAREA_PLACEHOLDER: 'Input here your Turing Machine program...',
     
@@ -43,9 +37,6 @@ export const MACHINE_MESSAGES = {
 
 };
 
-/**
- * Example program name that appears in the user's system window when saving the program to a file.
- */
 export const SAMPLE_MACHINE_PROGRAM_NAME = 'turing-machine-program.txt';
 export const MACHINE_PROGRAM_EXTENSION = 'txt';
 export const DEF_PROGRAMS_REL_PATH = '/examples';
@@ -54,36 +45,29 @@ export const DEF_PROGRAMS_REL_PATH = '/examples';
  * All examples programs (NOTE: this list must match the names of programs in the ./examples directory).
  * Example: replace-binary-string (in folder) -> Replace Binary String (in array).
  */
- export const EXAMPLES_PROGRAMS = [
+export const EXAMPLES_PROGRAMS = [
     'Replace Binary String',
     'Replace Ternary String',
     'Check Symmetric Strings',
     'Binary Palindrome Detector'
 ];
 
-/**
- * 
- */
 export const COMPILE_AND_RUN = {
     COMMENT_CHAR: '#',
     INITIAL_VALUE_RANGE_CHAR: '$', // Used to extract the initial tape values from the code.
     STOP_LABEL: 'stop',
 };
 
-/**
- * 
- */
 export const TAPE_VALUES = {
     ILL_STATE: [ COMPILE_AND_RUN.COMMENT_CHAR, '*', '_', '', ' ' ],
     ILL_TAPE_SYMB: [ COMPILE_AND_RUN.COMMENT_CHAR, '', ' ' ],
     LEG_DIR: { RIGHT: '>', LEFT: '<', HALT: '*' },
     LEG_STOP: '!',
-    ANY: '*'
+    ANY: '*',
+    BLANK: '_',
+    SPACE: ' '
 };
 
-/**
- * 
- */
 export const SYNTAX_PROBLEMS = {
     TOO_MANY_ARGUMENTS: 'Too many arguments. There are too many arguments on the line. Expected comment',
     TOO_FEW_ARGUMENTS: 'Too few arguments. There are too few arguments on this line. Expected comment',
@@ -96,12 +80,20 @@ export const SYNTAX_PROBLEMS = {
     ENDLESS_LOOP: 'Endless loop. Possible memory leaks and undesirable program operation',
 
     WARNING_LEVEL: 'Warning',
-    ERROR_LEVEL: 'Error'
+    ERROR_LEVEL: 'Error',
 };
 
-/**
- * 
- */
+export const MACHINE_STATES = {
+    ALGORITHM_LOOP: 'Machine stopped! Prevent memory leaks induced by endless loop.',
+    ALGORITHM_FINISH: `Machine has finish work. Press 'Machine Reset' button.`,
+    ALGORITHM_BACKWARD: 'Machine did one step backward.',
+    ALGORITHM_FORWARD: 'Machine did one step forward.',
+    ALGORITHM_RUNNING: 'Machine running...',
+    ALGORITHM_STOPPED: 'Machine stopped.',
+    ALGORITHM_RESET: `Machine reset. Press 'run' or 'steps' to start the machine working.`,
+    ALGORITHM_IDLE: 'Machine idle. Write or load sample program and compile to run machine.'
+};
+
 export const TUPLE_DEF = {
     CURRENT_STATE: 'current state',
     CURRENT_SYMBOL: 'current symbol',
@@ -111,9 +103,6 @@ export const TUPLE_DEF = {
     TERMINATE: 'terminate'
 };
 
-/**
- * 
- */
 export const HEAD_SPEED = {
     MIN_SPEED: 100,
     MAX_SPEED: 1000,
