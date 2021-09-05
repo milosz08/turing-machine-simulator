@@ -53,7 +53,7 @@ const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 1200px;
+        min-width: 1360px;
     }
 `;
 
