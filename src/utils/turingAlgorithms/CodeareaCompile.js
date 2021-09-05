@@ -90,8 +90,8 @@ class CodeareaCompile {
         
         // Pushing all machine state tuples into labels array
         removeOtherComments.forEach(line => {
-            const splitSimpleLine = line.split(' ');
-            if(splitSimpleLine === 6) { // If the tuple contains a '!' character indicating an immediate stop
+            const splitSimpleLine = line.split(' ').filter(el => el !== '');
+            if(splitSimpleLine.length === 7) { // If the tuple contains a '!' character indicating an immediate stop
                 const [ lineIndex, currentState, currentSymbol, newSymbol, direction, newState, terminate ] = splitSimpleLine;
                 this._tuplesArray.push({
                     lineIndex, currentState, currentSymbol, newSymbol, direction, newState, terminate
