@@ -1,16 +1,19 @@
-/**
+/*!
  * @file Controls.styles.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript Styled Component file.
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
- *
- * @date 09/03/2021
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
+ * 
+ * @date 09/05/2021
  */
 
 import styled from 'styled-components';
+
 import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
+const { BORDER_COLOUR } = NON_CHANGE_VALUES;
 
 export const ContainerStyled = styled.div`
     display: flex;
@@ -44,7 +47,7 @@ export const ControlButtonSqr = styled(ControlButton)`
 `;
 
 export const ControlInputContainer = styled.div`
-    border: 1px solid ${NON_CHANGE_VALUES.BORDER_COLOUR};
+    border: 1px solid ${BORDER_COLOUR};
     border-radius: 5px;
     padding: 10px;
     width: 300px;
