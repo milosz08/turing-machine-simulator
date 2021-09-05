@@ -9,6 +9,7 @@
 </p>
 
 > See how it works at [turing.miloszgilga.pl](http://turing.miloszgilga.pl/) <br>
+> About Turing Machine at [Wiki](https://en.wikipedia.org/wiki/Turing_machine) <br>
 
 <hr/>
 
