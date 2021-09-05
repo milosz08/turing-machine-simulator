@@ -35,7 +35,7 @@ class CodeareaCompile {
     constructor(textarea, initialState) {
         this.textarea = textarea;
         this.initialState = initialState;
-    }
+    };
 
     /**
      * This method takes the value from the constructor, and converts all tabs and whitespace using Regex, and 
@@ -249,7 +249,7 @@ class CodeareaCompile {
             arrayLine.splice(0, 0, COMMENT_CHAR);       
         }
         return arrayLine;
-    }
+    };
 
     /**
      * This method responsible for checking if the program contains an end label. If not, it 
@@ -261,7 +261,7 @@ class CodeareaCompile {
         const allStates = arrayWithTuples.filter(el => el[0] !== '' && el[0] !== COMMENT_CHAR).map(el => el[4]);
         const findTerminateState = Boolean(allStates.find(state => state.includes(STOP_LABEL)));
         this.validateData(!findTerminateState, '-', ' ', WARNING_LEVEL, NOT_INCLUDE_TERMINATE);
-    }
+    };
 
     /**
      * This method is responsible for checking if the program contains tuples that can cause an infinite 
@@ -281,7 +281,7 @@ class CodeareaCompile {
                 }
             }
         }
-    }
+    };
 
     /**
      * Main method responsible for checking all labels in tuples. Generates errors and warnings. With warnings, 
