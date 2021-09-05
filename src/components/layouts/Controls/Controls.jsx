@@ -214,7 +214,7 @@ const Controls = () => {
             setTapeValue(copyTape);
             setAllHeadPos(copyH);
             setAllBlanks(copyB);
-            setMachineEndMessage(MACHINE_STATES.ALGORITHM_FORWARD);
+            setMachineEndMessage(MACHINE_STATES.ALGORITHM_BACKWARD);
         } else {
             handleReset();
         }
@@ -225,7 +225,7 @@ const Controls = () => {
      */
     const handleStepForward = () => {
         setActiveInicator(prevState => !prevState);
-        setMachineEndMessage(MACHINE_STATES.ALGORITHM_BACKWARD);
+        setMachineEndMessage(MACHINE_STATES.ALGORITHM_FORWARD);
     };
     
     /**
