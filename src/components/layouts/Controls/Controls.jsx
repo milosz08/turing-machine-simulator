@@ -231,7 +231,7 @@ const Controls = () => {
     /**
      * An asynchronous counter that runs the Turing machine algorithm function.
      * 
-     * @param { * } speed - speed of asynchronous counter.
+     * @param { number } speed - speed of asynchronous counter.
      */
     const handleRun = (speed = addtlnContr.headSpeed) => {
         increment.current = setInterval(() => { setActiveInicator(prevState => !prevState) }, speed);
