@@ -1,12 +1,13 @@
-/**
- * @file TapeInfos.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+/*!
+ * @file TapeInfos.jsx
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
  *
- * @date 09/03/2021
+ * @date 09/05/2021
  */
 
 import React, { useContext } from 'react';

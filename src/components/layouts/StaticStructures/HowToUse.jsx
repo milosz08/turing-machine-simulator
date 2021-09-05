@@ -1,12 +1,13 @@
-/**
- * @file HowToUse.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+/*!
+ * @file HowToUse.jsx
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
  *
- * @date 09/03/2021
+ * @date 09/05/2021
  */
 
 import React from 'react';
@@ -14,7 +15,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons';
 
-import { HowToUseContainer } from './StaticStructures.styles';
+import { InfosContainer } from './StaticStructures.styles';
 
 /**
  * @details Component responsible for generating the main information about starting the machine program.
@@ -22,14 +23,14 @@ import { HowToUseContainer } from './StaticStructures.styles';
  * @returns { JSX.Element }
  */
 const HowToUse = () => (
-    <HowToUseContainer>
+    <InfosContainer>
         <h3>
             This is a single-tape, deterministic Turing machine simulator written in JavaScript with ReactJS library.
             To start using the machine you should:
         </h3>
         <ol>
             <li>
-                Load a sample program from the list or create your own (if you don't know the syntax, see the pages below).
+                Load a sample program from the list or create your own (if you don't know the syntax, see below the page).
             </li>
             <li>
                 Enter the initial state label and the initial tape value in the 'initial input' and 'initial state' fields
@@ -45,11 +46,11 @@ const HowToUse = () => (
             </li>
             <li>
                 Click<FontAwesomeIcon icon = {faPlay}/>to start the machine operation. You can also click the 'Run at full 
-                speed' button (not recommended on slow computers) or go step by step using the
+                speed' button (not recommended on slow computers) or go 'step by step' using the
                 <FontAwesomeIcon icon = {faStepBackward}/>and<FontAwesomeIcon icon = {faStepForward}/>buttons.
             </li>
         </ol>
-    </HowToUseContainer>
+    </InfosContainer>
 );
 
 export default HowToUse;

@@ -1,164 +1,111 @@
+/*!
+ * @file Codearea.jsx
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
+ * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
+ *
+ * @projectName "turing-machine-simulator-react-js"
+ * @version "^0.1.0"
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
+ * 
+ * @date 09/05/2021
+ */
+
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { StoreContext } from '../../store/StoreProvider';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faExclamationTriangle, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import {
-    CodeareaContainer, CodeareaField, RowsCounter, CodeareaWrapper, CodeInspections, CursorPosButton,
-    TerminalMode, LeftContent, SingleRow, RowsContainer
-} from './Codearea.styles';
+import CodeareaCompile from '../../../utils/turingAlgorithms/CodeareaCompile';
+import { CODEAREA_MODES } from '../../../utils/machineConfiguration';
+import { MACHINE_MESSAGES } from '../../../utils/machineConfiguration';
 
-import STYLED_CONSTANTS from '../../../utils/StylesConstants';
-import getInputSelection from '../../../utils/getInputSelection';
-import TextareaCompile, { SYNTAX_ERRORS } from './../../../utils/TextareaCompile';
 import ErrorInfo from '../ErrorInfo/ErrorInfo';
+import CodeareaRows from '../CodeareaRows/CodeareaRows';
+import Codefield from '../Codefield/Codefield';
+import CodeInspections from '../CodeInspections/CodeInspections';
 
+import { CodeareaContainer, CodeareaWrapper } from './Codearea.styles';
+import MiscControls from '../MiscControls/MiscControls';
+
+/**
+ * @details Component responsible for generating all elements of the code input field. It generates subcomponents 
+ *          in the form of the number of lines, debugger, etc. It is also responsible for running the 
+ *          method compiling the program (separate class).
+ * 
+ * @returns { JSX.Element }
+ */
 const Codearea = () => {
 
     const {
-        labelsArrays, setLabelsArrays, startLabel, codeareaMode, setCodeareaMode, onCompile, setOnCompile, actualState
+        setLabelsArrays, startLabel, setCodeareaMode, setOnCompile, setMachineEndMessage, 
+        codearea, setInitialInput, disableElms, setDisableElms
     } = useContext(StoreContext);
-    const { errors } = labelsArrays;
-
-    const [ codearea, setCodearea ] = useState('0 0 _ r 1o\n0 1 _ r 1i\n0 _ _ * accept\n1o _ _ l 2o\n1o * * r 1o\n1i _ _ l 2i\n1i * * r 1i\n2o 0 _ l 3\n2o _ _ * accept\n2o * * * reject');
+    
     const [ openWindow, setOpenWindow ] = useState(false);
-
     const [ scrollY, setScrollY ] = useState(0);
-    const [ cursorPos, setCursorPos ] = useState({ start: 0, end: 0 });
+    const [ cursorPos, setCursorPos ] = useState({ ln: 0, col: 0, sel: 0 });
+    const [ disableCompileButton, setDisableCompileButton ] = useState(false);
 
     const areaRef = useRef(null);
 
-    const countOfLines = codearea.split('\n').length;
-    const allCharacters = codearea.replace(/(\r\n|\n|\r)/gm, '').replace(/ /g, '').length;
-    const selectedCount = codearea.length !== 0 ? cursorPos.end - cursorPos.start : 0;
-
-    const errorsArr = errors.filter(element => element.danger === SYNTAX_ERRORS.ERROR_LEVEL);
-    const warningsArr = errors.filter(element => element.danger === SYNTAX_ERRORS.WARNING_LEVEL);
-
-    const generateLinesNumbers = Array.from({ length: countOfLines }, (e, i) => i).map(element => (
-        <SingleRow 
-            key = {element}
-            prev = {element === actualState.prevState?.lineIndex - 1}
-            next = {element === actualState.nextState?.lineIndex - 1}
-        >
-            <div>{element === actualState.prevState?.lineIndex - 1 ? 'Prev' : 'Next'}</div>
-            <span>{element + 1}</span>
-            <aside/>
-        </SingleRow>
-    ));
-
+    /**
+     * Function run when the machine program is compiled. Based on the returned values from the methods 
+     * of the validating and processing class, it returns an object with all labels or an object containing 
+     * compiler errors or warnings, respectively.
+     */
     const handleCompile = () => {
-        const validate = new TextareaCompile(codearea, startLabel);
-        const validateIndicator = validate.validateCodeArea();
-        if(validateIndicator) {
-            setOnCompile(CodeareaMode.COMPILE_SUCCESS);
-        } else {
-            setOnCompile(CodeareaMode.COMPILE_FAILURE);
+        const validate = new CodeareaCompile(codearea, startLabel);
+        const validateIndicator = validate.validateCodearea();
+        const initialInput = validate.setInitialInput();
+        if(initialInput) {
+            setInitialInput(initialInput);
         }
-        setCodeareaMode(CodeareaMode.COMPILING);
-        setLabelsArrays({ labels: validate.objectsArray, errors: validate.problemsArray });
+        if(validateIndicator) {
+            setOnCompile(CODEAREA_MODES.COMPILE_SUCCESS);
+            setMachineEndMessage(MACHINE_MESSAGES.COMPILE_SUCCESSFUL);
+            setDisableElms({ ...disableElms, reset: false });
+        } else {
+            setOnCompile(CODEAREA_MODES.COMPILE_FAILURE);
+            setMachineEndMessage(MACHINE_MESSAGES.COMPILE_FAILURE);
+        }
+        setCodeareaMode(CODEAREA_MODES.COMPILING);
+        setLabelsArrays({ labels: validate._tuplesArray, errors: validate._problemsArray });
+        setDisableCompileButton(true);
     }
 
+    /**
+     * Run on every code change (compilation needed each time to verify syntax).
+     */
     useEffect(() => {
-        const HTMLelement = areaRef.current;
-        const onMouseMoveEvent = () => {
-            const result = getInputSelection(areaRef.current);
-            setCursorPos(result);
-        }
-        const resetCompileState = () => {
-            setOnCompile(CodeareaMode.COMPILING);
-            setCodeareaMode(CodeareaMode.RUNNING);
-        }
-        if(codeareaMode !== CodeareaMode.DEBUGGIN) {
-            HTMLelement.addEventListener('click', onMouseMoveEvent, true);
-            HTMLelement.addEventListener('keydown', onMouseMoveEvent, true);
-            HTMLelement.addEventListener('focus', resetCompileState, true);
-        }
-        return () => {
-            if(HTMLelement) {
-                HTMLelement.removeEventListener('click', onMouseMoveEvent, true);
-                HTMLelement.removeEventListener('keydown', onMouseMoveEvent, true);
-                HTMLelement.removeEventListener('focus', resetCompileState, true);
-            }
-        }
-    }, [codearea, onCompile, setLabelsArrays, setOpenWindow, setCodeareaMode, codeareaMode, setOnCompile]);
+        setDisableCompileButton(false);
+        setDisableElms({ fullSpeed: true, prev: true, startStop: true, next: true, reset: true, inputs: false });
+        setMachineEndMessage(MACHINE_MESSAGES.COMPILE_PROGRAM);
+    }, [codearea, setMachineEndMessage, setDisableElms]);
 
     return (
         <CodeareaContainer>
-        <div>123</div>
-        <CodeareaWrapper>
-            <RowsContainer>
-                <RowsCounter positionY = {scrollY}>
-                    {generateLinesNumbers}
-                </RowsCounter>
-            </RowsContainer>
-            <CodeareaField>
-                <textarea
-                    placeholder = 'Input here your Turing Machine program code.'
-                    value = {codearea}
-                    onChange = {({ target }) => setCodearea(target.value)}
-                    onBlur = {handleCompile}
-                    onScroll = {() => setScrollY(areaRef.current.scrollTop)}
-                    ref = {areaRef}
-                    disabled = {codeareaMode === CodeareaMode.DEBUGGING}
+            <MiscControls
+                handleCompile = {handleCompile}
+                disableCompileButton = {disableCompileButton}
+            />
+            <CodeareaWrapper>
+                <CodeareaRows
+                    scrollY = {scrollY}
+                    areaRef = {areaRef}
                 />
-            </CodeareaField>
-        </CodeareaWrapper>
-        <CodeInspections 
-            background = {selectBarBackground(codeareaMode)}
-            openWindow = {openWindow}
-        >
-            <TerminalMode>
-                Current status: {codeareaMode}
-            </TerminalMode>
-            <LeftContent animationWorking = {onCompile}>
-                <CursorPosButton
-                    title = {codeareaMode === CodeareaMode.COMPILING ? 'Click here to see all Errors and Warnings' : ''}
-                    background = {selectBarBackground(codeareaMode)}
-                    onClick = {() => setOpenWindow(prevState => !prevState)}
-                    disabled = {codeareaMode !== CodeareaMode.COMPILING}
-                >
-                    {codeareaMode === CodeareaMode.RUNNING && `Ln ${cursorPos.start}, Col ${countOfLines} ${' '}
-                    (${selectedCount} selected), Total signs: ${allCharacters}`}
-                    {codeareaMode === CodeareaMode.COMPILING &&
-                    `Compiling status: ${onCompile}, Errors: ${errorsArr.length}, Warnings: ${warningsArr.length}`}
-                    {codeareaMode === CodeareaMode.DEBUGGING && 
-                    `Remained number of states: ${0}, Current label: ${0}`}
-                </CursorPosButton>
-                {codeareaMode !== CodeareaMode.DEBUGGING && <FontAwesomeIcon icon = {selectShowIcon(onCompile)}/>}
-            </LeftContent>
-        </CodeInspections>
+                <Codefield
+                    areaRef = {areaRef}
+                    setScrollY = {setScrollY}
+                    handleCompile = {handleCompile}
+                    setCursorPos = {setCursorPos}
+                />
+            </CodeareaWrapper>
+            <CodeInspections
+                openWindow = {openWindow}
+                setOpenWindow = {setOpenWindow}
+                cursorPos = {cursorPos}
+            />
         {openWindow && <ErrorInfo/>}
     </CodeareaContainer>
     );
 };
-
-export const CodeareaMode = {
-    DEBUGGING: 'debugging',
-    COMPILING: 'compiled',
-    RUNNING: 'running',
-    COMPILE_SUCCESS: 'Succeess',
-    COMPILE_FAILURE: 'Failure',
-}
-
-const selectShowIcon = value  => {
-    switch(value) {
-        case CodeareaMode.COMPILE_SUCCESS:  return faCheck;
-        case CodeareaMode.COMPILE_FAILURE:  return faExclamationTriangle;
-        default:                            return faSyncAlt;
-    }
-}
-
-const selectBarBackground = value => {
-    const {
-        DEBUG_BAR_COLOUR, COMPILING_BAR_COLOUR, STATUS_BAR_COLOUR, COMPILING_BAR_HOVER_COLOUR
-    } = STYLED_CONSTANTS;
-
-    switch(value) {
-        case CodeareaMode.DEBUGGING:   return { normal: DEBUG_BAR_COLOUR, hover: '' };
-        case CodeareaMode.COMPILING:  return { normal: COMPILING_BAR_COLOUR, hover: COMPILING_BAR_HOVER_COLOUR };
-        default:                      return { normal: STATUS_BAR_COLOUR, hover: '' };
-    }
-}
 
 export default Codearea;

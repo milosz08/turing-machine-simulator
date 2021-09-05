@@ -1,12 +1,13 @@
-/**
+/*!
  * @file useDarkMode.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript Custom React Hook.
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
  *
- * @date 09/03/2021
+ * @date 09/05/2021
  */
 
 import { useEffect, useState } from 'react';

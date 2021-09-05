@@ -1,16 +1,19 @@
-/**
- * @file Header.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+/*!
+ * @file ReadFromFile.jsx
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
  *
  * @projectName "turing-machine-simulator-react-js"
  * @version "^0.1.0"
- *
- * @date 09/03/2021
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
+ * 
+ * @date 09/05/2021
  */
 
 import React, { useContext, useState } from 'react';
 import { StoreContext } from '../../store/StoreProvider';
+
+import { MACHINE_MESSAGES, MACHINE_PROGRAM_EXTENSION } from '../../../utils/machineConfiguration';
 
 import { FileSupportWrapper } from './FilesSupport.styles';
 
@@ -22,8 +25,13 @@ import { FileSupportWrapper } from './FilesSupport.styles';
 const ReadFromFile = () => {
 
     const { setCodearea } = useContext(StoreContext);
-    const [ showingTxt, setShowingTxt ] = useState('Click here to load program from your PC.');
+    const { CLICK_TO_LOAD_PROGRAM, SUCCESS_LOAD_PROGRAM, PROGRAM_LOAD_ERROR } = MACHINE_MESSAGES;
 
+    const [ showingTxt, setShowingTxt ] = useState(CLICK_TO_LOAD_PROGRAM);
+
+    /**
+     * Function loads the machine program from a .txt file from the user's computer.
+     */
     const showAndLoadFile = () => {
         if(window.File && window.FileReader && window.FileList && window.Blob) {
             const file = document.getElementById('fileInput').files[0];
@@ -34,13 +42,13 @@ const ReadFromFile = () => {
             if(file.type.match(textFile)) {
                 reader.onload = e => {
                     setCodearea(e.target.result);
-                    setShowingTxt('Your Turing Machine Program was succesfully loaded!');
+                    setShowingTxt(SUCCESS_LOAD_PROGRAM);
                     setTimeout(() => {
-                        setShowingTxt('Click here to load program from your PC.');
+                        setShowingTxt(CLICK_TO_LOAD_PROGRAM);
                     }, 3000);
                 }
             } else {
-                setShowingTxt('Error! Turing Machine Program not loaded!');
+                setShowingTxt(PROGRAM_LOAD_ERROR);
             }
             reader.readAsText(file);
         }
@@ -54,7 +62,7 @@ const ReadFromFile = () => {
             <input
                 type = 'file'
                 onChange = {showAndLoadFile}
-                accept = '.txt'
+                accept = {`.${MACHINE_PROGRAM_EXTENSION}`}
                 id = 'fileInput'
             />
             <label htmlFor = 'fileInput'>

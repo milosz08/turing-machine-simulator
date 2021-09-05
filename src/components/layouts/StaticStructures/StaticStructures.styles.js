@@ -1,12 +1,13 @@
-/**
+/*!
  * @file StaticStructure.styles.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript Styled Component file.
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
- *
- * @date 09/03/2021
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
+ * 
+ * @date 09/05/2021
  */
 
 import styled from 'styled-components';
@@ -55,7 +56,7 @@ export const CenterContent = styled.div`
     }
 `;
 
-export const ToggleDarkLightMode = styled.div`
+export const ToggleButton = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -97,7 +98,7 @@ export const ToggleDarkLightMode = styled.div`
     }
 `;
 
-export const HowToUseContainer = styled.div`
+export const InfosContainer = styled.div`
     width: 1300px;
     font-size: 1rem;
     font-weight: 200;
@@ -108,7 +109,7 @@ export const HowToUseContainer = styled.div`
         font-size: 1rem;
         font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
     }
-    ol {
+    ol, ul {
         margin: 10px 0 0 60px;
         li {
             padding: 2px 0;
@@ -118,5 +119,44 @@ export const HowToUseContainer = styled.div`
                 color: ${({ theme }) => theme.TEXT};
             }
         }
+    }
+`;
+
+export const SyntaxContainer = styled(InfosContainer)`
+    margin-top: 40px;
+    div {
+        text-align: center;
+        margin: 20px 0;
+        font-weight: 900;
+    }
+`;
+
+export const FooterContainer = styled.footer`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 40px 0;
+    a {
+        color: ${({ theme }) => theme.TEXT};
+        text-decoration: none;
+        :hover {
+            text-decoration: underline;
+        }
+    }
+`;
+
+export const FooterLinks = styled.div`
+    flex-basis: 50%;
+    text-align: center;
+    font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT - 100};
+`;
+
+export const FooterBrands = styled.div`
+    font-size: 2rem;
+    margin: 0 15px;
+    a {
+        color: ${({ theme }) => theme.TEXT}
     }
 `;

@@ -1,16 +1,21 @@
-/**
- * @file LoadExamples.js
- * @author Miłosz Gilga (gilgamilosz451@gmail.com)
+/*!
+ * @file LoadExamples.jsx
+ * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
  * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
  *
- * @date 09/03/2021
+ * @date 09/05/2021
  */
 
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { StoreContext } from '../../store/StoreProvider';
+
+import {
+    MACHINE_PROGRAM_EXTENSION, EXAMPLES_PROGRAMS, MACHINE_MESSAGES, DEF_PROGRAMS_REL_PATH
+} from './../../../utils/machineConfiguration';
 
 import { ExamplesContainer, ExampleButton } from './LoadExamples.styles';
 
@@ -22,11 +27,17 @@ import { ExamplesContainer, ExampleButton } from './LoadExamples.styles';
  */
 const LoadExamples = () => {
     
-    const { setCodearea, setMachineEndMessage, setDisableBtns } = useContext(StoreContext);
+    const { setCodearea, setMachineEndMessage, setDisableElms } = useContext(StoreContext);
 
-    const loadProgram = name => {
-        const URL = `${name.replace(/ /g, '-').toLocaleLowerCase()}.${FILES_EXTENSION}`;
-        const relativePath = `${process.env.PUBLIC_URL}/examples/`;
+    /**
+     * Asynchronous function responsible for downloading an example program from a file (in a public 
+     * folder) and placing it in the edit field.
+     * 
+     * @param { string } name - name of the program to be loaded.
+     */
+    const loadProgram = useCallback(name => {
+        const URL = `${name.replace(/ /g, '-').toLocaleLowerCase()}.${MACHINE_PROGRAM_EXTENSION}`;
+        const relativePath = `${process.env.PUBLIC_URL}${DEF_PROGRAMS_REL_PATH}/`;
         fetch(relativePath + URL, { method: 'GET' })
             .then(res => {
                 if(res.ok) {
@@ -39,20 +50,25 @@ const LoadExamples = () => {
                 if(data) {
                     setCodearea(data);
                 } else {
-                    setMachineEndMessage('Error: Load AJAX request program failure. Try again.');
+                    setMachineEndMessage(MACHINE_MESSAGES.AJAX_ERROR_LOAD);
                 }
             })
             .catch(err => {
                 setMachineEndMessage(`Error: ${err}`);
             });
-        setDisableBtns({ fullSpeed: true, prev: true, startStop: true, next: true, reset: false, inputs: false });
-    };
+        setDisableElms({ fullSpeed: true, prev: true, startStop: true, next: true, reset: false, inputs: false });
+    }, [setCodearea, setDisableElms, setMachineEndMessage]);
 
+    /**
+     * Loading the first program in the list of sample programs each time you reload the page.
+     */
     useEffect(() => {
         loadProgram(EXAMPLES_PROGRAMS[0]);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [loadProgram]);
 
+    /**
+     * Generating all sample programs from a static array of elements.
+     */
     const generateExamples = EXAMPLES_PROGRAMS.map(example => (
         <ExampleButton
             key = {`${example}_${Math.floor(Math.random() * 1000)}`}
@@ -69,20 +85,5 @@ const LoadExamples = () => {
         </ExamplesContainer>
     );
 }
-
-/**
- * All examples programs (NOTE: this list must match the names of programs in the ./examples directory).
- */
-const EXAMPLES_PROGRAMS = [
-    'Replace Binary String',
-    'Replace Ternary String',
-    'Check Symmetric Strings',
-    'Binary Palindrome Detector'
-];
-
-/**
- * Turing Machine program files extension.
- */
-const FILES_EXTENSION = 'txt';
 
 export default LoadExamples;

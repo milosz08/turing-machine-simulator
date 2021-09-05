@@ -1,31 +1,45 @@
-/**
+/*!
  * @file styledComponentThemes.js
  * @author Miłosz Gilga (gilgamilosz451@gmail.com)
  * @brief JavaScript Styles File.
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
+ * @projectName turing-machine-simulator-react-js
+ * @version ^0.1.0
+ * @license MIT (full terms of this license available in 'LICENSE' repo file)
  *
- * @date 09/03/2021
+ * @date 09/05/2021
  */
+
+/**
+ * Colours and another styles used in both themes (non-exportable static object).
+ */
+const NON_EXPORTABLE_STYLES = {
+    WHITE_NONEXP: '#fcfcfc',
+    LIGHTBLACK_NONEXP: '#242424',
+    BLACK_NONEXP: '#1a1b1e',
+    GRAY_NONEXP: '#575757',
+    LIGHTGRAY_NONEXP: '#cdcdcd',
+};
+
+const { WHITE_NONEXP, LIGHTBLACK_NONEXP, BLACK_NONEXP, GRAY_NONEXP, LIGHTGRAY_NONEXP } = NON_EXPORTABLE_STYLES;
 
 /**
  * Styled components light theme.
  */
 export const LIGHT_THEME = {
-    BODY: '#fcfcfc',
-    BODY_TINT1: '#cdcdcd',
-    BODY_TINT2: '#575757',
-    TEXT: '#242424',
-    TEXT_TINT1: '#1a1b1e',
+    BODY: WHITE_NONEXP,
+    BODY_TINT1: LIGHTGRAY_NONEXP,
+    BODY_TINT2: GRAY_NONEXP,
+    TEXT: LIGHTBLACK_NONEXP,
+    TEXT_TINT1: BLACK_NONEXP,
 
     BUTTON_FONT_WEIGHT: 200,
-    BUTTON_COLOUR: '#fcfcfc',
-    BUTTON_BACKGROUND: '#242424',
-    DIS_BUTTON_BACKGROUND: '#cdcdcd',
+    BUTTON_COLOUR: WHITE_NONEXP,
+    BUTTON_BACKGROUND: LIGHTBLACK_NONEXP,
+    DIS_BUTTON_BACKGROUND: LIGHTGRAY_NONEXP,
 
-    INPUT_COLOUR: '#575757',
-    INPUT_FOCUS_COLOUR: '#1a1b1e',
+    INPUT_COLOUR: GRAY_NONEXP,
+    INPUT_FOCUS_COLOUR: BLACK_NONEXP,
     INPUT_FONT_WEIGHT: 600,
 };
 
@@ -33,18 +47,18 @@ export const LIGHT_THEME = {
  * Styled components dark theme.
  */
 export const DARK_THEME = {
-    BODY: '#1a1b1e',
-    BODY_TINT2: '#575757',
-    TEXT: '#fcfcfc',
-    TEXT_TINT1: '#cdcdcd',
+    BODY: BLACK_NONEXP,
+    BODY_TINT2: GRAY_NONEXP,
+    TEXT: WHITE_NONEXP,
+    TEXT_TINT1: LIGHTGRAY_NONEXP,
 
     BUTTON_FONT_WEIGHT: 600,
-    BUTTON_COLOUR: '#242424',
-    BUTTON_BACKGROUND: '#fcfcfc',
-    DIS_BUTTON_BACKGROUND: '#575757',
+    BUTTON_COLOUR: LIGHTBLACK_NONEXP,
+    BUTTON_BACKGROUND: WHITE_NONEXP,
+    DIS_BUTTON_BACKGROUND: GRAY_NONEXP,
 
-    INPUT_COLOUR: '#cdcdcd',
-    INPUT_FOCUS_COLOUR: '#fcfcfc',
+    INPUT_COLOUR: LIGHTGRAY_NONEXP,
+    INPUT_FOCUS_COLOUR: WHITE_NONEXP,
     INPUT_FONT_WEIGHT: 200,
 };
 
@@ -52,8 +66,8 @@ export const DARK_THEME = {
  * Styled components for both, dark and light theme (static).
  */
 export const NON_CHANGE_VALUES = {
-    WHITE_COLOUR: '#fcfcfc',
-    BORDER_COLOUR: '#575757',
+    WHITE_COLOUR: WHITE_NONEXP,
+    BORDER_COLOUR: GRAY_NONEXP,
     STATUS_BAR_COLOUR: '#117bc9',
     STATUS_BAR_HOVER_COLOUR: '#2888CE',
     COMPILING_BAR_COLOUR: '#67147a',
