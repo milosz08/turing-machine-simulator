@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+<h1 align="center">
+  Turing Machine Simulator
+  <br>
+  <img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/main-logo.png" width="200">
+  <br>
+</h1>
+<p align="center" style="font-size: 1.2rem;">
+  An advanced, single-tape, deterministic Turing Machine simulator written using the ReactJS library. Available in light and dark modes, depending on user preference. This machine is a great foundation for understanding how computer processing of algorithms works, found frequently in Computer Science majors at technical colleges.
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> See how it works at [turing.miloszgilga.pl](http://turing.miloszgilga.pl/) <br>
 
-## Available Scripts
+<hr/>
 
-In the project directory, you can run:
+## About the Project
+I decided to create this simulator mainly for teaching purposes (mine and others). I believe it can be useful to more than one Computer Science student. I decided to use ReactJS library because of its speed and modularity, thanks to which everything is arranged in separate modules, so to speak, the simulator logic is separated from the view layer. I decided not to create an API and database, and instead add functionality to read from a file and write to a file.
 
-### `npm start`
+## Syntax and Compiler
+This simulator has a syntax taken from @awmorp, slightly modified by me for ease of use. Machine has a code compiler I designed that will not allow the algorithm to run if there are any syntax errors.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Light/Dark mode save in Local Storage
+This app has a light mode and a dark mode. When the user selects a mode, it will be saved in local storage so that when the user revisits the page, the mode will automatically switch to dark or light.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<hr/>
 
-### `npm test`
+## Screenshot gallery
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/black_white_bg.png" width="1920">
 
-### `npm run build`
+## Clone and Installation
+If you want to clone and work with this repository, use the built-in interface in your IDE (for example WebStorm or Visual Studio Code) or use the clone project algorithm with git bash:<br>
+1. Open Git Bash.
+2. Change the current working directory to the location where you want the cloned directory.
+3. Type `git clone` and then paste the URL you copied earlier.
+  
+```
+$ git clone https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> This project has quite a few dependencies that need to be installed using NPM before cloning the repository. List of all necessary dependencies below.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Dependencies
+All packages with dependencies used in the project can be found in the `package.json`. In addition, in each component I have included information about what packages I use and version of this packages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This application is on MIT License [terms of use](https://en.wikipedia.org/wiki/MIT_License).<br>
+Turing Machine Icon created by Attilio Baghino.
