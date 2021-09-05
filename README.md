@@ -44,3 +44,4 @@ All packages with dependencies used in the project can be found in the `package.
 
 ## License
 This application is on MIT License [terms of use](https://en.wikipedia.org/wiki/MIT_License).
+Turing Machine Icon created by Attilio Baghino
