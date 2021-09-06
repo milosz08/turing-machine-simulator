@@ -26,7 +26,7 @@ This app has a light mode and a dark mode. When the user selects a mode, it will
 
 ## Screenshot gallery
 
-<img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/black_white_bg.png" width="1920">
+<img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/black_white_bg.png" width="1280">
 
 ## Clone and Installation
 If you want to clone and work with this repository, use the built-in interface in your IDE (for example WebStorm or Visual Studio Code) or use the clone project algorithm with git bash:<br>
