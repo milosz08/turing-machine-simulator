@@ -10,7 +10,7 @@
  * @date 09/05/2021
  */
 
-import { COMPILE_AND_RUN, SYNTAX_PROBLEMS, TUPLE_DEF, TAPE_VALUES } from './../machineConfiguration';
+import { COMPILE_AND_RUN, SYNTAX_PROBLEMS, TUPLE_DEF, TAPE_VALUES } from '../machineConfiguration';
 
 const { COMMENT_CHAR, INITIAL_VALUE_RANGE_CHAR, STOP_LABEL } = COMPILE_AND_RUN;
 const {
@@ -59,7 +59,7 @@ class CodeareaCompile {
 
         if(getInitialInput) { // If initial input label exist create tuple
             const [ start, end ] = getInitialInput.split('').map((c, i) => c === $ ? i : []).filter(v => v > 0);
-            if(!start || !end) { // If anythink of this tuple is 'null' or 'undefined' return blank string
+            if(!start || !end) { // If anything of this tuple is 'null' or 'undefined' return blank string
                 return '';
             } else {
                 return getInitialInput.substring(start + 1, end);
@@ -123,7 +123,7 @@ class CodeareaCompile {
     /**
      * This method adds an element to the global problem array based on the condition in the parameters.
      * 
-     * @param { Boolean Condition } el - condition returning boolean value.
+     * @param { boolean } el - condition returning boolean value.
      * @param { number } i - actual line index.
      * @param { string } tupleElement - one of the tuple elements.
      * @param { string } danger - danger of the problem (error, warning etc.).
