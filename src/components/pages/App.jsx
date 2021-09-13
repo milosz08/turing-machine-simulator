@@ -38,7 +38,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         backface-visibility: hidden;
-        transform: translateZ(0);
         -webkit-font-smoothing: subpixel-antialiased;
     }
     body, code, textarea, button, input {
