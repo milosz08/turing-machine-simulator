@@ -30,6 +30,7 @@ export const FileSupportWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     input[type = 'file'] {
         opacity: 0;
         width: 0.1px;

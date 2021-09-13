@@ -25,6 +25,7 @@ export const ExamplesContainer = styled.div`
     width: 1300px;
     margin: 50px 0 30px 0;
     padding: 30px 0;
+    position: relative;
     ::after {
         position: absolute;
         content: 'example turing machine simulator programs';

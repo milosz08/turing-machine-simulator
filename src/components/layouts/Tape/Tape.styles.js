@@ -24,6 +24,7 @@ export const TapeContainer = styled.div`
     border-radius: 5px;
     padding: 30px 0 50px 0;
     width: 1300px;
+    position: relative;
     ::after {
         position: absolute;
         content: 'machine tape';

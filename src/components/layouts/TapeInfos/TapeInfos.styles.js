@@ -32,6 +32,7 @@ export const StateInfosWrapper = styled.div`
     padding: 16px 0 12px;
     text-align: center;
     font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
+    position: relative;
     ::after {
         position: absolute;
         content: '${props => props.pseudoContent}';
