@@ -1,13 +1,15 @@
-/*!
- * @file Footer.jsx
- * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
- * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
+/*
+ * Copyright (c) 2021, by Miłosz Gilga <https://miloszgilga.pl>
  *
- * @projectName turing-machine-simulator-react-js
- * @version ^0.1.0
- * @license MIT (full terms of this license available in 'LICENSE' repo file)
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  *
- * @date 09/05/2021
+ *     <http://www.apache.org/license/LICENSE-2.0>
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the license.
  */
 
 import React from 'react';
@@ -21,8 +23,8 @@ import { faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import { FooterContainer, FooterLinks, FooterBrands} from './StaticStructures.styles';
 
 /**
- * @details Component responsible for generating the footer. Includes information on the technologies used and 
- *          a link to post and full project documentation.
+ * Component responsible for generating the footer. Includes information on the technologies used and
+ * a link to post and full project documentation.
  * 
  * @returns { JSX.Element }
  */
@@ -30,7 +32,7 @@ const Footer = () => (
     <FooterContainer>
         <FooterLinks>
             <a
-                href = 'mailto:gilgamilosz451@gmail.com' 
+                href = 'mailto:gilgamilosz451@gmail.com'
                 title = 'Feedback'
             >
                 gilgamilosz451@gmail.com
@@ -78,7 +80,7 @@ const Footer = () => (
         </FooterBrands>
         <FooterLinks>
             <a
-                href = 'https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator' 
+                href = 'https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator'
                 title = 'Full documentation available in my Github Repo'
             >
                 Documentation

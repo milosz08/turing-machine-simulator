@@ -1,13 +1,15 @@
-/*!
- * @file FilesSupport.jsx
- * @author Miłosz Gilga (gilgamilosz451@gmail.com | milogil757@student.polsl.pl)
- * @brief JavaScript React Stateless functional component (simplify state with React Hooks).
+/*
+ * Copyright (c) 2021, by Miłosz Gilga <https://miloszgilga.pl>
  *
- * @projectName "turing-machine-simulator-react-js"
- * @version "^0.1.0"
- * @license MIT (full terms of this license available in 'LICENSE' repo file)
- * 
- * @date 09/05/2021
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ *     <http://www.apache.org/license/LICENSE-2.0>
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the license.
  */
 
 import React, {  Fragment, useContext } from 'react';
@@ -19,9 +21,9 @@ import { NON_CHANGE_VALUES } from '../../../utils/styledComponentThemes';
 import { ErrorInfoContainer, ListElement, List } from './ErrorInfo.styles';
 
 /**
- * @details Component responsible for generating all compiler errors and warnings in the form of a list. 
- *          If the list is empty (no errors and/or warnings), the component generates information 
- *          about no errors/warnings.
+ * Component responsible for generating all compiler errors and warnings in the form of a list.
+ * If the list is empty (no errors and/or warnings), the component generates information
+ * about no errors/warnings.
  * 
  * @returns { JSX.Element }
  */
