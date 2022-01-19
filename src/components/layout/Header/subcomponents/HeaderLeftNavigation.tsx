@@ -14,22 +14,21 @@
 
 import * as React from 'react';
 
-import { FooterContainer } from './Footer.styles';
+import { HeaderSingleNavContainer } from '../Header.styles';
 
-const SimpleNavLink = React.lazy(() => import('../../highOrderComponents/SimpleNavLink/SimpleNavLink'));
+const SimpleNavLink = React.lazy(() => import('../../../high-order/SimpleNavLink/SimpleNavLink'));
 
-const Footer: React.FC = (): JSX.Element => (
-    <FooterContainer>
+const HeaderLeftNavigation: React.FC = (): JSX.Element => (
+    <HeaderSingleNavContainer>
         <SimpleNavLink
-            link = 'mailto:gilgamilosz451@gmail.com'
-            content = 'gilgamilosz451@gmail.com'
-            selfPage = {true}
+            link = 'https://en.wikipedia.org/wiki/Turing_machine'
+            content = 'About Turing Machine'
         />
         <SimpleNavLink
             link = 'https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator'
-            content = 'Documentation'
+            content = 'Source Code'
         />
-    </FooterContainer>
+    </HeaderSingleNavContainer>
 );
 
-export default Footer;
+export default HeaderLeftNavigation;

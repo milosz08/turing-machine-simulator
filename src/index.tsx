@@ -15,7 +15,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import App from './root/App';
+import App from './components/App';
 import reduxStore from './redux/reduxStore';
 import { Provider } from 'react-redux';
 

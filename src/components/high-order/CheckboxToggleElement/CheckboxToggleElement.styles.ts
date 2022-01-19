@@ -13,7 +13,7 @@
  */
 
 import styled from 'styled-components';
-import { input_rs } from '../../styles/reset.styles';
+import { input_rs } from '../../../styles/reset.styles';
 
 export const CheckboxToggleElementContainer = styled.div`
     width: 100%;

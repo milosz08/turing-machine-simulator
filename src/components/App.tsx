@@ -24,10 +24,10 @@ import { GlobalStyles } from '../styles/global.styles';
 
 import { ThemeModes } from '../redux/preferencesStore/types';
 
-const Header = React.lazy(() => import('../components/Header/Header'));
-const TopInfo = React.lazy(() => import('../components/InfoComponents/TopInfo'));
-const BottomInfo = React.lazy(() => import('../components/InfoComponents/BottomInfo'));
-const Footer = React.lazy(() => import('../components/Footer/Footer'));
+const Header = React.lazy(() => import('./layout/Header/Header'));
+const TopInfo = React.lazy(() => import('./layout/InfoComponents/TopInfo'));
+const BottomInfo = React.lazy(() => import('./layout/InfoComponents/BottomInfo'));
+const Footer = React.lazy(() => import('./layout/Footer/Footer'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 

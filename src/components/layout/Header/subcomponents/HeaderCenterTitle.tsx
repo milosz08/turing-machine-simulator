@@ -16,15 +16,15 @@ import * as React from 'react';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 
-import { ThemeModeContext } from '../../../root/App';
+import { ThemeModeContext } from '../../../App';
 
-import { RootState } from '../../../redux/reduxStore';
-import { ThemeModes } from '../../../redux/preferencesStore/types';
-import { PreferencesInitialTypes } from '../../../redux/preferencesStore/initialState';
+import { RootState } from '../../../../redux/reduxStore';
+import { ThemeModes } from '../../../../redux/preferencesStore/types';
+import { PreferencesInitialTypes } from '../../../../redux/preferencesStore/initialState';
 
 import { HeaderAsideText, HeaderMainTitle, HeaderMainTitleContainer } from '../Header.styles';
 
-const CheckboxToggleElement = React.lazy(() => import('../../../highOrderComponents/CheckboxToggleElement/CheckboxToggleElement'));
+const CheckboxToggleElement = React.lazy(() => import('../../../high-order/CheckboxToggleElement/CheckboxToggleElement'));
 
 const HeaderCenterTitle: React.FC = (): JSX.Element => {
 

@@ -14,7 +14,7 @@
 
 import styled from 'styled-components';
 
-import { a_rs } from '../../styles/reset.styles';
+import { a_rs } from '../../../styles/reset.styles';
 
 export const SimpleNavLinkContainer = styled(a_rs)`
     font-size: 1em;
