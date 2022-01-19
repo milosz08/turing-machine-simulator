@@ -43,6 +43,7 @@ export const HeaderMainTitle = styled.h1`
 `;
 
 export const HeaderAsideText = styled.p`
+    font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
     font-size: .9rem;
     margin: 5px 0;
 `;

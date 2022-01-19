@@ -18,5 +18,6 @@ import { a_rs } from '../../styles/reset.styles';
 
 export const SimpleNavLinkContainer = styled(a_rs)`
     font-size: 1em;
-    font-weight: 600;
+    font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
+    color: ${({ theme }) => theme.TEXT_TINT1};
 `;
