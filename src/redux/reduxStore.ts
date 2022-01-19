@@ -12,16 +12,21 @@
  * governing permissions and limitations under the license.
  */
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import App from './root/App';
-import reduxStore from './redux/reduxStore';
-import { Provider } from 'react-redux';
+import machineReducer from './machineStore/reducer';
+import preferencesReducer from './preferencesStore/reducer';
 
-ReactDOM.render(
-    <Provider store = {reduxStore}>
-        <App/>
-    </Provider>,
-    document.getElementById('root')
+const rootReducers = combineReducers({
+    machineReducer,
+    preferencesReducer
+});
+
+const reduxStore = createStore(
+    rootReducers,
+    composeWithDevTools(),
 );
+
+export type RootState = ReturnType<typeof rootReducers>;
+export default reduxStore;
