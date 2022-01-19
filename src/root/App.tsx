@@ -25,6 +25,9 @@ import { GlobalStyles } from '../styles/global.styles';
 import { ThemeModes } from '../redux/preferencesStore/types';
 
 const Header = React.lazy(() => import('../components/Header/Header'));
+const TopInfo = React.lazy(() => import('../components/InfoComponents/TopInfo'));
+const BottomInfo = React.lazy(() => import('../components/InfoComponents/BottomInfo'));
+const Footer = React.lazy(() => import('../components/Footer/Footer'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 
@@ -40,12 +43,15 @@ const App: React.FC = (): JSX.Element => {
             <Suspense
                 fallback = {<></>}
             >
+                <GlobalStyles/>
                 <ThemeModeContext.Provider
                     value = {{ changeTheme: themeToggle }}
                 >
-                    <GlobalStyles/>
                     <Header/>
                 </ThemeModeContext.Provider>
+                <TopInfo/>
+                <BottomInfo/>
+                <Footer/>
             </Suspense>
         </ThemeProvider>
     );
