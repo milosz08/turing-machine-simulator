@@ -39,3 +39,28 @@ export const BorderElement = ({
         text-transform: uppercase;
     }
 `;
+
+export const MainContainer = () => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1300px;
+    margin: 30px 0;
+`;
+
+export const ControlButton = ({
+    _fontWeight, _bgcColour, _textColour, _disabledColour, _ifSquare
+}: { _fontWeight: string, _bgcColour: string, _textColour: string, _disabledColour: string, _ifSquare?: boolean }) => css`
+    padding: ${_ifSquare ? '6px' : '6px 15px'};
+    width: ${_ifSquare ? 40 : 200}px;
+    border-radius: 5px;
+    font-size: 1rem;
+    letter-spacing: -1px;
+    font-weight: ${_fontWeight};
+    margin: 0 5px;
+    background-color: ${_bgcColour};
+    color: ${_textColour};
+    :disabled {
+        background-color: ${_disabledColour};
+    }
+`;
