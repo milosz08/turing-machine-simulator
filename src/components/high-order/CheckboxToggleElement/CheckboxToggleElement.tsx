@@ -33,11 +33,11 @@ const CheckboxToggleElement: React.FC<PropsProvider> = ({ leftContent, rightCont
         </CheckboxToggleAsideLeftAndRight>}
         <CheckboxToggleInput
             type = 'checkbox'
-            id = 'checkboxToggle'
+            id = {`checkboxToggle_${leftContent}_${rightContent}`}
             checked = {checked}
             onChange = {changeCallback}
         />
-        <CheckboxToggleLabel htmlFor = 'checkboxToggle'>
+        <CheckboxToggleLabel htmlFor = {`checkboxToggle_${leftContent}_${rightContent}`}>
             <CheckboxToggleStyledInput/>
         </CheckboxToggleLabel>
         {rightContent && <CheckboxToggleAsideLeftAndRight>
