@@ -13,11 +13,19 @@
  */
 
 export interface MachineInitialTypes {
-
+    tapeValues: {
+        initialInput: string;
+        valuesArray: string[];
+    };
+    headPosition: number;
 }
 
 const machineInitialState: MachineInitialTypes = {
-
+    tapeValues: {
+        initialInput: ' ',
+        valuesArray: [],
+    },
+    headPosition: 0,
 };
 
 export default machineInitialState;

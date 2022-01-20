@@ -13,9 +13,21 @@
  */
 
 import machineInitialState from './initialState';
+import { machineReducerTypes } from './types';
 
 const machineReducer = (state = machineInitialState, action: any) => {
-    switch(action.type) {
+    switch(action.type.substring(0, action.type.lastIndexOf('.'))) {
+
+        case machineReducerTypes.CHANGE_SINGLE_FIELD: {
+            const { key, value } = action.payload;
+            return { ...state, [key]: value };
+        }
+
+        case machineReducerTypes.CHANGE_SECOND_LEVEL_SINGLE_FIELD: {
+            const { keyFirst, keySecond, value } = action.payload;
+            return { ...state, [keyFirst]: { ...state[keyFirst], [keySecond]: value } };
+        }
+
         default: {
             return state;
         }

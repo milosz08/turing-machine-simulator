@@ -12,4 +12,30 @@
  * governing permissions and limitations under the license.
  */
 
-export {}
+import { machineReducerTypes } from './types';
+import { addCustomSuffix } from '../reduxStore';
+
+interface ReturnedToReducer {
+    type: machineReducerTypes | string;
+    payload?: {
+        [key: string]: any;
+    }
+}
+
+export class MachineActions {
+
+    public static changeSingleField = (key: string, value: any): ReturnedToReducer => ({
+        type: addCustomSuffix(machineReducerTypes.CHANGE_SINGLE_FIELD, key),
+        payload: {
+            key, value
+        }
+    });
+
+    public static changeSecondLevelSingleField = (keyFirst: string, keySecond: string, value: any): ReturnedToReducer => ({
+        type: addCustomSuffix(machineReducerTypes.CHANGE_SECOND_LEVEL_SINGLE_FIELD, keySecond),
+        payload: {
+            keyFirst, keySecond, value
+        }
+    });
+
+}

@@ -12,4 +12,14 @@
  * governing permissions and limitations under the license.
  */
 
-export {}
+export enum machineReducerTypes {
+    CHANGE_SINGLE_FIELD = 'CHANGE_SINGLE_FIELD__M',
+    CHANGE_SECOND_LEVEL_SINGLE_FIELD = 'CHANGE_SECOND_LEVEL_SINGLE_FIELD__M',
+}
+
+export enum machineStateKeys {
+    TAPE_VALUES = 'tapeValues',
+    INITIAL_INPUT = 'initialInput',
+    VALUES_ARRAY = 'valuesArray',
+    HEAD_POSITION = 'headPosition',
+}
