@@ -27,9 +27,12 @@ import { ThemeModes } from '../redux/preferencesStore/types';
 
 const Header = React.lazy(() => import('./layout/Header/Header'));
 const TopInfo = React.lazy(() => import('./layout/InfoComponents/TopInfo'));
+const Tape = React.lazy(() => import('./layout/Tape/Tape'));
+const MachineControls = React.lazy(() => import('./layout/MachineControls/MachineControls'));
+const CurrentStateInfo = React.lazy(() => import('./layout/CurrentStateInfo/CurrentStateInfo'));
+const AdditionalControls = React.lazy(() => import('./layout/AdditionalControls/AdditionalControls'));
 const BottomInfo = React.lazy(() => import('./layout/InfoComponents/BottomInfo'));
 const Footer = React.lazy(() => import('./layout/Footer/Footer'));
-const Tape = React.lazy(() => import('./layout/Tape/Tape'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 
@@ -49,6 +52,9 @@ const App: React.FC = (): JSX.Element => {
                 </ThemeModeContext.Provider>
                 <TopInfo/>
                 <Tape/>
+                <MachineControls/>
+                <CurrentStateInfo/>
+                <AdditionalControls/>
                 <BottomInfo/>
                 <Footer/>
             </Suspense>
