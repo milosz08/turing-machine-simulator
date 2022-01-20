@@ -23,6 +23,19 @@ export const a_rs = styled.a`
 `;
 
 export const input_rs = styled.input`
+    border: none;
+    background-color: transparent;
     text-decoration: none;
     cursor: pointer;
+    :focus {
+        outline: none;
+    }
+`;
+
+export const button_rs = styled.button`
+    cursor: pointer;
+    border: none;
+    :disabled {
+        cursor: not-allowed;
+    }
 `;
