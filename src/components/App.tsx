@@ -16,6 +16,7 @@ import * as React from 'react';
 import { Suspense } from 'react';
 import { createContext } from 'react';
 
+import useOnLoad from '../hooks/useOnLoad';
 import useDarkMode from '../hooks/useDarkMode';
 
 import Themes from '../styles/theme.styles';
@@ -28,6 +29,7 @@ const Header = React.lazy(() => import('./layout/Header/Header'));
 const TopInfo = React.lazy(() => import('./layout/InfoComponents/TopInfo'));
 const BottomInfo = React.lazy(() => import('./layout/InfoComponents/BottomInfo'));
 const Footer = React.lazy(() => import('./layout/Footer/Footer'));
+const Tape = React.lazy(() => import('./layout/Tape/Tape'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 
@@ -36,20 +38,17 @@ const App: React.FC = (): JSX.Element => {
     const [ theme, themeToggle ] = useDarkMode();
     const styledTheme = theme === ThemeModes.LIGHT ? Themes.darkTheme : Themes.lightTheme;
 
+    useOnLoad();
+
     return (
-        <ThemeProvider
-            theme = {styledTheme}
-        >
-            <Suspense
-                fallback = {<></>}
-            >
+        <ThemeProvider theme = {styledTheme}>
+            <Suspense fallback = {<></>}>
                 <GlobalStyles/>
-                <ThemeModeContext.Provider
-                    value = {{ changeTheme: themeToggle }}
-                >
+                <ThemeModeContext.Provider value = {{ changeTheme: themeToggle }}>
                     <Header/>
                 </ThemeModeContext.Provider>
                 <TopInfo/>
+                <Tape/>
                 <BottomInfo/>
                 <Footer/>
             </Suspense>
