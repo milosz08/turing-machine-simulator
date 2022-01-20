@@ -12,7 +12,7 @@
  * governing permissions and limitations under the license.
  */
 
-import { prefReducerTypes } from './types';
+import { prefReducerTypes, prefStateKeys } from './types';
 import { addCustomSuffix } from '../reduxStore';
 
 interface ReturnedToReducer {
@@ -24,7 +24,7 @@ interface ReturnedToReducer {
 
 export class PrefActions {
 
-    public static changeSingleField = (key: string, value: any): ReturnedToReducer => ({
+    public static changeSingleField = (key: prefStateKeys, value: any): ReturnedToReducer => ({
         type: addCustomSuffix(prefReducerTypes.CHANGE_SINGLE_FIELD, key),
         payload: {
             key, value
