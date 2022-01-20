@@ -18,10 +18,17 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import machineReducer from './machineStore/reducer';
 import preferencesReducer from './preferencesStore/reducer';
 
+import { prefReducerTypes } from './preferencesStore/types';
+import { machineReducerTypes } from './machineStore/types';
+
 const rootReducers = combineReducers({
     machineReducer,
     preferencesReducer
 });
+
+export const addCustomSuffix = (type: prefReducerTypes | machineReducerTypes, suffix: string): string => {
+    return type + '.' + suffix;
+}
 
 const reduxStore = createStore(
     rootReducers,

@@ -16,7 +16,7 @@ import preferencesInitialState from './initialState';
 import { prefReducerTypes } from './types';
 
 const preferencesReducer = (state = preferencesInitialState, action: any) => {
-    switch(action.type.substring(0, action.type.lastIndexOf('->'))) {
+    switch(action.type.substring(0, action.type.lastIndexOf('.'))) {
 
         case prefReducerTypes.CHANGE_SINGLE_FIELD: {
             const { key, value } = action.payload;

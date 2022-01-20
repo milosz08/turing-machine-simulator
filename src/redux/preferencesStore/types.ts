@@ -13,7 +13,7 @@
  */
 
 export enum prefReducerTypes {
-    CHANGE_SINGLE_FIELD = 'CHANGE_SINGLE_FIELD',
+    CHANGE_SINGLE_FIELD = 'CHANGE_SINGLE_FIELD__P',
 }
 
 export enum prefStateKeys {

@@ -13,6 +13,7 @@
  */
 
 import { prefReducerTypes } from './types';
+import { addCustomSuffix } from '../reduxStore';
 
 interface ReturnedToReducer {
     type: prefReducerTypes | string;
@@ -22,12 +23,9 @@ interface ReturnedToReducer {
 }
 
 export class PrefActions {
-    private static addCustomSuffix(type: prefReducerTypes, suffix: string): string {
-        return type + '->' + suffix;
-    }
 
     public static changeSingleField = (key: string, value: any): ReturnedToReducer => ({
-        type: this.addCustomSuffix(prefReducerTypes.CHANGE_SINGLE_FIELD, key),
+        type: addCustomSuffix(prefReducerTypes.CHANGE_SINGLE_FIELD, key),
         payload: {
             key, value
         }
