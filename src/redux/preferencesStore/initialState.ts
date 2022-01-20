@@ -16,10 +16,14 @@ import { ThemeModes } from './types';
 
 export interface PreferencesInitialTypes {
     currentThemeMode: ThemeModes;
+    ifCodeFollow: boolean,
+    headSpeed: number;
 }
 
 const preferencesInitialState: PreferencesInitialTypes = {
     currentThemeMode: ThemeModes.LIGHT,
+    ifCodeFollow: true,
+    headSpeed: 100,
 }
 
 export default preferencesInitialState;
