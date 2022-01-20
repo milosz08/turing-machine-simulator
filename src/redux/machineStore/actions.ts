@@ -12,10 +12,10 @@
  * governing permissions and limitations under the license.
  */
 
-import { machineReducerTypes } from './types';
+import { machineReducerTypes, machineStateKeys } from './types';
 import { addCustomSuffix } from '../reduxStore';
 
-interface ReturnedToReducer {
+export interface ReturnedToReducer {
     type: machineReducerTypes | string;
     payload?: {
         [key: string]: any;
@@ -24,18 +24,28 @@ interface ReturnedToReducer {
 
 export class MachineActions {
 
-    public static changeSingleField = (key: string, value: any): ReturnedToReducer => ({
+    public static changeSingleField = (key: machineStateKeys, value: any): ReturnedToReducer => ({
         type: addCustomSuffix(machineReducerTypes.CHANGE_SINGLE_FIELD, key),
         payload: {
             key, value
         }
     });
 
-    public static changeSecondLevelSingleField = (keyFirst: string, keySecond: string, value: any): ReturnedToReducer => ({
+    public static changeSecondLevelSingleField = (
+        keyFirst: machineStateKeys, keySecond: machineStateKeys, value: any
+    ): ReturnedToReducer => ({
         type: addCustomSuffix(machineReducerTypes.CHANGE_SECOND_LEVEL_SINGLE_FIELD, keySecond),
         payload: {
             keyFirst, keySecond, value
         }
+    });
+
+    public static oneStepForward = (): ReturnedToReducer => ({
+        type: machineReducerTypes.ONE_STEP_BACKWARD,
+    });
+
+    public static oneStepBackward = (): ReturnedToReducer => ({
+        type:machineReducerTypes.ONE_STEP_FORWARD,
     });
 
 }
