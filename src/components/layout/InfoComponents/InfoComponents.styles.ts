@@ -14,7 +14,7 @@
 
 import styled from 'styled-components';
 
-export const InfoComponentContainer = styled.div<{ $margin: string }>`
+export const InfoComponentContainer = styled.section<{ $margin: string }>`
     width: 1300px;
     font-size: 1rem;
     margin: ${({ $margin }) => $margin};

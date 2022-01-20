@@ -24,7 +24,7 @@ const TopInfo: React.FC = (): JSX.Element => (
         $margin = '0 0 30px'
     >
         <InfoComponentHeader>
-            This is a deterministic, single-tape Turing machine simulator written in JavaScript with ReactJS library.
+            This is a deterministic, single-tape Turing machine simulator written in TypeScript with ReactJS library.
             To start using the machine you should:
         </InfoComponentHeader>
         <InfoComponentOrderedList>
