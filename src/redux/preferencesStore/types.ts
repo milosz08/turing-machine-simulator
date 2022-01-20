@@ -18,9 +18,17 @@ export enum prefReducerTypes {
 
 export enum prefStateKeys {
     CURRENT_THEME_MODE = 'currentThemeMode',
+    HEAD_SPEED = 'headSpeed',
+    IF_CODE_FOLLOW = 'ifCodeFollow',
 }
 
 export enum ThemeModes {
     LIGHT = 'LIGHT',
     DARK = 'DARK',
+}
+
+export enum headSpeed {
+    IMMEDIATELY = 1,
+    MIN = 100,
+    MAX = 1000,
 }
