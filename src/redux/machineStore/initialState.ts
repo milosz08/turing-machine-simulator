@@ -12,12 +12,25 @@
  * governing permissions and limitations under the license.
  */
 
+import { machineModes } from './types';
+
 export interface MachineInitialTypes {
     tapeValues: {
         initialInput: string;
         valuesArray: string[];
     };
+    disabledControls: {
+        initialInput: boolean;
+        initialStateLabel: boolean;
+    };
     headPosition: number;
+    initialStateLabel: string;
+    machineState: machineModes;
+    allStatesCount: number;
+    currentLabelInfos: {
+        prevLabel: string;
+        nextLabel: string;
+    };
 }
 
 const machineInitialState: MachineInitialTypes = {
@@ -25,7 +38,18 @@ const machineInitialState: MachineInitialTypes = {
         initialInput: ' ',
         valuesArray: [],
     },
+    disabledControls: {
+        initialInput: false,
+        initialStateLabel: false,
+    },
     headPosition: 0,
+    initialStateLabel: 'q0',
+    machineState: machineModes.IDLE,
+    allStatesCount: 0,
+    currentLabelInfos: {
+        prevLabel: '',
+        nextLabel: '',
+    },
 };
 
 export default machineInitialState;
