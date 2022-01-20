@@ -23,9 +23,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: LightThemeType | DarkThem
     }
     body {
         width: 100%;
-        font-family: "JetBrains Mono", sans-serif;
         color: ${({ theme }) => theme.TEXT};
         background-color: ${({ theme }) => theme.BODY};
+    }
+    body, input, button {
+        font-family: "JetBrains Mono", sans-serif;
     }
     #root {
         display: flex;
