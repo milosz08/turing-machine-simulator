@@ -28,6 +28,14 @@ const machineReducer = (state = machineInitialState, action: any) => {
             return { ...state, [keyFirst]: { ...state[keyFirst], [keySecond]: value } };
         }
 
+        case machineReducerTypes.ONE_STEP_BACKWARD: {
+            return state;
+        }
+
+        case machineReducerTypes.ONE_STEP_FORWARD: {
+            return state;
+        }
+
         default: {
             return state;
         }
