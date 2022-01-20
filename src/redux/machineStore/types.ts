@@ -24,4 +24,25 @@ export enum machineStateKeys {
     INITIAL_INPUT = 'initialInput',
     VALUES_ARRAY = 'valuesArray',
     HEAD_POSITION = 'headPosition',
+    DISABLED_CONTROLS = 'disabledControls',
+    INITIAL_STATE_LABEL = 'initialStateLabel',
+    MACHINE_STATE = 'machineState',
+    ALL_STATES_COUNT = 'allStatesCount',
+    CURR_LABELS_INFO = 'currentLabelInfos',
+    PREV_LABEL = 'prevLabel',
+    NEXT_LABEL = 'nextLabel',
+}
+
+export enum machineModes {
+    IDLE = 'IDLE',
+    STOPPED = 'STOPPED',
+    RUNNING = 'RUNNING',
+    RESET = 'RESET',
+    LOOP = 'LOOP',
+    FINISH = 'FINISH',
+    BACKWARD = 'BACKWARD',
+    FORWARD = 'FORWARD',
+    COMPILE_PROGRAM = 'COMPILE_PROGRAM',
+    COMPILE_SUCCESSFUL = 'COMPILE_SUCCESSFUL',
+    COMPILE_FAILURE = 'COMPILE_FAILURE',
 }
