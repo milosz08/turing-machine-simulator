@@ -12,7 +12,7 @@
  * governing permissions and limitations under the license.
  */
 
-import { machineModes } from './types';
+import { codeAreaModes, machineModes } from './types';
 
 export interface MachineInitialTypes {
     tapeValues: {
@@ -34,6 +34,16 @@ export interface MachineInitialTypes {
         prevLabel: string;
         nextLabel: string;
     };
+    rawCodeAreaInput: string;
+    machineTuples: {
+        labels: { [key: string]: any }[];
+        errors: { [key: string]: any }[];
+    };
+    actualState: {
+        prevState: { [key: string]: string } | null;
+        nextState: { [key: string]: string } | null;
+    };
+    sourceCodeAreaMode: codeAreaModes;
 }
 
 const machineInitialState: MachineInitialTypes = {
@@ -56,6 +66,16 @@ const machineInitialState: MachineInitialTypes = {
         prevLabel: '',
         nextLabel: '',
     },
+    rawCodeAreaInput: '',
+    machineTuples: {
+        labels: [],
+        errors: [],
+    },
+    actualState: {
+        prevState: null,
+        nextState: null,
+    },
+    sourceCodeAreaMode: codeAreaModes.IDLE,
 };
 
 export default machineInitialState;

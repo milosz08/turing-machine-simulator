@@ -31,6 +31,17 @@ export enum machineStateKeys {
     CURR_LABELS_INFO = 'currentLabelInfos',
     PREV_LABEL = 'prevLabel',
     NEXT_LABEL = 'nextLabel',
+    RAW_CODE_AREA_INPUT = 'rawCodeAreaInput',
+    MACHINE_TUPLES = 'machineTuples',
+    LABELS = 'labels',
+    ERRORS = 'errors',
+    COMPILE_BUTTON = 'compileButton',
+    CONTROL_BUTTONS = 'controlButtons',
+    RESET_BUTTON = 'resetButton',
+    ACTUAL_STATE = 'actualState',
+    PREV_STATE = 'prevState',
+    NEXT_STATE = 'nextState',
+    SOURCE_CODE_MODES = 'sourceCodeAreaMode',
 }
 
 export enum machineModes {
@@ -45,4 +56,11 @@ export enum machineModes {
     COMPILE_PROGRAM = 'COMPILE_PROGRAM',
     COMPILE_SUCCESSFUL = 'COMPILE_SUCCESSFUL',
     COMPILE_FAILURE = 'COMPILE_FAILURE',
+    DEBUGGING = 'DEBUGGING',
+}
+
+export enum codeAreaModes {
+    COMPILED = 'compiled',
+    RUNNING = 'debugging',
+    IDLE = 'idle',
 }
