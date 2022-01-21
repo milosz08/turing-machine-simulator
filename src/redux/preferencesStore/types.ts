@@ -20,6 +20,9 @@ export enum prefStateKeys {
     CURRENT_THEME_MODE = 'currentThemeMode',
     HEAD_SPEED = 'headSpeed',
     IF_CODE_FOLLOW = 'ifCodeFollow',
+    CODE_SCROLL_POS = 'codeScrollPos',
+    CURSOR_POSITION = 'cursorPosition',
+    IF_OPEN_ERRORS = 'ifOpenErrors',
 }
 
 export enum ThemeModes {

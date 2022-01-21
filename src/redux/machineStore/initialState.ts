@@ -22,6 +22,9 @@ export interface MachineInitialTypes {
     disabledControls: {
         initialInput: boolean;
         initialStateLabel: boolean;
+        compileButton: boolean;
+        controlButtons: boolean;
+        resetButton: boolean;
     };
     headPosition: number;
     initialStateLabel: string;
@@ -41,6 +44,9 @@ const machineInitialState: MachineInitialTypes = {
     disabledControls: {
         initialInput: false,
         initialStateLabel: false,
+        compileButton: false,
+        controlButtons: true,
+        resetButton: true,
     },
     headPosition: 0,
     initialStateLabel: 'q0',

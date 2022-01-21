@@ -18,12 +18,26 @@ export interface PreferencesInitialTypes {
     currentThemeMode: ThemeModes;
     ifCodeFollow: boolean,
     headSpeed: number;
+    codeScrollPos: number;
+    cursorPosition: {
+        ln: number;
+        col: number;
+        sel: number;
+    };
+    ifOpenErrors: boolean;
 }
 
 const preferencesInitialState: PreferencesInitialTypes = {
     currentThemeMode: ThemeModes.LIGHT,
     ifCodeFollow: true,
     headSpeed: 100,
+    codeScrollPos: 0,
+    cursorPosition: {
+        ln: 0,
+        col: 0,
+        sel: 0,
+    },
+    ifOpenErrors: false,
 }
 
 export default preferencesInitialState;
