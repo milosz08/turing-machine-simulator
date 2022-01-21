@@ -19,29 +19,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/reduxStore';
 import { MachineActions } from '../../../../redux/machineStore/actions';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
-import { machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
+import { codeAreaModes, machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
 
 import { MachineControlButton } from '../MachineControls.styles';
+import { CompilerSyntaxIssues } from '../../../../config/machineMessages';
 
 const StartStopButton: React.FC = (): JSX.Element => {
 
-    const { machineState }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    const stateMach: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+
+    const { machineState, machineTuples, disabledControls } = stateMach;
+    const { MACHINE_STATE, DISABLED_CONTROLS, INITIAL_INPUT, SOURCE_CODE_MODES } = machineStateKeys;
     const { RUNNING, STOPPED } = machineModes;
 
+    const errorsLength = machineTuples.errors.filter((el: any) => el.danger !== CompilerSyntaxIssues.WARNING_LEVEL).length;
     const dispatcher = useDispatch();
 
     const handleStartStopMachine = (): void => {
         if(machineState === RUNNING) {
-            dispatcher(MachineActions.changeSingleField(machineStateKeys.MACHINE_STATE, STOPPED));
+            dispatcher(MachineActions.changeSingleField(MACHINE_STATE, STOPPED));
         } else {
-            dispatcher(MachineActions.changeSingleField(machineStateKeys.MACHINE_STATE, RUNNING));
+            dispatcher(MachineActions.changeSingleField(MACHINE_STATE, RUNNING));
+            dispatcher(MachineActions.changeSingleField(SOURCE_CODE_MODES, codeAreaModes.RUNNING));
         }
+        dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, INITIAL_INPUT, true));
     };
 
     return (
         <MachineControlButton
             onClick = {handleStartStopMachine}
             $ifSquare = {true}
+            disabled = {errorsLength > 0 || disabledControls.controlButtons}
         >
             {machineState === RUNNING ? <FaPause/> : <FaPlay/>}
         </MachineControlButton>
