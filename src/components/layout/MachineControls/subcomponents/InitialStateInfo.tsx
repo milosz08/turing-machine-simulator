@@ -27,8 +27,6 @@ const InitialStateInfo: React.FC = (): JSX.Element => {
     const { initialStateLabel, disabledControls }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
 
     const { INITIAL_STATE_LABEL } = machineStateKeys;
-    const { initialStateLabel: disabledInput } = disabledControls;
-
     const dispatcher = useDispatch();
 
     const handleChangeInput = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
@@ -43,7 +41,7 @@ const InitialStateInfo: React.FC = (): JSX.Element => {
                 type = 'text'
                 value = {initialStateLabel}
                 onChange = {handleChangeInput}
-                disabled = {disabledInput}
+                disabled = {disabledControls.initialInput}
             />
         </MachineControlsInputContainer>
     );

@@ -16,7 +16,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../../../redux/reduxStore';
-import { machineMessages } from '../../../../redux/machineStore/messages';
+import { machineMessages } from '../../../../config/machineMessages';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 
 import { MachineMainMessageInfoContainer } from '../CurrentStateInfo.styles';
