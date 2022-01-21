@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: LightThemeType | DarkThem
         color: ${({ theme }) => theme.TEXT};
         background-color: ${({ theme }) => theme.BODY};
     }
-    body, input, button {
+    body, input, button, textarea {
         font-family: "JetBrains Mono", sans-serif;
     }
     #root {
