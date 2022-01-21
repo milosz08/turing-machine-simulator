@@ -21,12 +21,15 @@ import { RootState } from '../../../../redux/reduxStore';
 import { prefStateKeys } from '../../../../redux/preferencesStore/types';
 import { PrefActions } from '../../../../redux/preferencesStore/actions';
 import { PreferencesInitialTypes } from '../../../../redux/preferencesStore/initialState';
+import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 
 const CheckboxToggleElement = React.lazy(() => import('../../../high-order/CheckboxToggleElement/CheckboxToggleElement'));
 
 const ChangeCodeTracking: React.FC = (): JSX.Element => {
 
+    const { disabledControls }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
     const { ifCodeFollow }: PreferencesInitialTypes = useSelector((state: RootState) => state.preferencesReducer);
+
     const dispatcher = useDispatch();
 
     const handleChangeFollowingCode = (): void => {
@@ -42,6 +45,7 @@ const ChangeCodeTracking: React.FC = (): JSX.Element => {
                 rightContent = 'on'
                 checked = {ifCodeFollow}
                 changeCallback = {handleChangeFollowingCode}
+                disabledItem = {disabledControls.initialInput}
             />
         </MachineChangeAdditionalValuesContainer>
     );

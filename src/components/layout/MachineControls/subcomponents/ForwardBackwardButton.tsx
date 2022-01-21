@@ -23,9 +23,12 @@ interface PropsProvider {
     render: () => JSX.Element;
     dispatcherCallback: () => ReturnedToReducer;
     machineModes: machineModes;
+    disabledItem: boolean;
 }
 
-const ForwardBackwardButton: React.FC<PropsProvider> = ({ render, dispatcherCallback, machineModes }): JSX.Element => {
+const ForwardBackwardButton: React.FC<PropsProvider> = ({
+    render, dispatcherCallback, machineModes, disabledItem
+}): JSX.Element => {
 
     const dispatcher = useDispatch();
 
@@ -38,6 +41,7 @@ const ForwardBackwardButton: React.FC<PropsProvider> = ({ render, dispatcherCall
         <MachineControlButton
             $ifSquare = {true}
             onClick = {handleForwardBackward}
+            disabled = {disabledItem}
         >
             {render()}
         </MachineControlButton>

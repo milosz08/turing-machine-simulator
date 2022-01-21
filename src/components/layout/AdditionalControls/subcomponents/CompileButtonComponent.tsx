@@ -13,18 +13,36 @@
  */
 
 import * as React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import useCompileCodeArea from '../../../../hooks/useCompileCodeArea';
+
+import { RootState } from '../../../../redux/reduxStore';
+import { machineStateKeys } from '../../../../redux/machineStore/types';
+import { MachineActions } from '../../../../redux/machineStore/actions';
+import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 
 import { CompileButtonElement } from '../AdditionalControls.styles';
 
 const CompileButtonComponent: React.FC = (): JSX.Element => {
 
-    const handleCompileCode = (): void => {
+    const machineState: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
 
-    };
+    const { disabledControls, rawCodeAreaInput } = machineState;
+    const { DISABLED_CONTROLS, COMPILE_BUTTON } = machineStateKeys;
+
+    const compile = useCompileCodeArea();
+    const dispatcher = useDispatch();
+
+    useEffect(() => {
+        dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, COMPILE_BUTTON, false));
+    }, [ rawCodeAreaInput ]);
 
     return (
         <CompileButtonElement
-            onClick = {handleCompileCode}
+            onClick = {compile}
+            disabled = {disabledControls.compileButton}
         >
             To compile program, press this button or click outside the code area.
         </CompileButtonElement>

@@ -24,9 +24,12 @@ interface PropsProvider {
     rightContent?: string;
     checked: boolean;
     changeCallback: () => void;
+    disabledItem?: boolean;
 }
 
-const CheckboxToggleElement: React.FC<PropsProvider> = ({ leftContent, rightContent, checked, changeCallback }): JSX.Element => (
+const CheckboxToggleElement: React.FC<PropsProvider> = ({
+    leftContent, rightContent, checked, changeCallback, disabledItem
+}): JSX.Element => (
     <CheckboxToggleElementContainer>
         {leftContent && <CheckboxToggleAsideLeftAndRight>
             {leftContent}
@@ -36,6 +39,7 @@ const CheckboxToggleElement: React.FC<PropsProvider> = ({ leftContent, rightCont
             id = {`checkboxToggle_${leftContent}_${rightContent}`}
             checked = {checked}
             onChange = {changeCallback}
+            disabled = {Boolean(disabledItem)}
         />
         <CheckboxToggleLabel htmlFor = {`checkboxToggle_${leftContent}_${rightContent}`}>
             <CheckboxToggleStyledInput/>

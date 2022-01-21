@@ -27,7 +27,6 @@ const InitialInputField: React.FC = (): JSX.Element => {
     const { tapeValues, disabledControls }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
 
     const { TAPE_VALUES, INITIAL_INPUT } = machineStateKeys;
-    const { initialInput: disabledInput } = disabledControls;
     const { initialInput } = tapeValues;
 
     const dispatcher = useDispatch();
@@ -48,7 +47,7 @@ const InitialInputField: React.FC = (): JSX.Element => {
                 type = 'text'
                 value = {initialInput}
                 onChange = {handleChangeInput}
-                disabled = {disabledInput}
+                disabled = {disabledControls.initialInput}
             />
         </MachineControlsInputContainer>
     );

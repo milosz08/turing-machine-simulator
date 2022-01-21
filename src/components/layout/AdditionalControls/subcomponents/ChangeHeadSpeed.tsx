@@ -14,15 +14,19 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { RootState } from '../../../../redux/reduxStore';
 import { PrefActions } from '../../../../redux/preferencesStore/actions';
+import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 import { headSpeed, prefStateKeys } from '../../../../redux/preferencesStore/types';
 
 import { MachineChangeAdditionalValuesContainer, MachineChangeHeadSpeedRangeInput } from '../AdditionalControls.styles';
 
 const ChangeHeadSpeed: React.FC = (): JSX.Element => {
 
+    const { disabledControls }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    
     const { MIN, MAX } = headSpeed;
 
     const [ speed, setSpeed ] = useState<number>(MAX);
@@ -44,6 +48,7 @@ const ChangeHeadSpeed: React.FC = (): JSX.Element => {
                 min = {MIN}
                 max = {MAX}
                 onChange = {handleChangeHeadSpeed}
+                disabled = {disabledControls.initialInput}
             />
         </MachineChangeAdditionalValuesContainer>
     );
