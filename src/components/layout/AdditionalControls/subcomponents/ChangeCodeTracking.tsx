@@ -23,7 +23,7 @@ import { PrefActions } from '../../../../redux/preferencesStore/actions';
 import { PreferencesInitialTypes } from '../../../../redux/preferencesStore/initialState';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 
-const CheckboxToggleElement = React.lazy(() => import('../../../high-order/CheckboxToggleElement/CheckboxToggleElement'));
+const CheckboxToggleElement = React.lazy(() => import('../../CheckboxToggleElement/CheckboxToggleElement'));
 
 const ChangeCodeTracking: React.FC = (): JSX.Element => {
 

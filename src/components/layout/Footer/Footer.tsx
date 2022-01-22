@@ -16,7 +16,7 @@ import * as React from 'react';
 
 import { FooterContainer } from './Footer.styles';
 
-const SimpleNavLink = React.lazy(() => import('../../high-order/SimpleNavLink/SimpleNavLink'));
+const SimpleNavLink = React.lazy(() => import('../SimpleNavLink/SimpleNavLink'));
 
 const Footer: React.FC = (): JSX.Element => (
     <FooterContainer>

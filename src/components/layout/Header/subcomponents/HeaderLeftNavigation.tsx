@@ -16,7 +16,7 @@ import * as React from 'react';
 
 import { HeaderSingleNavContainer } from '../Header.styles';
 
-const SimpleNavLink = React.lazy(() => import('../../../high-order/SimpleNavLink/SimpleNavLink'));
+const SimpleNavLink = React.lazy(() => import('../../SimpleNavLink/SimpleNavLink'));
 
 const HeaderLeftNavigation: React.FC = (): JSX.Element => (
     <HeaderSingleNavContainer>

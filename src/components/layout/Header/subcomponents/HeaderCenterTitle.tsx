@@ -24,7 +24,7 @@ import { PreferencesInitialTypes } from '../../../../redux/preferencesStore/init
 
 import { HeaderAsideText, HeaderMainTitle, HeaderMainTitleContainer } from '../Header.styles';
 
-const CheckboxToggleElement = React.lazy(() => import('../../../high-order/CheckboxToggleElement/CheckboxToggleElement'));
+const CheckboxToggleElement = React.lazy(() => import('../../CheckboxToggleElement/CheckboxToggleElement'));
 
 const HeaderCenterTitle: React.FC = (): JSX.Element => {
 
