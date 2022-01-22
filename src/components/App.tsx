@@ -18,6 +18,7 @@ import { createContext } from 'react';
 
 import useOnLoad from '../hooks/useOnLoad';
 import useDarkMode from '../hooks/useDarkMode';
+import useMachineSequencer from '../hooks/useMachineSequencer';
 
 import Themes from '../styles/theme.styles';
 import { ThemeProvider } from 'styled-components';
@@ -45,6 +46,7 @@ const App: React.FC = (): JSX.Element => {
     const styledTheme = theme === ThemeModes.LIGHT ? Themes.darkTheme : Themes.lightTheme;
 
     useOnLoad();
+    useMachineSequencer();
 
     return (
         <ThemeProvider theme = {styledTheme}>
