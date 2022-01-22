@@ -133,6 +133,11 @@ export const CodeAreaSingleRowIndicator = styled.div<{ $prev: boolean, $next: bo
     }
 `;
 
+export const CodeAreaSingleRowIndicatorDualBottom = styled(CodeAreaSingleRowIndicator)<{ $prev: boolean, $next: boolean }>`
+    top: calc(50% + 3px);
+    left: -56px;
+`;
+
 export const CodeAreaSingleRowLineNumber = styled.span`
     position: relative;
     width: 40px;
@@ -152,6 +157,28 @@ export const CodeAreaSingleRowHighlighter = styled.aside<{ $prev: boolean, $next
         if(props.$prev) { return NonChangeValues.DEBUG_BAR_COLOUR; }
         else if(props.$next) { return NonChangeValues.STATUS_BAR_COLOUR; }
     }};
+`;
+
+export const CodeAreaSingleRowDualIHighlighter = styled.div`
+    position: relative;
+    flex-grow: 1;
+    z-index: 20 !important;
+    border-radius: 0 5px 5px 0;
+    height: 21px;
+    opacity: .5;
+    background-color: ${NonChangeValues.DEBUG_BAR_COLOUR};
+`;
+
+export const CodeAreaSingleRowDualHighlighterBottom = styled.div`
+    position: absolute;
+    border-radius: 0 5px 5px 0;
+    left: 40px;
+    top: 3px;
+    opacity: .5;
+    content: '';
+    width: calc(100% - 35px);
+    height: 100%;
+    background-color: ${NonChangeValues.STATUS_BAR_COLOUR};
 `;
 
 export const CodeAreaRowsCounter = styled.div.attrs<{ $positionY: number }>(props => ({

@@ -13,6 +13,7 @@
  */
 
 import * as React from 'react';
+import { createContext, useRef } from 'react';
 
 import { CodeAreaContainer, CodeAreaWrapper } from './CodeArea.styles';
 
@@ -21,15 +22,26 @@ const CodeAreaField = React.lazy(() => import('./subcomponents/CodeAreaField'));
 const CodeInspections = React.lazy(() => import('../CodeInspections/CodeInspections'));
 const SyntaxErrorsInfo = React.lazy(() => import('../CodeInspections/subcomponents/SyntaxErrorsInfo'));
 
-const CodeArea: React.FC = (): JSX.Element => (
-    <CodeAreaContainer>
-        <CodeAreaWrapper>
-            <CodeAreaRows/>
-            <CodeAreaField/>
-        </CodeAreaWrapper>
-        <CodeInspections/>
-        <SyntaxErrorsInfo/>
-    </CodeAreaContainer>
-);
+export const CodeAreaContext = createContext<Partial<{ areaRef: React.MutableRefObject<any> }>>({});
+
+const CodeArea: React.FC = (): JSX.Element => {
+
+    const areaRef = useRef<HTMLElement | any>(null);
+
+    return (
+        <CodeAreaContainer>
+            <CodeAreaContext.Provider
+                value = {{ areaRef }}
+            >
+                <CodeAreaWrapper>
+                    <CodeAreaRows/>
+                    <CodeAreaField/>
+                </CodeAreaWrapper>
+                <CodeInspections/>
+                <SyntaxErrorsInfo/>
+            </CodeAreaContext.Provider>
+        </CodeAreaContainer>
+    );
+};
 
 export default CodeArea;
