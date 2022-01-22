@@ -41,11 +41,11 @@ export class MachineActions {
     });
 
     public static oneStepForward = (): ReturnedToReducer => ({
-        type: machineReducerTypes.ONE_STEP_BACKWARD,
+        type: machineReducerTypes.ONE_STEP_FORWARD,
     });
 
     public static oneStepBackward = (): ReturnedToReducer => ({
-        type:machineReducerTypes.ONE_STEP_FORWARD,
+        type:machineReducerTypes.ONE_STEP_BACKWARD,
     });
 
 }

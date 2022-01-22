@@ -44,6 +44,7 @@ export interface MachineInitialTypes {
         nextState: { [key: string]: string } | null;
     };
     sourceCodeAreaMode: codeAreaModes;
+    machineFinish: boolean;
 }
 
 const machineInitialState: MachineInitialTypes = {
@@ -76,6 +77,7 @@ const machineInitialState: MachineInitialTypes = {
         nextState: null,
     },
     sourceCodeAreaMode: codeAreaModes.IDLE,
+    machineFinish: false,
 };
 
 export default machineInitialState;

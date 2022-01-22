@@ -16,7 +16,8 @@ import machineInitialState from './initialState';
 import { machineReducerTypes } from './types';
 
 const machineReducer = (state = machineInitialState, action: any) => {
-    switch(action.type.substring(0, action.type.lastIndexOf('.'))) {
+    const actionType = action.type.includes('.') ? action.type.substring(0, action.type.lastIndexOf('.')) : action.type;
+    switch(actionType) {
 
         case machineReducerTypes.CHANGE_SINGLE_FIELD: {
             const { key, value } = action.payload;
@@ -28,11 +29,13 @@ const machineReducer = (state = machineInitialState, action: any) => {
             return { ...state, [keyFirst]: { ...state[keyFirst], [keySecond]: value } };
         }
 
-        case machineReducerTypes.ONE_STEP_BACKWARD: {
+        case machineReducerTypes.ONE_STEP_FORWARD: {
+            console.log('one step forward');
             return state;
         }
 
-        case machineReducerTypes.ONE_STEP_FORWARD: {
+        case machineReducerTypes.ONE_STEP_BACKWARD: {
+            console.log('one step backward');
             return state;
         }
 

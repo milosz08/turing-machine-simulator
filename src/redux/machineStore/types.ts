@@ -42,6 +42,7 @@ export enum machineStateKeys {
     PREV_STATE = 'prevState',
     NEXT_STATE = 'nextState',
     SOURCE_CODE_MODES = 'sourceCodeAreaMode',
+    MACHINE_FINISH = 'machineFinish',
 }
 
 export enum machineModes {
