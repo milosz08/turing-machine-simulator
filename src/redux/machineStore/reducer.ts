@@ -13,11 +13,14 @@
  */
 
 import machineInitialState from './initialState';
-import { machineReducerTypes } from './types';
+import { codeAreaModes, machineModes, machineReducerTypes } from './types';
+
+import TuringAlgorithm from '../../algorithms/TuringAlgorithm';
+import TuringReverseAlgorithm from '../../algorithms/TuringReverseAlgorithm';
 
 const machineReducer = (state = machineInitialState, action: any) => {
     const actionType = action.type.includes('.') ? action.type.substring(0, action.type.lastIndexOf('.')) : action.type;
-    switch(actionType) {
+    switch (actionType) {
 
         case machineReducerTypes.CHANGE_SINGLE_FIELD: {
             const { key, value } = action.payload;
@@ -30,13 +33,89 @@ const machineReducer = (state = machineInitialState, action: any) => {
         }
 
         case machineReducerTypes.ONE_STEP_FORWARD: {
-            console.log('one step forward');
-            return state;
+            const { machineTuples, findingLabel, tapeValues, headPosition } = state;
+            const ta = new TuringAlgorithm(machineTuples.labels, findingLabel, tapeValues.valuesArray, headPosition);
+            const findElement = ta.findMatchTupleForCurrentSymbol();
+            let endingInfoObject = ta.preventEndlessLoop();
+            if (findElement) {
+                const { headPosition: hP, tapeValues: tV } = ta.fixedBlankElements(findElement!);
+                const { allSteps, actualState } = ta.settingNextElementFromTuple(findElement, state.allSteps);
+                endingInfoObject = ta.endingTupleState(findElement);
+                if (Boolean(findElement.terminate)) {
+                    endingInfoObject = ta.machineStoppedByTupleSign(findElement);
+                }
+                return {
+                    ...state,
+                    headPosition: hP,
+                    findingLabel: findElement.newState,
+                    allStatesCount: state.allStatesCount + 1,
+                    allHeadPositions: [ ...state.allHeadPositions, headPosition ],
+                    allBlanksElements: [ ...state.allBlanksElements, ta.blankSpaceAdding ],
+                    disabledControls: { ...state.disabledControls, controlButtons: endingInfoObject.controlButtons },
+                    tapeValues: { ...state.tapeValues, valuesArray: tV },
+                    machineFinish: endingInfoObject.machineFinish,
+                    machineState: endingInfoObject.machineState,
+                    allSteps,
+                    actualState
+                };
+            }
+            return {
+                ...state,
+                machineFinish: true,
+                disabledControls: { ...state.disabledControls, controlButtons: true },
+                machineState: machineModes.STOPPED,
+                machineCustomMessage: `Machine stopped! State '${findingLabel}' has no action 
+                                       for symbol: '${ta.getTapeValue()}' (ln ${state.actualState.prevState!.lineIndex})`
+            }
         }
 
         case machineReducerTypes.ONE_STEP_BACKWARD: {
-            console.log('one step backward');
-            return state;
+            const { tapeValues: tV, allSteps: aS, allHeadPositions: aP, allBlanksElements: aB } = state;
+            const tr = new TuringReverseAlgorithm(tV.valuesArray, aS, aP, aB);
+            if(aS.length > 0) {
+                const {
+                    headPosition, actualState, allSteps, valuesArray, allHeadPositions, allBlanksElements
+                } = tr.reverseAlgorithm(aS);
+                return {
+                    ...state,
+                    headPosition,
+                    actualState,
+                    allSteps,
+                    tapeValues: { ...state.tapeValues, valuesArray },
+                    allHeadPositions,
+                    allBlanksElements
+                }
+            }
+            return {
+                ...state,
+                machineFinish: true,
+                disabledControls: { ...state.disabledControls, controlButtons: true },
+            };
+        }
+
+        case machineReducerTypes.MACHINE_RESET: {
+            return {
+                ...state,
+                machineState: machineModes.RESET,
+                sourceCodeAreaMode: codeAreaModes.IDLE,
+                headPosition: 0,
+                allStatesCount: 0,
+                allSteps: [],
+                machineFinish: false,
+                findingLabel: state.initialStateLabel,
+                actualState: {
+                    prevState: null,
+                    nextState: null,
+                },
+                tapeValues: {
+                    ...state.tapeValues,
+                    valuesArray: [ ...state.tapeValues.initialInput ],
+                },
+                disabledControls: {
+                    ...state.disabledControls, initialInput: false, controlButtons: false
+                },
+                machineCustomMessage: null,
+            };
         }
 
         default: {
