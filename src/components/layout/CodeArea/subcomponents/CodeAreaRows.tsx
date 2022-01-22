@@ -15,12 +15,15 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 
+import useFollowByCurrentPos from '../../../../hooks/useFollowByCurrentPos';
+
 import { RootState } from '../../../../redux/reduxStore';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 import { PreferencesInitialTypes } from '../../../../redux/preferencesStore/initialState';
 
 import { CodeAreaRowsContainer, CodeAreaRowsCounter } from '../CodeArea.styles';
 
+const CodeAreaDoubleIndicatorMarks = React.lazy(() => import('./CodeAreaDoubleIndicatorMarks'));
 const CodeAreaSingleRow = React.lazy(() => import('./CodeAreaSingleRow'));
 
 const CodeAreaRows: React.FC = (): JSX.Element => {
@@ -28,17 +31,26 @@ const CodeAreaRows: React.FC = (): JSX.Element => {
     const { rawCodeAreaInput, actualState }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
     const { codeScrollPos }: PreferencesInitialTypes = useSelector((state: RootState) => state.preferencesReducer);
 
+    useFollowByCurrentPos();
+
     const countOfLines = rawCodeAreaInput.split('\n').length;
     const activePrevState = Number(actualState.prevState?.lineIndex) - 1;
     const activeNextState = Number(actualState.nextState?.lineIndex) - 1;
 
-    const generateCountingRows = Array.from({ length: countOfLines }, (e,i) => i).map(iter => (
-        <CodeAreaSingleRow
-            key = {iter}
-            iterator = {iter}
-            prev = {iter === activePrevState}
-            next = {iter === activeNextState}
-        />
+    const generateCountingRows = Array.from({ length: countOfLines }, (e, i) => i).map(iter => (
+        iter === activePrevState && iter === activeNextState ? (
+            <CodeAreaDoubleIndicatorMarks
+                key = {iter}
+                iteration = {iter}
+            />
+        ) : (
+            <CodeAreaSingleRow
+                key = {iter}
+                iterator = {iter}
+                prev = {iter === activePrevState}
+                next = {iter === activeNextState}
+            />
+        )
     ));
 
     return (
