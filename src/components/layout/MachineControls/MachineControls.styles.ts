@@ -13,8 +13,9 @@
  */
 
 import styled from 'styled-components';
-import { BorderElement, ControlButton, MainContainer } from '../../../styles/mixins.styles';
+
 import { button_rs, input_rs } from '../../../styles/reset.styles';
+import { BorderElement, ControlButton, MainContainer } from '../../../styles/mixins.styles';
 
 export const MachineControlsContainer = styled.section`
     ${MainContainer()}
