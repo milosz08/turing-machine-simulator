@@ -16,13 +16,14 @@ import * as React from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { CompilerSyntaxIssues } from '../../../../config/machineMessages';
+
 import { RootState } from '../../../../redux/reduxStore';
 import { MachineActions } from '../../../../redux/machineStore/actions';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 import { codeAreaModes, machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
 
 import { MachineControlButton } from '../MachineControls.styles';
-import { CompilerSyntaxIssues } from '../../../../config/machineMessages';
 
 const StartStopButton: React.FC = (): JSX.Element => {
 
