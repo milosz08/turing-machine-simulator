@@ -17,20 +17,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '../../../../redux/reduxStore';
 import { MachineActions } from '../../../../redux/machineStore/actions';
-import { machineStateKeys } from '../../../../redux/machineStore/types';
+import { machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 
 import { MachineControlsInput, MachineControlsInputContainer } from '../MachineControls.styles';
 
 const InitialStateInfo: React.FC = (): JSX.Element => {
 
-    const { initialStateLabel, disabledControls }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    const {
+        machineState, initialStateLabel, disabledControls
+    }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
 
-    const { INITIAL_STATE_LABEL } = machineStateKeys;
+    const { INITIAL_STATE_LABEL, DISABLED_CONTROLS, COMPILE_BUTTON } = machineStateKeys;
     const dispatcher = useDispatch();
 
     const handleChangeInput = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
         dispatcher(MachineActions.changeSingleField(INITIAL_STATE_LABEL, target.value));
+        if(machineState === machineModes.COMPILE_FAILURE) {
+            dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, COMPILE_BUTTON, false));
+        }
     };
 
     return (
