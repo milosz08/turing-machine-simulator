@@ -22,14 +22,14 @@ import { MachineCurrentStateInfoContainer } from '../CurrentStateInfo.styles';
 
 const PrevAndNextLabelInfo: React.FC = (): JSX.Element => {
 
-    const { currentLabelInfos }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
-    const { prevLabel, nextLabel } = currentLabelInfos;
+    const { actualState }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    const { prevState, nextState } = actualState;
 
     return (
         <MachineCurrentStateInfoContainer
             $content = 'labels info'
         >
-            {prevLabel || nextLabel ? `${prevLabel} -> ${nextLabel}` : '-'}
+            {prevState || nextState ? `${prevState!.currentState} -> ${nextState!.currentState}` : '-'}
         </MachineCurrentStateInfoContainer>
     );
 };

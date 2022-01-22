@@ -23,8 +23,8 @@ import { MachineMainMessageInfoContainer } from '../CurrentStateInfo.styles';
 
 const MachineCurrentState: React.FC = (): JSX.Element => {
 
-    const { machineState }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
-    const currentState = machineMessages[machineState];
+    const { machineState, machineCustomMessage }: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    const currentState = machineCustomMessage || machineMessages[machineState];
 
     return (
         <MachineMainMessageInfoContainer>
