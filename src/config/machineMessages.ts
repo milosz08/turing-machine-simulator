@@ -49,6 +49,7 @@ export enum CompilerSyntaxIssues {
 
 export enum AdditionalMessages {
     DEBUGGER_ACCESSIBILITY = 'Click here to see all Errors and Warnings',
+    CODE_AREA_PLACEHOLDER = 'Input here your Turing Machine program...',
 }
 
 export const CompileStatus: { [key: string]: string } = {

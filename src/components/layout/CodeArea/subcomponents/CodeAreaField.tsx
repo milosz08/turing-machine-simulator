@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import InputIndicators from '../../../../algorithms/InputIndicators';
 import useCompileCodeArea from '../../../../hooks/useCompileCodeArea';
+import { AdditionalMessages } from '../../../../config/machineMessages';
 
 import { RootState } from '../../../../redux/reduxStore';
 import { machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
@@ -62,6 +63,7 @@ const CodeAreaField: React.FC = (): JSX.Element => {
         <CodeAreaFieldWrapper>
             <CodeAreaFieldTextarea
                 $scrollDisabled = {machineState === machineModes.RUNNING}
+                placeholder = {AdditionalMessages.CODE_AREA_PLACEHOLDER}
                 ref = {areaRef}
                 value = {rawCodeAreaInput}
                 onBlur = {compile}
