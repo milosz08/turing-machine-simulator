@@ -30,10 +30,6 @@ export interface MachineInitialTypes {
     initialStateLabel: string;
     machineState: machineModes;
     allStatesCount: number;
-    currentLabelInfos: {
-        prevLabel: string;
-        nextLabel: string;
-    };
     rawCodeAreaInput: string;
     machineTuples: {
         labels: { [key: string]: any }[];
@@ -45,6 +41,11 @@ export interface MachineInitialTypes {
     };
     sourceCodeAreaMode: codeAreaModes;
     machineFinish: boolean;
+    findingLabel: string;
+    allSteps: { [key: string]: string }[];
+    allHeadPositions: number[];
+    allBlanksElements: boolean[];
+    machineCustomMessage: string | null;
 }
 
 const machineInitialState: MachineInitialTypes = {
@@ -63,10 +64,6 @@ const machineInitialState: MachineInitialTypes = {
     initialStateLabel: 'q0',
     machineState: machineModes.IDLE,
     allStatesCount: 0,
-    currentLabelInfos: {
-        prevLabel: '',
-        nextLabel: '',
-    },
     rawCodeAreaInput: '',
     machineTuples: {
         labels: [],
@@ -78,6 +75,11 @@ const machineInitialState: MachineInitialTypes = {
     },
     sourceCodeAreaMode: codeAreaModes.IDLE,
     machineFinish: false,
+    findingLabel: 'q0',
+    allSteps: [],
+    allHeadPositions: [],
+    allBlanksElements: [],
+    machineCustomMessage: null,
 };
 
 export default machineInitialState;
