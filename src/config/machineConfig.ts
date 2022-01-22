@@ -46,7 +46,14 @@ export enum FilesService {
     SAMPLE_MACHINE_PROGRAM_NAME = 'turing-machine-program.txt',
     MACHINE_PROGRAM_EXTENSION = 'txt',
     CLICK_TO_LOAD_PROGRAM = 'Click here to load program from your PC.',
-    SUCCESS_LOAD_PROGRAM = 'Your Turing Machine Program was succesfully loaded!',
+    SUCCESS_LOAD_PROGRAM = 'Your Turing Machine Program was successfully loaded!',
     PROGRAM_LOAD_ERROR = 'Error! Turing Machine Program not loaded!',
-    AJAX_ERROR_LOAD = 'Error: Load AJAX request program failure. Try again.'
+    DEF_PROGRAMS_REL_PATH = '/examples',
 }
+
+export const examplePrograms: string[] = [
+    'Replace Binary String',
+    'Replace Ternary String',
+    'Check Symmetric Strings',
+    'Binary Palindrome Detector'
+];

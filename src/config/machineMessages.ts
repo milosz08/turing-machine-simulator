@@ -16,7 +16,7 @@ import { machineModes } from '../redux/machineStore/types';
 
 const {
     IDLE, RUNNING, RESET, STOPPED, FINISH, FORWARD, LOOP, BACKWARD, COMPILE_PROGRAM, COMPILE_SUCCESSFUL, COMPILE_FAILURE,
-    DEBUGGING
+    DEBUGGING, AJAX_ERROR_LOAD, SUCCESSFULLY_LOAD_PROGRAM
 } = machineModes;
 
 export const machineMessages: { [key in keyof typeof machineModes]: string } = {
@@ -32,6 +32,8 @@ export const machineMessages: { [key in keyof typeof machineModes]: string } = {
     [COMPILE_SUCCESSFUL]: 'Compile Success. Press \'Machine Reset\' button.',
     [COMPILE_FAILURE]: 'Compile Failure. Syntax error/s detected. Check errors box below.',
     [DEBUGGING]: 'Machine debugging. Please wait for validate source code.',
+    [AJAX_ERROR_LOAD]: 'Error: Load AJAX request program failure. Try again.',
+    [SUCCESSFULLY_LOAD_PROGRAM]: 'Machine program was successfully loaded!',
 } as const;
 
 export enum CompilerSyntaxIssues {
@@ -39,7 +41,6 @@ export enum CompilerSyntaxIssues {
     TOO_FEW_ARGUMENTS = 'Too few arguments. There are too few arguments on this line. Expected comment',
     ILLEGAL_SYMBOLS = 'Illegal symbols. There are illegal symbols on the label',
     MISSING_INITIAL_STATE = 'Missing Initial State. Program must have a declared Initial State label',
-    DUPLICATE_INITIAL_STATE = 'Duplicate Initial State. There can only be one Initial State label in single program',
     NOT_INCLUDE_TERMINATE = `Program should include 'stop' label to prevent uncontrolled head behaviour after finish`,
     ENDLESS_LOOP = 'Endless loop. Possible memory leaks and undesirable program operation',
     WARNING_LEVEL = 'Warning',

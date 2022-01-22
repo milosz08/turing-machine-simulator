@@ -31,10 +31,11 @@ const Tape = React.lazy(() => import('./layout/Tape/Tape'));
 const MachineControls = React.lazy(() => import('./layout/MachineControls/MachineControls'));
 const CurrentStateInfo = React.lazy(() => import('./layout/CurrentStateInfo/CurrentStateInfo'));
 const AdditionalControls = React.lazy(() => import('./layout/AdditionalControls/AdditionalControls'));
+const CodeArea = React.lazy(() => import('./layout/CodeArea/CodeArea'));
+const LoadExamplesProgram = React.lazy(() => import('./layout/LoadExamplesProgram/LoadExamplesProgram'));
+const FilesSupport = React.lazy(() => import('./layout/FilesSupport/FilesSupport'));
 const BottomInfo = React.lazy(() => import('./layout/InfoComponents/BottomInfo'));
 const Footer = React.lazy(() => import('./layout/Footer/Footer'));
-const CodeArea = React.lazy(() => import('./layout/CodeArea/CodeArea'));
-const FilesSupport = React.lazy(() => import('./layout/FilesSupport/FilesSupport'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 
@@ -58,6 +59,7 @@ const App: React.FC = (): JSX.Element => {
                 <CurrentStateInfo/>
                 <AdditionalControls/>
                 <CodeArea/>
+                <LoadExamplesProgram/>
                 <FilesSupport/>
                 <BottomInfo/>
                 <Footer/>

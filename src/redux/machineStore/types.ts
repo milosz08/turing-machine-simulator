@@ -57,10 +57,12 @@ export enum machineModes {
     COMPILE_SUCCESSFUL = 'COMPILE_SUCCESSFUL',
     COMPILE_FAILURE = 'COMPILE_FAILURE',
     DEBUGGING = 'DEBUGGING',
+    AJAX_ERROR_LOAD = 'AJAX_ERROR_LOAD',
+    SUCCESSFULLY_LOAD_PROGRAM = 'SUCCESSFULLY_LOAD_PROGRAM',
 }
 
 export enum codeAreaModes {
     COMPILED = 'compiled',
     RUNNING = 'debugging',
-    IDLE = 'idle',
+    IDLE = 'listening',
 }
