@@ -24,7 +24,9 @@ import { prefStateKeys } from '../redux/preferencesStore/types';
 
 const useLoadExampleProgram = () => {
 
-    const { RAW_CODE_AREA_INPUT, MACHINE_STATE, DISABLED_CONTROLS, CONTROL_BUTTONS, SOURCE_CODE_MODES } = machineStateKeys;
+    const {
+        RAW_CODE_AREA_INPUT, MACHINE_STATE, DISABLED_CONTROLS, CONTROL_BUTTONS, SOURCE_CODE_MODES, RESET_BUTTON
+    } = machineStateKeys;
 
     const dispatcher = useDispatch();
 
@@ -52,6 +54,7 @@ const useLoadExampleProgram = () => {
                 console.error(`Failure load program! Error: ${err}`);
             });
         dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, CONTROL_BUTTONS, true));
+        dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, RESET_BUTTON, true));
     }, []);
 
 };

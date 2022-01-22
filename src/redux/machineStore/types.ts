@@ -17,6 +17,7 @@ export enum machineReducerTypes {
     CHANGE_SECOND_LEVEL_SINGLE_FIELD = 'CHANGE_SECOND_LEVEL_SINGLE_FIELD__M',
     ONE_STEP_BACKWARD = 'ONE_STEP_BACKWARD__M',
     ONE_STEP_FORWARD = 'ONE_STEP_FORWARD__M',
+    MACHINE_RESET = 'MACHINE_RESET__M',
 }
 
 export enum machineStateKeys {
