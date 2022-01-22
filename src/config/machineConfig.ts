@@ -36,3 +36,17 @@ export enum TupleDefinitions {
     NEW_STATE = 'new state',
     TERMINATE = 'terminate'
 }
+
+export enum Directions {
+    LEFT = 'left',
+    RIGHT = 'right',
+}
+
+export enum FilesService {
+    SAMPLE_MACHINE_PROGRAM_NAME = 'turing-machine-program.txt',
+    MACHINE_PROGRAM_EXTENSION = 'txt',
+    CLICK_TO_LOAD_PROGRAM = 'Click here to load program from your PC.',
+    SUCCESS_LOAD_PROGRAM = 'Your Turing Machine Program was succesfully loaded!',
+    PROGRAM_LOAD_ERROR = 'Error! Turing Machine Program not loaded!',
+    AJAX_ERROR_LOAD = 'Error: Load AJAX request program failure. Try again.'
+}

@@ -34,6 +34,7 @@ const AdditionalControls = React.lazy(() => import('./layout/AdditionalControls/
 const BottomInfo = React.lazy(() => import('./layout/InfoComponents/BottomInfo'));
 const Footer = React.lazy(() => import('./layout/Footer/Footer'));
 const CodeArea = React.lazy(() => import('./layout/CodeArea/CodeArea'));
+const FilesSupport = React.lazy(() => import('./layout/FilesSupport/FilesSupport'));
 
 export const ThemeModeContext = createContext<Partial<{ changeTheme: () => void }>>({});
 
@@ -57,6 +58,7 @@ const App: React.FC = (): JSX.Element => {
                 <CurrentStateInfo/>
                 <AdditionalControls/>
                 <CodeArea/>
+                <FilesSupport/>
                 <BottomInfo/>
                 <Footer/>
             </Suspense>
