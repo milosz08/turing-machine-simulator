@@ -13,12 +13,13 @@
  */
 
 import * as React from 'react';
-import { useRef } from 'react';
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import InputIndicators from '../../../../algorithms/InputIndicators';
 import useCompileCodeArea from '../../../../hooks/useCompileCodeArea';
 import { AdditionalMessages } from '../../../../config/machineMessages';
+import { CodeAreaContext } from '../CodeArea';
 
 import { RootState } from '../../../../redux/reduxStore';
 import { machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
@@ -32,11 +33,12 @@ import { CodeAreaFieldTextarea, CodeAreaFieldWrapper } from '../CodeArea.styles'
 const CodeAreaField: React.FC = (): JSX.Element => {
 
     const stateMach: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
+    const { areaRef } = useContext<Partial<{ areaRef: React.MutableRefObject<any> }>>(CodeAreaContext);
+
     const { rawCodeAreaInput, disabledControls, machineState } = stateMach;
     const { DISABLED_CONTROLS, CONTROL_BUTTONS } = machineStateKeys;
 
     const dispatcher = useDispatch();
-    const areaRef = useRef<HTMLElement | any>(null);
     const compile = useCompileCodeArea();
 
     const handleInsertSourceCode = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -44,14 +46,14 @@ const CodeAreaField: React.FC = (): JSX.Element => {
     };
 
     const handleOnScrollTextarea = (): void => {
-        dispatcher(PrefActions.changeSingleField(prefStateKeys.CODE_SCROLL_POS, Number(areaRef.current!.scrollTop)));
+        dispatcher(PrefActions.changeSingleField(prefStateKeys.CODE_SCROLL_POS, Number(areaRef!.current!.scrollTop)));
     };
 
     const handleTextFieldActive = (isEventIsFocus: boolean): void => {
         if(isEventIsFocus) {
             dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, CONTROL_BUTTONS, true));
         } else {
-            const inputIndicators = new InputIndicators(areaRef.current, rawCodeAreaInput);
+            const inputIndicators = new InputIndicators(areaRef!.current, rawCodeAreaInput);
             const { ln, col } = inputIndicators.convertInputSelection();
             dispatcher(PrefActions.changeSingleField(prefStateKeys.CURSOR_POSITION, {
                 ln, col, sel: inputIndicators.getInputSelection()
