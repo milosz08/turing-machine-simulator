@@ -16,13 +16,14 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaStepBackward, FaStepForward } from 'react-icons/fa';
 
+import { CompilerSyntaxIssues } from '../../../../config/machineMessages';
+
 import { RootState } from '../../../../redux/reduxStore';
 import { MachineActions } from '../../../../redux/machineStore/actions';
 import { PrefActions } from '../../../../redux/preferencesStore/actions';
-import { CompilerSyntaxIssues } from '../../../../config/machineMessages';
 import { MachineInitialTypes } from '../../../../redux/machineStore/initialState';
 import { headSpeed, prefStateKeys } from '../../../../redux/preferencesStore/types';
-import { codeAreaModes, machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
+import { machineModes, machineStateKeys } from '../../../../redux/machineStore/types';
 
 import { MachineControlButton, MachineControlsButtonsContainer } from '../MachineControls.styles';
 
@@ -33,7 +34,6 @@ const ControlButtons: React.FC = (): JSX.Element => {
 
     const stateMach: MachineInitialTypes = useSelector((state: RootState) => state.machineReducer);
 
-    const { MACHINE_STATE, DISABLED_CONTROLS, INITIAL_INPUT, CONTROL_BUTTONS, SOURCE_CODE_MODES } = machineStateKeys;
     const { RUNNING, BACKWARD, FORWARD, STOPPED } = machineModes;
     const { machineState: state, machineTuples, disabledControls } = stateMach;
 
@@ -42,15 +42,12 @@ const ControlButtons: React.FC = (): JSX.Element => {
     const dispatcher = useDispatch();
 
     const handleFullSpeed = (): void => {
-        dispatcher(MachineActions.changeSingleField(MACHINE_STATE, RUNNING));
+        dispatcher(MachineActions.changeSingleField(machineStateKeys.MACHINE_STATE, RUNNING));
         dispatcher(PrefActions.changeSingleField(prefStateKeys.HEAD_SPEED, Number(headSpeed.IMMEDIATELY)));
     };
 
     const handleReset = (): void => {
-        dispatcher(MachineActions.changeSingleField(MACHINE_STATE, machineModes.RESET));
-        dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, INITIAL_INPUT, false));
-        dispatcher(MachineActions.changeSecondLevelSingleField(DISABLED_CONTROLS, CONTROL_BUTTONS, false));
-        dispatcher(MachineActions.changeSingleField(SOURCE_CODE_MODES, codeAreaModes.IDLE));
+        dispatcher(MachineActions.machineReset());
     };
 
     return (
@@ -64,14 +61,14 @@ const ControlButtons: React.FC = (): JSX.Element => {
             <ForwardBackwardButton
                 render = {() => <FaStepBackward/>}
                 dispatcherCallback = {MachineActions.oneStepBackward}
-                machineModes = {BACKWARD}
+                machineMode = {BACKWARD}
                 disabledItem = {state === RUNNING || errorsLength > 0 || disabledControls.controlButtons}
             />
             <StartStopButton/>
             <ForwardBackwardButton
                 render = {() => <FaStepForward/>}
                 dispatcherCallback = {MachineActions.oneStepForward}
-                machineModes = {FORWARD}
+                machineMode = {FORWARD}
                 disabledItem = {state === RUNNING || errorsLength > 0 || disabledControls.controlButtons}
             />
             <MachineControlButton
