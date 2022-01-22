@@ -29,7 +29,7 @@ const useOnLoad = (): void => {
 
     // Put all character from string into separate element in char array
     useEffect(() => {
-        dispatcher(MachineActions.changeSecondLevelSingleField(TAPE_VALUES, VALUES_ARRAY, [...tapeValues.initialInput]));
+        dispatcher(MachineActions.changeSecondLevelSingleField(TAPE_VALUES, VALUES_ARRAY, [ ...tapeValues.initialInput ]));
     }, [ tapeValues.initialInput ]);
 
 };
