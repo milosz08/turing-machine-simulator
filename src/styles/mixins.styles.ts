@@ -29,6 +29,7 @@ export const BorderElement = ({
         position: absolute;
         content: '${_content}';
         width: fit-content;
+        white-space: nowrap;
         top: -9px;
         padding: 0 10px;
         left: 50%;

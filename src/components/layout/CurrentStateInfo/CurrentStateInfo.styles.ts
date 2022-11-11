@@ -22,8 +22,8 @@ export const CurrentStateInfoContainer = styled.section`
 
 export const MachineCurrentStateInfoContainer = styled.div<{ $content: string }>`
     ${props => BorderElement({
-    _textColour: props.theme.TEXT, _bgcColour: props.theme.BODY, _content: props.$content
-})};
+        _textColour: props.theme.TEXT, _bgcColour: props.theme.BODY, _content: props.$content
+    })};
     padding: 16px 0 12px;
     width: 220px;
 `;

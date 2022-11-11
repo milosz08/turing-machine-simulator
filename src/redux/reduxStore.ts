@@ -13,7 +13,7 @@
  */
 
 import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import machineReducer from './machineStore/reducer';
 import preferencesReducer from './preferencesStore/reducer';
