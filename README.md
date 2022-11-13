@@ -35,7 +35,7 @@ If you want to clone and work with this repository, use the built-in interface i
 3. Type `git clone` and then paste the URL you copied earlier.
 
 ```
-$ git clone https://github.com/Milosz08/ReactJS_Turing_Machine_Simulator
+$ git clone https://github.com/Milosz08/SUoT_Turing_Machine_Simulator
 ```
 
 > This project has quite a few dependencies that need to be installed using NPM before cloning the repository. List of all necessary dependencies below.
