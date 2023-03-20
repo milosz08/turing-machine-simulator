@@ -1,45 +1,64 @@
-<h1 align="center">
-  Turing Machine Simulator
-  <br>
-  <img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/main-logo.png" width="200">
-  <br>
-</h1>
-<p align="center" style="font-size: 1.2rem;">
-  An advanced, single-tape, deterministic Turing Machine simulator written using the ReactJS library. Available in light and dark modes, depending on user preference. This machine is a great foundation for understanding how computer processing of algorithms works, found frequently in Computer Science majors at technical colleges.
-</p>
+<img align="right" src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/main-logo.png" height="160">
+
+# Turing Machine Simulator
+[![Generic badge](https://img.shields.io/badge/Made%20with-React%2017.0.2-1abc9c.svg)](https://react.dev/)&nbsp;&nbsp;
+[![Generic badge](https://img.shields.io/badge/Store%20provider-Redux-green.svg)](https://gradle.org/)&nbsp;&nbsp;
+
+An advanced, single-tape, deterministic Turing Machine simulator written using the React library. Available light and dark mode, depending on user preference. This machine is a great foundation for understanding how computer processing of algorithms works, found frequently in Computer Science majors at technical colleges.
+<br>
 
 > See how it works at [turing.miloszgilga.pl](http://turing.miloszgilga.pl/) <br>
 
-<hr/>
+## Table of content
+* [Clone and install](#clone-and-install)
+* [Prepare runtime configuration](#prepare-runtime-configuration)
+* [About the project](#about-the-project)
+* [Screenshot gallery](#screenshot-gallery)
+* [Author](#author)
+* [Project status](#project-status)
+* [License](#license)
 
+<a name="clone-and-install"></a>
+## Clone and install
+
+To install the program on your computer, use the command below (or use the build-in GIT system in your IDE environment):
+```
+$ git clone https://github.com/Milosz08/SUoT_Turing_Machine_Simulator turing-machine-simulator
+```
+
+<a name="prepare-runtime-configuration"></a>
+## Prepare runtime configuration
+1. Install all dependencies via:
+```
+$ npm install
+```
+2. Run in development environment via:
+```
+$ npm run
+```
+<a name="about-the-project"></a>
 ## About the Project
-I decided to create this simulator mainly for teaching purposes (mine and others). I believe it can be useful to more than one Computer Science student. I decided to use ReactJS library because of its speed and modularity, thanks to which everything is arranged in separate modules, so to speak, the simulator logic is separated from the view layer. I decided not to create an API and database, and instead add functionality to read from a file and write to a file.
-The Redux library was used to manage the application state because of its high speed and stability. This keeps all the actions of the application in order, making it easy to debug the application if an error is encountered.
+I decided to create this simulator mainly for teaching purposes (mine and others). I believe it can be useful to more than one Computer Science student. I decided to use React library because it's fast and modular. I decided not to create an API and database, and instead of this, add functionality to read/write to txt file. To manage the state of this application I decided to use Redux library, because it's fast and predictable. This library manages the state of this machine, making it easy to debug if an error/s is/are encountered.
 
 ## Syntax and Compiler
-This simulator has a syntax taken from @awmorp, slightly modified by me for ease of use. Machine has a code compiler I designed that will not allow the algorithm to run if there are any syntax errors.
+This simulator has a syntax taken from @awmorp, slightly modified by me for ease of use. Machine has a code compiler I designed that will not allow to run the algorithm if there are any syntax errors.
 
 ## Light/Dark mode save in Local Storage
-This app has a light mode and a dark mode. When the user selects a mode, it will be saved in local storage so that when the user revisits the page, the mode will automatically switch to dark or light.
+This app has light and dark mode. When user selects mode, it will be saved in local storage so that when the user revisits the page, selected mode will automatically switch to dark or light.
 
-<hr/>
-
+<a name="screenshot-gallery"></a>
 ## Screenshot gallery
-
 <img src="https://raw.githubusercontent.com/Milosz08/ReactJS_Turing_Machine_Simulator/master/img/black_white_bg.png" width="1920">
 
-## Clone and Installation
-If you want to clone and work with this repository, use the built-in interface in your IDE (for example WebStorm or Visual Studio Code) or use the clone project algorithm with git bash:<br>
-1. Open Git Bash.
-2. Change the current working directory to the location where you want the cloned directory.
-3. Type `git clone` and then paste the URL you copied earlier.
+<a name="author"></a>
+## Author
+Created by Miłosz Gilga. If you have any questions about this application, send message: [personal@miloszgilga.pl](mailto:personal@miloszgilga.pl).
 
-```
-$ git clone https://github.com/Milosz08/SUoT_Turing_Machine_Simulator
-```
+<a name="project-status"></a>
+## Project status
+Project is finished.
 
-> This project has quite a few dependencies that need to be installed using NPM before cloning the repository. List of all necessary dependencies below.
-
+<a name="license"></a>
 ## License
 This application is on Apache 2.0 license.<br>
 Turing Machine Icon created by Attilio Baghino.
