@@ -23,7 +23,7 @@ An advanced, single-tape, deterministic Turing Machine simulator written using t
 
 To install the program on your computer, use the command below (or use the build-in GIT system in your IDE environment):
 ```
-$ git clone https://github.com/Milosz08/SUoT_Turing_Machine_Simulator turing-machine-simulator
+$ git clone https://github.com/Milosz08/turing-machine-simulator
 ```
 
 <a name="prepare-runtime-configuration"></a>
