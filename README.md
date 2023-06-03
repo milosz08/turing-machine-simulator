@@ -2,9 +2,9 @@
 [![Generic badge](https://img.shields.io/badge/Made%20with-React%2017.0.2-1abc9c.svg)](https://jakarta.ee/release/10/)&nbsp;&nbsp;
 [![Generic badge](https://img.shields.io/badge/Build%20with-Create%20React%20App-green.svg)](https://gradle.org/)&nbsp;&nbsp;
 <br>
-> More info about this project you will find [on my personal website](https://miloszgilga.pl/project/turing-machine-simulator).
+> More info about this project you will find [on my personal website](https://miloszgilga.pl/project/turing-machine-simulator)
 > <br>
-> See project demo at [turing.miloszgilga.pl](https://turing.miloszgilga.pl).
+> See project demo at [turing.miloszgilga.pl](https://turing.miloszgilga.pl)
 
 An advanced, single-tape, deterministic Turing Machine simulator written using the React library. Available in light 
 and dark modes, depending on user preference. This machine is a great foundation for understanding how computer 
