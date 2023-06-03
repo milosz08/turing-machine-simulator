@@ -4,7 +4,7 @@
 <br>
 > More info about this project you will find [on my personal website](https://miloszgilga.pl/project/turing-machine-simulator).
 > <br>
-> See project demo at find [turing.miloszgilga.pl](https://turing.miloszgilga.pl).
+> See project demo at [turing.miloszgilga.pl](https://turing.miloszgilga.pl).
 
 An advanced, single-tape, deterministic Turing Machine simulator written using the React library. Available in light 
 and dark modes, depending on user preference. This machine is a great foundation for understanding how computer 
