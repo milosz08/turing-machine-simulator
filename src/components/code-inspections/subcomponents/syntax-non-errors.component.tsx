@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
- * Project name: react-ts-turing-simulator
+ * File name: syntax-non-errors.component.tsx
+ * Last modified: 8/1/23, 9:02 PM
+ * Project name: turing-machine-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -16,12 +16,19 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { SyntaxErrorsListElement, SyntaxErrorsUnorderedList } from "../code-inspections.styles";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const SyntaxNonErrorsComponent: React.FC = (): JSX.Element => (
+    <SyntaxErrorsUnorderedList>
+        <SyntaxErrorsListElement>
+            None problems
+        </SyntaxErrorsListElement>
+    </SyntaxErrorsUnorderedList>
+);
+
+export default SyntaxNonErrorsComponent;

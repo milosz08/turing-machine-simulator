@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: libraries-page.component.tsx
+ * Last modified: 7/31/23, 11:28 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,15 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+const ThirdPartyLibrariesComponent = React.lazy(() => import("~/app-components/third-party-libraries/third-party-libraries.component"));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const LibrariesPageComponent: React.FC = (): JSX.Element => (
+    <ThirdPartyLibrariesComponent/>
+);
+
+export default LibrariesPageComponent;

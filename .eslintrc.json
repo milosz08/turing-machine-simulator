@@ -1,0 +1,39 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "@typescript-eslint"
+    ],
+    "settings": {
+        "react": { "version": "18.2.0" }
+    },
+    "rules": {
+        "@typescript-eslint/no-use-before-define": [ "error" ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/quotes": [ "error", "double" ],
+        "@typescript-eslint/semi": [ "error", "always" ],
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "react/no-unescaped-entities": "off",
+        "no-use-before-define": "off",
+        "spaced-comment": "off",
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [ "warn", { "extensions": [".tsx"] } ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "off"
+    }
+}

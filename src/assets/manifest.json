@@ -1,0 +1,9 @@
+{
+    "short_name": "Turing Machine Simulator",
+    "name": "An advanced, single-tape, deterministic Turing Machine simulator written using the React library.",
+    "icons": [],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}

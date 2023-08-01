@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: redux-store.ts
+ * Last modified: 7/31/23, 11:21 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,19 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import { configureStore } from "@reduxjs/toolkit";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { machineStoreReducer } from "~/app-redux/machine-store/reducer";
+import { preferencesStoreReducer } from "~/app-redux/preferences-store/reducer";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export const reduxStore = configureStore({
+    reducer: {
+        machine: machineStoreReducer,
+        preferences: preferencesStoreReducer,
+    },
+    devTools: process.env.BUILD_ENV === "dev",
+});
+
+export type RootState = ReturnType<typeof reduxStore.getState>;

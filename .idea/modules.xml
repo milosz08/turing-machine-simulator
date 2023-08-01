@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ReactJS_Turing_Machine_Simulator.iml" filepath="$PROJECT_DIR$/.idea/ReactJS_Turing_Machine_Simulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/turing-machine-simulator.iml" filepath="$PROJECT_DIR$/.idea/turing-machine-simulator.iml" />
     </modules>
   </component>
 </project>

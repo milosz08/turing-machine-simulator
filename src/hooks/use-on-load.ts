@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
- * Project name: react-ts-turing-simulator
+ * File name: use-on-load.ts
+ * Last modified: 8/1/23, 10:02 PM
+ * Project name: turing-machine-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -16,12 +16,24 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { RootState } from "~/app-redux/redux-store";
+import { IMachineStoreReduxState } from "~/app-redux/machine-store/state";
+
+import * as MachineAction from "~/app-redux/machine-store/actions";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const useOnLoad = (): void => {
+
+    const { tapeValues }: IMachineStoreReduxState = useSelector((state: RootState) => state.machine);
+    const dispatcher = useDispatch();
+
+    useEffect(() => {
+        dispatcher(MachineAction.loadInitialInputOnTapeAction());
+    }, [ tapeValues.initialInput ]);
+};
+
+export default useOnLoad;

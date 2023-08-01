@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: action-type.ts
+ * Last modified: 7/31/23, 11:54 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,16 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import type { MutableRefObject } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { HeadSpeed } from "~/app-utils/head-speed";
+import { ThemeModes } from "~/app-utils/theme-modes";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export type SwitchThemeActionType = { selectedTheme: ThemeModes };
+export type SwitchHeadSpeedActionType = { selectedSpeed: HeadSpeed };
+export type ChangeHeadSpeedActionType = { rawHeadSpeed: number };
+export type ChangeCodeAreaScrollPosActionType = { scrollPos: number };
+export type CalculateCursorPosActionType = { areaRef: MutableRefObject<any> };
+export type ToggleErrorsTabVisibilitActionType = { isVisible: boolean };

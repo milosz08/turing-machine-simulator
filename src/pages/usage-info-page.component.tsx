@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: usage-info-page.component.tsx
+ * Last modified: 7/31/23, 11:28 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,19 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+const TopUsageInfoComponent = React.lazy(() => import("~/app-components/usage-info/top-usage-info.component"));
+const SyntaxInfoComponent = React.lazy(() => import("~/app-components/usage-info/syntax-info.component"));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const UsageInfoPageComponent: React.FC = (): JSX.Element => (
+    <>
+        <TopUsageInfoComponent/>
+        <SyntaxInfoComponent/>
+    </>
+);
+
+export default UsageInfoPageComponent;

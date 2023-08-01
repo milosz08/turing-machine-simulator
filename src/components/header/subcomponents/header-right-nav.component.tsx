@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: header-right-nav.component.tsx
+ * Last modified: 8/1/23, 12:58 AM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,19 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { HeaderSingleNavContainer } from "../header.styles";
+import { ReactNavLinkContainer } from "~/app-components/simple-nav-link/simple-nav-link.styles";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const HeaderRightNavComponent: React.FC = (): JSX.Element => (
+    <HeaderSingleNavContainer>
+        <ReactNavLinkContainer to="/usage-info">Usage info and syntax</ReactNavLinkContainer>
+        <ReactNavLinkContainer to="/libraries">Libraries</ReactNavLinkContainer>
+    </HeaderSingleNavContainer>
+);
+
+export default HeaderRightNavComponent;

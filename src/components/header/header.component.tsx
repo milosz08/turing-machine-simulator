@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: header.component.tsx
+ * Last modified: 7/31/23, 11:36 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,23 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+const HeaderLeftNavComponent = React.lazy(() => import("./subcomponents/header-left-nav.component"));
+const HeaderCenterTitleComponent = React.lazy(() => import("./subcomponents/header-center-title.component"));
+const HeaderRightNavComponent = React.lazy(() => import("./subcomponents/header-right-nav.component"));
+
+import { HeaderContainer } from "./header.styles";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const HeaderComponent: React.FC = (): JSX.Element => (
+    <HeaderContainer>
+        <HeaderLeftNavComponent/>
+        <HeaderCenterTitleComponent/>
+        <HeaderRightNavComponent/>
+    </HeaderContainer>
+);
+
+export default HeaderComponent;

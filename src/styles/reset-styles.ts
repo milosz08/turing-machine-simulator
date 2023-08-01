@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: reset-styles.ts
+ * Last modified: 8/1/23, 12:05 AM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,32 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
-
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import styled from "styled-components";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export const a_rs = styled.a`
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+export const input_rs = styled.input`
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const button_rs = styled.button`
+    cursor: pointer;
+    border: none;
+    &:disabled {
+        cursor: not-allowed;
+    }
+`;

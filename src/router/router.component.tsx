@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: router.component.tsx
+ * Last modified: 7/31/23, 11:27 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,22 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
+import { useRoutes } from "react-router-dom";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+const RootPageComponent = React.lazy(() => import("~/app-pages/root-page.component"));
+const LibrariesPageComponent = React.lazy(() => import("~/app-pages/libraries-page.component"));
+const UsageInfoPageComponent = React.lazy(() => import("~/app-pages/usage-info-page.component"));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const RouterComponent: React.FC = (): JSX.Element => {
+    return useRoutes([
+        { path: "/", element: <RootPageComponent/> },
+        { path: "/usage-info", element: <UsageInfoPageComponent/> },
+        { path: "/libraries", element: <LibrariesPageComponent/> },
+    ]);
+};
+
+export default RouterComponent;

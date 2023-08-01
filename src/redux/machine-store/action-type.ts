@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
- * Project name: react-ts-turing-simulator
+ * File name: action-type.ts
+ * Last modified: 8/1/23, 5:53 PM
+ * Project name: turing-machine-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -16,12 +16,12 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
-
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { MachineModes } from "~/app-utils/machine-modes";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export type SwitchMachineStateActionType = { selectedState: MachineModes };
+export type SetInitialTapeInputActionType = { content: string };
+export type SetChangeInputStateActionType = { stateLabelValue: string };
+export type InsertSourceCodeActionType = { sourceCode: string };
+export type LoadExampleProgramActionType = { sourceCode: string };

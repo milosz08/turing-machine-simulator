@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
- * Project name: react-ts-turing-simulator
+ * File name: footer.styles.ts
+ * Last modified: 8/1/23, 1:47 AM
+ * Project name: turing-machine-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -16,12 +16,26 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
-
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import styled from "styled-components";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export const FooterContainer = styled.footer`
+    width: 1300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+`;
+
+export const FooterSeparator = styled.div`
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background-color: ${({ theme }) => theme.SEPARATOR};
+`;
+
+export const FooterCopyInfo = styled.p`
+    font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
+    color: ${({ theme }) => theme.TEXT_TINT1};
+`;

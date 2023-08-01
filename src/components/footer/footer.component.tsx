@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: footer.component.tsx
+ * Last modified: 7/31/23, 11:36 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,24 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
+import * as React from "react";
+import type { JSX } from "react";
 
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { FooterContainer, FooterCopyInfo, FooterSeparator } from "./footer.styles";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+const FooterComponent: React.FC = (): JSX.Element => {
+    const currYear = new Date().getFullYear();
+
+    return (
+        <FooterContainer>
+            <FooterSeparator/>
+            <FooterCopyInfo>
+                &copy; {currYear} by Miłosz Gilga.
+            </FooterCopyInfo>
+        </FooterContainer>
+    );
+};
+
+export default FooterComponent;

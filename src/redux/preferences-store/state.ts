@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: index.tsx
- * Last modified: 7/31/23, 11:03 PM
+ * File name: state.ts
+ * Last modified: 7/31/23, 11:43 PM
  * Project name: react-ts-turing-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
@@ -16,12 +16,32 @@
  * governing permissions and limitations under the license.
  */
 
-import * as ReactDOM from "react-dom/client";
-
-import ReduxStoreWrapperComponent from "~/app-router/redux-store-wrapper.component";
+import { ThemeModes } from "~/app-utils/theme-modes";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-ReactDOM
-    .createRoot(document.getElementById("app-mount"))
-    .render(<ReduxStoreWrapperComponent/>);
+export interface IPreferencesStoreReduxState {
+    currentThemeMode: ThemeModes;
+    ifCodeFollow: boolean,
+    headSpeed: number;
+    codeScrollPos: number;
+    cursorPosition: {
+        ln: number;
+        col: number;
+        sel: number;
+    };
+    ifOpenErrors: boolean;
+}
+
+export const preferencesStoreReduxState: IPreferencesStoreReduxState = {
+    currentThemeMode: ThemeModes.LIGHT,
+    ifCodeFollow: true,
+    headSpeed: 100,
+    codeScrollPos: 0,
+    cursorPosition: {
+        ln: 0,
+        col: 0,
+        sel: 0,
+    },
+    ifOpenErrors: false,
+};
