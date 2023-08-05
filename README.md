@@ -52,6 +52,10 @@ $ docker-compose -d up
 ```
 $ yarn run migrate
 ```
+* To build and migrate changed content to docker container with restart Apache Web Server, type:
+```
+$ yarn run migrate:restart
+```
 > NOTE: Docker container must be running.
 
 <a name="syntax-and-compiler"></a>
