@@ -46,7 +46,7 @@ Custom webpack configuration you will find in `_webpack` directory.
 ## Run with Docker containers
 * To compose image, type (detached with `-d` flag):
 ```
-$ docker-compose -d up
+$ docker-compose up -d
 ```
 * To build and migrate changed content to docker container, type:
 ```
