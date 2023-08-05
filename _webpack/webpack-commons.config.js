@@ -31,8 +31,8 @@ module.exports = isProd => ({
     },
     output: {
         path: path.join(__dirname, "..", "dist"),
-        filename: `__react.[${isProd ? "contenthash:10" : "name"}].bundle.js`,
-        chunkFilename: `__react.[${isProd ? "contenthash:10" : "name"}].chunk.js`,
+        filename: `js/__react.[${isProd ? "contenthash:10" : "name"}].bundle.js`,
+        chunkFilename: `js/__react.[${isProd ? "contenthash:10" : "name"}].chunk.js`,
         clean: true,
     },
     resolve: {
@@ -103,8 +103,6 @@ module.exports = isProd => ({
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "..", "src", "index.html"),
-            inject: "body",
-            scriptLoading: "blocking",
             minify: {
                 removeComments: false,
                 collapseWhitespace: true,
@@ -115,6 +113,10 @@ module.exports = isProd => ({
                 {
                     from: path.resolve(__dirname, "..", "src", "assets"),
                     to: path.resolve(__dirname, "..", "dist", "assets"),
+                },
+                {
+                    from: path.resolve(__dirname, "..", ".htaccess"),
+                    to: path.resolve(__dirname, "..", "dist"),
                 },
             ],
         }),

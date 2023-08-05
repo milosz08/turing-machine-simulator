@@ -1,0 +1,15 @@
+# idea
+.idea
+
+# project
+node_modules
+dist
+.eslintrc.json
+.gitignore
+LICENSE
+README.md
+
+# docker
+Dockerfile
+docker-compose.yml
+.dockerignore
