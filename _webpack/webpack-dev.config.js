@@ -18,7 +18,7 @@
 
 const { merge } = require("webpack-merge");
 
-const webpackCommonConfig = require("./webpack-commons.config.js");
+const webpackCommonConfig = require("./webpack-common.config.js");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ module.exports = merge(webpackCommonConfig(false), {
     devServer: {
         port: 3030,
         historyApiFallback: true,
-        hot: true,
+        hot: false,
     },
     optimization: {
         minimize: false,

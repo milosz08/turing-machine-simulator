@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
  *
- * File name: webpack-commons.config.js
+ * File name: webpack-common.config.js
  * Last modified: 7/31/23, 10:54 PM
  * Project name: react-ts-turing-simulator
  *
@@ -19,7 +19,6 @@
 const path = require("path");
 
 const { DefinePlugin } = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -33,6 +32,7 @@ module.exports = isProd => ({
         path: path.join(__dirname, "..", "dist"),
         filename: `js/__react.[${isProd ? "contenthash:10" : "name"}].bundle.js`,
         chunkFilename: `js/__react.[${isProd ? "contenthash:10" : "name"}].chunk.js`,
+        publicPath: "/",
         clean: true,
     },
     resolve: {
@@ -100,7 +100,6 @@ module.exports = isProd => ({
         new DefinePlugin({
             "process.env.BUILD_ENV": JSON.stringify(isProd ? "prod" : "dev"),
         }),
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "..", "src", "index.html"),
             minify: {

@@ -18,6 +18,8 @@
 
 FROM node:18.16.0-alpine AS build
 
+LABEL maintainer="Miłosz Gilga <personal@miloszgilga.pl>"
+
 WORKDIR /turing-machine-simulator
 
 COPY . .

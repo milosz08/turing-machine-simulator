@@ -20,8 +20,9 @@ const { merge } = require("webpack-merge");
 
 const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const webpackCommonConfig = require("./webpack-commons.config.js");
+const webpackCommonConfig = require("./webpack-common.config.js");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,4 +44,7 @@ module.exports = merge(webpackCommonConfig(true), {
             }),
         ],
     },
+    plugins: [
+        new CleanWebpackPlugin(),
+    ],
 });
