@@ -1,14 +1,15 @@
 /*
- * Copyright (c) 2023 by MILOSZ GILGA <http://miloszgilga.pl>
+ * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: input-indicators.ts
- * Last modified: 8/1/23, 8:20 PM
- * Project name: turing-machine-simulator
+ *   File name: input-indicators.ts
+ *   Created at: 2023-08-01, 20:20:51
+ *   Last updated at: 2023-08-30, 18:56:07
+ *   Project name: turing-machine-simulator
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
  *
- *     <http://www.apache.org/license/LICENSE-2.0>
+ *   <http://www.apache.org/license/LICENSE-2.0>
  *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
@@ -17,57 +18,62 @@
  */
 
 class InputIndicators {
+  private readonly _el: any;
 
-    private readonly _el: any;
+  constructor(el: any) {
+    this._el = el;
+  }
 
-    public constructor(el: any) {
-        this._el = el;
-    };
+  convertInputSelection(): { ln: number; col: number } {
+    const currentLine = this._el.value
+      .substring(0, this._el.selectionStart)
+      .split('\n');
+    const ln = currentLine?.length;
+    const col = currentLine[currentLine.length - 1]?.length + 1;
+    return { ln: parseInt(ln), col: parseInt(col) };
+  }
 
-    public convertInputSelection(): { ln: number, col: number } {
-        const currentLine = this._el.value.substring(0, this._el.selectionStart).split("\n");
-        const ln = currentLine?.length;
-        const col = currentLine[currentLine.length - 1]?.length + 1;
-        return { ln: parseInt(ln), col: parseInt(col) };
-    };
+  getInputSelection(): number {
+    let start = 0,
+      end = 0;
+    let normalizedValue, range, textInputRange, len, endRange;
 
-    public getInputSelection(): number {
-        let start = 0, end = 0;
-        let normalizedValue, range, textInputRange, len, endRange;
+    if (
+      typeof this._el.selectionStart == 'number' &&
+      typeof this._el.selectionEnd == 'number'
+    ) {
+      start = this._el.selectionStart;
+      end = this._el.selectionEnd;
+    } else {
+      range = document['selection'].createRange();
 
-        if(typeof this._el.selectionStart == "number" && typeof this._el.selectionEnd == "number") {
-            start = this._el.selectionStart;
-            end = this._el.selectionEnd;
+      if (range && range.parentElement() === this._el) {
+        len = this._el.value.length;
+        normalizedValue = this._el.value.replace(/\r\n/g, '\n');
+
+        textInputRange = this._el.createTextRange();
+        textInputRange.moveToBookmark(range.getBookmark());
+
+        endRange = this._el.createTextRange();
+        endRange.collapse(false);
+
+        if (textInputRange.compareEndPoints('StartToEnd', endRange) > -1) {
+          start = end = len;
         } else {
-            range = document["selection"].createRange();
+          start = -textInputRange.moveStart('character', -len);
+          start += normalizedValue.slice(0, start).split('\n').length - 1;
 
-            if(range && range.parentElement() === this._el) {
-                len = this._el.value.length;
-                normalizedValue = this._el.value.replace(/\r\n/g, "\n");
-
-                textInputRange = this._el.createTextRange();
-                textInputRange.moveToBookmark(range.getBookmark());
-
-                endRange = this._el.createTextRange();
-                endRange.collapse(false);
-
-                if (textInputRange.compareEndPoints("StartToEnd", endRange) > -1) {
-                    start = end = len;
-                } else {
-                    start = -textInputRange.moveStart("character", -len);
-                    start += normalizedValue.slice(0, start).split("\n").length - 1;
-
-                    if (textInputRange.compareEndPoints("EndToEnd", endRange) > -1) {
-                        end = len;
-                    } else {
-                        end = -textInputRange.moveEnd("character", -len);
-                        end += normalizedValue.slice(0, end).split("\n").length - 1;
-                    }
-                }
-            }
+          if (textInputRange.compareEndPoints('EndToEnd', endRange) > -1) {
+            end = len;
+          } else {
+            end = -textInputRange.moveEnd('character', -len);
+            end += normalizedValue.slice(0, end).split('\n').length - 1;
+          }
         }
-        return end - start;
+      }
     }
+    return end - start;
+  }
 }
 
 export default InputIndicators;
