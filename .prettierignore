@@ -1,0 +1,7 @@
+node_modules/
+.husky/
+.htaccess
+Dockerfile
+LICENSE
+README.md
+yarn.lock
