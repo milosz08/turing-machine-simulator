@@ -68,6 +68,7 @@ designed that will not allow the algorithm to run if there are any syntax errors
 * React 18
 * React DOM 18
 * React Router 6
+* Typescript
 * Webpack 5
 * Styled components
 * Redux toolkit
