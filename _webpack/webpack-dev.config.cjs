@@ -19,6 +19,7 @@
  */
 
 const { merge } = require('webpack-merge');
+const { SourceMapDevToolPlugin } = require('webpack');
 const webpackCommonConfig = require('./webpack-common.config.cjs');
 
 module.exports = merge(webpackCommonConfig(false), {
@@ -32,4 +33,9 @@ module.exports = merge(webpackCommonConfig(false), {
   optimization: {
     minimize: false,
   },
+  plugins: [
+    new SourceMapDevToolPlugin({
+      filename: '[file].map',
+    }),
+  ],
 });
