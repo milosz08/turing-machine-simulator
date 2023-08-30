@@ -28,6 +28,10 @@ export const thirdPartyLibrariesData: IThirdPartyLibraryDataType[] = [
   { name: '@babel/preset-env', githubSlug: 'babel/babel' },
   { name: '@babel/preset-react', githubSlug: 'babel/babel' },
   { name: '@reduxjs/toolkit', githubSlug: 'reduxjs/redux-toolkit' },
+  {
+    name: '@trivago/prettier-plugin-sort-imports',
+    githubSlug: 'trivago/prettier-plugin-sort-imports',
+  },
   { name: '@types/node', githubSlug: 'DefinitelyTyped/DefinitelyTyped' },
   { name: '@types/react', githubSlug: 'DefinitelyTyped/DefinitelyTyped' },
   { name: '@types/react-dom', githubSlug: 'DefinitelyTyped/DefinitelyTyped' },
