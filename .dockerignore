@@ -1,9 +1,9 @@
 .husky/
 node_modules/
 dist/
-.eslintrc.cjs
+.eslintrc.js
 .eslintignore
-.prettierrc.cjs
+.prettierrc.js
 .prettierignore
 .gitignore
 LICENSE
