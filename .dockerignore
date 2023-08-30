@@ -1,15 +1,12 @@
-# idea
-.idea
-
-# project
-node_modules
-dist
-.eslintrc.json
+.husky/
+node_modules/
+dist/
+.eslintrc.cjs
+.eslintignore
+.prettierrc.cjs
+.prettierignore
 .gitignore
 LICENSE
 README.md
-
-# docker
 Dockerfile
 docker-compose.yml
-.dockerignore
