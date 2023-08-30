@@ -25,7 +25,7 @@ const { spawn, exec } = require('promisify-child-process');
 
 const { restart } = parseArgs([{ name: 'restart', alias: 'r', type: Boolean }]);
 
-const targetDirectory = path.resolve(__dirname, '..', 'dist');
+const targetDirectory = path.resolve(__dirname, '..');
 const containerName = 'turing-machine-simulator';
 const allStages = restart ? 5 : 4;
 let currentStage = 1;
