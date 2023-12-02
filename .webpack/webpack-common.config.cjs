@@ -98,7 +98,7 @@ module.exports = isProd => ({
           to: path.resolve(__dirname, '..', 'dist', 'assets'),
         },
         {
-          from: path.resolve(__dirname, '..', '.htaccess'),
+          from: path.resolve(__dirname, '..', 'nginx.conf'),
           to: path.resolve(__dirname, '..', 'dist'),
         },
       ],
