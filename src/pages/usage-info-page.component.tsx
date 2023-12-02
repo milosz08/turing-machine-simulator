@@ -4,13 +4,8 @@
  */
 import * as React from 'react';
 import type { JSX } from 'react';
-
-const TopUsageInfoComponent = React.lazy(
-  () => import('~/app-components/usage-info/top-usage-info.component')
-);
-const SyntaxInfoComponent = React.lazy(
-  () => import('~/app-components/usage-info/syntax-info.component')
-);
+import SyntaxInfoComponent from '~/app-components/usage-info/syntax-info.component';
+import TopUsageInfoComponent from '~/app-components/usage-info/top-usage-info.component';
 
 const UsageInfoPageComponent: React.FC = (): JSX.Element => (
   <>

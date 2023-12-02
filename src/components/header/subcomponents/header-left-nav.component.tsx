@@ -4,11 +4,8 @@
  */
 import * as React from 'react';
 import type { JSX } from 'react';
+import SimpleNavLinkComponent from '~/app-components/simple-nav-link/simple-nav-link.component';
 import { HeaderSingleNavContainer } from '../header.styles';
-
-const SimpleNavLinkComponent = React.lazy(
-  () => import('~/app-components/simple-nav-link/simple-nav-link.component')
-);
 
 const HeaderLeftNavComponent: React.FC = (): JSX.Element => (
   <HeaderSingleNavContainer>

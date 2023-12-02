@@ -5,16 +5,9 @@
 import * as React from 'react';
 import type { JSX } from 'react';
 import { CurrentStateInfoContainer } from './current-state-info.styles';
-
-const AllStatesCountComponent = React.lazy(
-  () => import('./subcomponents/all-states-count.component')
-);
-const MachineCurrentStateComponent = React.lazy(
-  () => import('./subcomponents/machine-current-state.component')
-);
-const PrevAndNextLabelInfoComponent = React.lazy(
-  () => import('./subcomponents/prev-and-next-label-info.component')
-);
+import AllStatesCountComponent from './subcomponents/all-states-count.component';
+import MachineCurrentStateComponent from './subcomponents/machine-current-state.component';
+import PrevAndNextLabelInfoComponent from './subcomponents/prev-and-next-label-info.component';
 
 const CurrentStateInfoComponent: React.FC = (): JSX.Element => (
   <CurrentStateInfoContainer>

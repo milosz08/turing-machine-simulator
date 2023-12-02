@@ -17,10 +17,7 @@ import { IPreferencesStoreReduxState } from '~/app-redux/preferences-store/state
 import { RootState } from '~/app-redux/redux-store';
 import { NonChangeValues } from '~/app-styles/theme-styles';
 import { CompilerSyntaxIssues } from '~/app-utils/machine-messages';
-
-const SyntaxNonErrorsComponent = React.lazy(
-  () => import('../subcomponents/syntax-non-errors.component')
-);
+import SyntaxNonErrorsComponent from '../subcomponents/syntax-non-errors.component';
 
 const SyntaxErrorInfoComponent: React.FC = (): JSX.Element => {
   const { machineTuples }: IMachineStoreReduxState = useSelector(

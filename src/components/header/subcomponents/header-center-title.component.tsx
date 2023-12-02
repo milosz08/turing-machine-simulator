@@ -6,6 +6,7 @@ import * as React from 'react';
 import type { JSX } from 'react';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import CheckboxTogglerComponent from '~/app-components/checkbox-toggler/checkbox-toggler.component';
 import { IPreferencesStoreReduxState } from '~/app-redux/preferences-store/state';
 import { RootState } from '~/app-redux/redux-store';
 import { ThemeModeContext } from '~/app-router/entrypoint-page.component';
@@ -15,10 +16,6 @@ import {
   HeaderMainTitle,
   HeaderMainTitleContainer,
 } from '../header.styles';
-
-const CheckboxTogglerComponent = React.lazy(
-  () => import('~/app-components/checkbox-toggler/checkbox-toggler.component')
-);
 
 const HeaderCenterTitleComponent: React.FC = (): JSX.Element => {
   const { currentThemeMode }: IPreferencesStoreReduxState = useSelector(

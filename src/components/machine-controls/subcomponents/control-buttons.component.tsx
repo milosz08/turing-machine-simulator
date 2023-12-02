@@ -17,13 +17,8 @@ import {
   MachineControlButton,
   MachineControlsButtonsContainer,
 } from '../machine-controls.styles';
-
-const StartStopButtonsComponent = React.lazy(
-  () => import('./start-stop-buttons.component')
-);
-const ForwardBackwardButtonsComponent = React.lazy(
-  () => import('./forward-backward-buttons.component')
-);
+import ForwardBackwardButtonsComponent from './forward-backward-buttons.component';
+import StartStopButtonsComponent from './start-stop-buttons.component';
 
 const ControlButtonsComponent: React.FC = (): JSX.Element => {
   const stateMach: IMachineStoreReduxState = useSelector(

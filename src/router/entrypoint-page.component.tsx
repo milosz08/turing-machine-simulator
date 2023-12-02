@@ -7,23 +7,16 @@ import type { JSX } from 'react';
 import { Suspense, createContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import FooterComponent from '~/app-components/footer/footer.component';
+import HeaderComponent from '~/app-components/header/header.component';
 import SuspenseLoaderComponent from '~/app-components/suspense-loader/suspense-loader.component';
 import useDarkMode from '~/app-hooks/use-dark-mode';
 import useMachineSequencer from '~/app-hooks/use-machine-sequencer';
 import useOnLoad from '~/app-hooks/use-on-load';
+import RouterComponent from '~/app-router/router.component';
 import { GlobalStyles } from '~/app-styles/global-styles';
 import Themes from '~/app-styles/theme-styles';
 import { ThemeModes } from '~/app-utils/theme-modes';
-
-const RouterComponent = React.lazy(
-  () => import('~/app-router/router.component')
-);
-const HeaderComponent = React.lazy(
-  () => import('~/app-components/header/header.component')
-);
-const FooterComponent = React.lazy(
-  () => import('~/app-components/footer/footer.component')
-);
 
 export const ThemeModeContext = createContext<
   Partial<{ changeTheme: () => void }>

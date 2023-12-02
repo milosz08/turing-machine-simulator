@@ -5,15 +5,12 @@
 import * as React from 'react';
 import type { JSX } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CheckboxTogglerComponent from '~/app-components/checkbox-toggler/checkbox-toggler.component';
 import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
 import * as PrefAction from '~/app-redux/preferences-store/actions';
 import { IPreferencesStoreReduxState } from '~/app-redux/preferences-store/state';
 import { RootState } from '~/app-redux/redux-store';
 import { MachineChangeAdditionalValuesContainer } from '../additional-controls.styles';
-
-const CheckboxTogglerComponent = React.lazy(
-  () => import('~/app-components/checkbox-toggler/checkbox-toggler.component')
-);
 
 const ChangeCodeTrackingComponent: React.FC = (): JSX.Element => {
   const { disabledControls }: IMachineStoreReduxState = useSelector(

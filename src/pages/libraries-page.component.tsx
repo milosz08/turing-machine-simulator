@@ -4,13 +4,7 @@
  */
 import * as React from 'react';
 import type { JSX } from 'react';
-
-const ThirdPartyLibrariesComponent = React.lazy(
-  () =>
-    import(
-      '~/app-components/third-party-libraries/third-party-libraries.component'
-    )
-);
+import ThirdPartyLibrariesComponent from '~/app-components/third-party-libraries/third-party-libraries.component';
 
 const LibrariesPageComponent: React.FC = (): JSX.Element => (
   <ThirdPartyLibrariesComponent />

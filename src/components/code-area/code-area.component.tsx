@@ -5,23 +5,11 @@
 import * as React from 'react';
 import type { JSX } from 'react';
 import { createContext, useRef } from 'react';
+import CodeInspectionsComponent from '~/app-components/code-inspections/code-inspections.component';
+import SyntaxErrorInfoComponent from '~/app-components/code-inspections/subcomponents/syntax-error-info.component';
 import { CodeAreaContainer, CodeAreaWrapper } from './code-area.styles';
-
-const CodeAreaRowsComponent = React.lazy(
-  () => import('./subcomponents/code-area-rows.component')
-);
-const CodeAreaFieldComponent = React.lazy(
-  () => import('./subcomponents/code-area-field.component')
-);
-const CodeInspectionsComponent = React.lazy(
-  () => import('~/app-components/code-inspections/code-inspections.component')
-);
-const SyntaxErrorInfoComponent = React.lazy(
-  () =>
-    import(
-      '~/app-components/code-inspections/subcomponents/syntax-error-info.component'
-    )
-);
+import CodeAreaFieldComponent from './subcomponents/code-area-field.component';
+import CodeAreaRowsComponent from './subcomponents/code-area-rows.component';
 
 export const CodeAreaContext = createContext<
   Partial<{ areaRef: React.MutableRefObject<any> }>

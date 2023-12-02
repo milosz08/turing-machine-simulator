@@ -4,33 +4,13 @@
  */
 import * as React from 'react';
 import type { JSX } from 'react';
-
-const TapeComponent = React.lazy(
-  () => import('~/app-components/tape/tape.component')
-);
-const MachineControlsComponent = React.lazy(
-  () => import('~/app-components/machine-controls/machine-controls.component')
-);
-const CurrentStateInfoComponent = React.lazy(
-  () =>
-    import('~/app-components/current-state-info/current-state-info.component')
-);
-const AdditionalControlsComponent = React.lazy(
-  () =>
-    import('~/app-components/additional-controls/additional-controls.component')
-);
-const CodeAreaComponent = React.lazy(
-  () => import('~/app-components/code-area/code-area.component')
-);
-const LoadExampleProgramComponent = React.lazy(
-  () =>
-    import(
-      '~/app-components/load-examples-program/load-example-program.component'
-    )
-);
-const FilesSupportComponent = React.lazy(
-  () => import('~/app-components/files-support/files-support.component')
-);
+import AdditionalControlsComponent from '~/app-components/additional-controls/additional-controls.component';
+import CodeAreaComponent from '~/app-components/code-area/code-area.component';
+import CurrentStateInfoComponent from '~/app-components/current-state-info/current-state-info.component';
+import FilesSupportComponent from '~/app-components/files-support/files-support.component';
+import LoadExampleProgramComponent from '~/app-components/load-examples-program/load-example-program.component';
+import MachineControlsComponent from '~/app-components/machine-controls/machine-controls.component';
+import TapeComponent from '~/app-components/tape/tape.component';
 
 const RootPageComponent: React.FC = (): JSX.Element => (
   <>

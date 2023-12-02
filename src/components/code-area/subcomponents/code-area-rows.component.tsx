@@ -13,13 +13,8 @@ import {
   CodeAreaRowsContainer,
   CodeAreaRowsCounter,
 } from '../code-area.styles';
-
-const CodeAreaSingleRowComponent = React.lazy(
-  () => import('../subcomponents/code-area-single-row.component')
-);
-const CodeAreaDoubleIndicatorMarksComponent = React.lazy(
-  () => import('../subcomponents/code-area-double-indicator-marks.component')
-);
+import CodeAreaDoubleIndicatorMarksComponent from '../subcomponents/code-area-double-indicator-marks.component';
+import CodeAreaSingleRowComponent from '../subcomponents/code-area-single-row.component';
 
 const CodeAreaRowsComponent: React.FC = (): JSX.Element => {
   const { rawCodeAreaInput, actualState }: IMachineStoreReduxState =

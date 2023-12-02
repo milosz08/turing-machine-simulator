@@ -5,16 +5,9 @@
 import * as React from 'react';
 import type { JSX } from 'react';
 import { HeaderContainer } from './header.styles';
-
-const HeaderLeftNavComponent = React.lazy(
-  () => import('./subcomponents/header-left-nav.component')
-);
-const HeaderCenterTitleComponent = React.lazy(
-  () => import('./subcomponents/header-center-title.component')
-);
-const HeaderRightNavComponent = React.lazy(
-  () => import('./subcomponents/header-right-nav.component')
-);
+import HeaderCenterTitleComponent from './subcomponents/header-center-title.component';
+import HeaderLeftNavComponent from './subcomponents/header-left-nav.component';
+import HeaderRightNavComponent from './subcomponents/header-right-nav.component';
 
 const HeaderComponent: React.FC = (): JSX.Element => (
   <HeaderContainer>

@@ -13,10 +13,7 @@ import {
 import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
 import { IPreferencesStoreReduxState } from '~/app-redux/preferences-store/state';
 import { RootState } from '~/app-redux/redux-store';
-
-const TerminalLeftInfoContentComponent = React.lazy(
-  () => import('./subcomponents/terminal-left-info-content.component')
-);
+import TerminalLeftInfoContentComponent from './subcomponents/terminal-left-info-content.component';
 
 const CodeInspectionsComponent: React.FC = (): JSX.Element => {
   const { ifOpenErrors }: IPreferencesStoreReduxState = useSelector(
