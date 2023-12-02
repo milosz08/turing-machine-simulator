@@ -9,8 +9,6 @@
     "lint:fix": "npx eslint **/**/*.{cjs,ts,tsx} --fix",
     "types:check": "npx tsc --noEmit",
     "format": "npx prettier . --write",
-    "migrate": "node _docker/docker-migrate.cjs",
-    "migrate:restart": "node _docker/docker-migrate.cjs --restart",
     "husky:add-pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "husky:add-pre-push": "npx husky add .husky/pre-push \"yarn run types:check\"",
     "configure:husky": "npx husky install && yarn run husky:add-pre-commit && yarn run husky:add-pre-push"

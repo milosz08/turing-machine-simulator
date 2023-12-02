@@ -14,14 +14,16 @@ and dark modes, depending on user preference. This machine is a great foundation
 of algorithms works, found frequently in Computer Science majors at technical colleges.
 
 ## Table of content
-* [Clone script](#clone-script)
-* [Webpack scripts](#webpack-scripts)
-* [Run with Docker containers](#run-with-docker-containers)
-* [Syntax and compiler](#syntax-and-compiler)
-* [Tech stack](#tech-stack)
-* [Author](#author)
-* [Project status](#project-status)
-* [License](#license)
+- [Turing machine simulator](#turing-machine-simulator)
+  - [Table of content](#table-of-content)
+  - [Clone script](#clone-script)
+  - [Webpack scripts](#webpack-scripts)
+  - [Build docker container](#build-docker-container)
+  - [Syntax and compiler](#syntax-and-compiler)
+  - [Tech stack](#tech-stack)
+  - [Author](#author)
+  - [Project status](#project-status)
+  - [License](#license)
 
 <a name="clone-script"></a>
 ## Clone script
@@ -42,21 +44,31 @@ $ yarn run build
 ```
 Custom webpack configuration you will find in `_webpack` directory.
 
-<a name="run-with-docker-containers"></a>
-## Run with Docker containers
-* To compose image, type (detached with `-d` flag):
+<a name="build-docker-container"></a>
+## Build docker container
+* To build image go to root project directory and type:
+```
+$ docker build -t turing-machine-simulator:1.0.0 .
+```
+* If you want use docker compose file to run container, your compose file may look like this:
+```yml
+version: '3.8'
+
+services:
+  turing-machine-simulator:
+    container_name: turing-machine-simulator
+    ports:
+      - '3030:80'
+    build:
+      context: .
+      dockerfile: Dockerfile
+```
+* To run container via composer file, type:
 ```
 $ docker-compose up -d
 ```
-* To build and migrate changed content to docker container, type:
-```
-$ yarn run migrate
-```
-* To build and migrate changed content to docker container with restart Apache Web Server, type:
-```
-$ yarn run migrate:restart
-```
-> NOTE: Docker container must be running.
+> NOTE: By default, application will run on NGINX http server. You can modify options in nginx.conf file (ex. change
+> to reverse proxy server in production environment).
 
 <a name="syntax-and-compiler"></a>
 ## Syntax and compiler
