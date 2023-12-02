@@ -18,7 +18,6 @@
     "isActive": true,
     "autoHeader": "autoSave",
     "include": ["javascript", "typescript", "typescriptreact"],
-    "includeGlob": ["**/*.sh"],
     "exclude": ["json", "jsonl", "jsonc"],
     "excludeGlob": [".husky/**/*"],
     "enforceHeader": true,
@@ -30,14 +29,6 @@
       "begin": "/*",
       "lineLength": 64,
       "beforeHeader": ["'use strict';"]
-    },
-    {
-      "language": "shellscript",
-      "begin": "#",
-      "prefix": "# ",
-      "end": "#",
-      "beforeHeader": ["#!/bin/sh", ""],
-      "lineLength": 64
     },
     {
       "language": "*",
