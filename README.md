@@ -14,16 +14,14 @@ and dark modes, depending on user preference. This machine is a great foundation
 of algorithms works, found frequently in Computer Science majors at technical colleges.
 
 ## Table of content
-- [Turing machine simulator](#turing-machine-simulator)
-  - [Table of content](#table-of-content)
-  - [Clone script](#clone-script)
-  - [Webpack scripts](#webpack-scripts)
-  - [Build docker container](#build-docker-container)
-  - [Syntax and compiler](#syntax-and-compiler)
-  - [Tech stack](#tech-stack)
-  - [Author](#author)
-  - [Project status](#project-status)
-  - [License](#license)
+- [Clone script](#clone-script)
+- [Webpack scripts](#webpack-scripts)
+- [Build docker container](#build-docker-container)
+- [Syntax and compiler](#syntax-and-compiler)
+- [Tech stack](#tech-stack)
+- [Author](#author)
+- [Project status](#project-status)
+- [License](#license)
 
 <a name="clone-script"></a>
 ## Clone script
