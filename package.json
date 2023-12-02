@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "An advanced, single-tape, deterministic Turing Machine simulator written using the React library.",
   "scripts": {
-    "serve": "npx webpack-dev-server --progress --config _webpack/webpack-dev.config.cjs",
-    "build": "npx webpack --progress --config _webpack/webpack-prod.config.cjs",
+    "serve": "npx webpack-dev-server --progress --config .webpack/webpack-dev.config.cjs",
+    "build": "npx webpack --progress --config .webpack/webpack-prod.config.cjs",
     "lint:check": "npx eslint **/**/*.{cjs,ts,tsx}",
     "lint:fix": "npx eslint **/**/*.{cjs,ts,tsx} --fix",
     "types:check": "npx tsc --noEmit",
