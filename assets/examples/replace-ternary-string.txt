@@ -1,0 +1,29 @@
+# Author: Miłosz Gilga
+# Github: https://github.com/Milosz08
+# Silesian University of Technology, April 2021
+
+# For input alphabet: Σ = { 0, 1, 2 } machine replace all
+# '2110' sequences to '0000' sequence.
+
+### Initial Input: $001211000211100002110112100$
+
+q0 2 * > q2         # possibly start '2110' sequence
+q0 * * > q1         # for rest of values, move right to 'q1'
+q0 _ _ * stop-q0    # end
+
+q1 2 * > q2         # next of '2110' sequence character (2)
+q1 _ * * q0         # for blank symbol, move to beginning
+q1 * * > q1         # for rest of values, recursion
+	
+q2 1 * > q3         # next of '2110' sequence character (1)
+q2 _ * * q0         # for blank symbol, move to beginning
+q2 * * > q2         # for rest of values, recursion
+
+q3 1 * > q4         # next of '2110' sequence character (1)
+q3 * * > q2         # for rest of values, move to 'q2'
+
+q4 0 0 < q5         # next of '2110' sequence character (0) - sequence is match to '2110'
+q4 * * > q2         # for rest of values, move to 'q2'
+
+q5 * 0 < q5         # replace all sequence elements to '0'
+q5 2 0 > q0         # goto start
