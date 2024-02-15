@@ -17,7 +17,7 @@ module.exports = isProd => ({
     path: path.join(__dirname, '..', 'dist'),
     filename: `js/react-[${isProd ? 'contenthash:10' : 'name'}]-bundle.js`,
     chunkFilename: `js/react-[${isProd ? 'contenthash:10' : 'name'}]-chunk.js`,
-    publicPath: '/',
+    publicPath: '',
     clean: true,
   },
   resolve: {
