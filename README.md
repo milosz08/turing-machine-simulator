@@ -1,10 +1,5 @@
 # Turing machine simulator
 
-![](https://img.shields.io/badge/Made%20in-React%20%2018-1abc9c.svg)
-&nbsp;&nbsp;
-![](https://img.shields.io/badge/Build%20with-Webpack%205-brown.svg)
-&nbsp;&nbsp;
-<br>
 > More info about this project you will find [on my personal website](https://miloszgilga.pl/project/turing-machine-simulator)
 > <br>
 > See live demo at [turing.miloszgilga.pl](https://turing.miloszgilga.pl)
