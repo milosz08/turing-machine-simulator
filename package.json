@@ -13,7 +13,7 @@
     "husky:add-pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "husky:add-pre-push": "npx husky add .husky/pre-push \"yarn run types:check\"",
     "configure:husky": "npx husky install && yarn run husky:add-pre-commit && yarn run husky:add-pre-push",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "private": true,
   "author": {
