@@ -12,8 +12,7 @@
     "format": "npx prettier . --write",
     "husky:add-pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "husky:add-pre-push": "npx husky add .husky/pre-push \"yarn run types:check\"",
-    "configure:husky": "npx husky install && yarn run husky:add-pre-commit && yarn run husky:add-pre-push",
-    "deploy": "gh-pages -d dist"
+    "configure:husky": "npx husky install && yarn run husky:add-pre-commit && yarn run husky:add-pre-push"
   },
   "private": true,
   "author": {
@@ -68,7 +67,6 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.5.3",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",

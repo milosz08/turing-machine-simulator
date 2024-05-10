@@ -1,14 +1,12 @@
-name: NodeJS with Webpack
+name: Deploy to VPS
 
 on:
   push:
     branches: ['master']
-  pull_request:
-    branches: ['master']
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
@@ -24,12 +22,8 @@ jobs:
 
       - name: Build
         run: |
-          npm install
-          npm run build
+          yarn install
+          yarn run build
 
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        run: cp -r dist/* /var/www/turing-machine-simulator/
