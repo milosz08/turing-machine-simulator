@@ -23,16 +23,22 @@ module.exports = isProd => ({
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     modules: ['node_modules'],
-    alias: {
-      '~/app-algorithms': path.resolve(__dirname, '..', 'src', 'algorithms'),
-      '~/app-components': path.resolve(__dirname, '..', 'src', 'components'),
-      '~/app-hooks': path.resolve(__dirname, '..', 'src', 'hooks'),
-      '~/app-pages': path.resolve(__dirname, '..', 'src', 'pages'),
-      '~/app-redux': path.resolve(__dirname, '..', 'src', 'redux'),
-      '~/app-router': path.resolve(__dirname, '..', 'src', 'router'),
-      '~/app-utils': path.resolve(__dirname, '..', 'src', 'utils'),
-      '~/app-styles': path.resolve(__dirname, '..', 'src', 'styles'),
-    },
+    alias: [
+      'algorithms',
+      'components',
+      'hooks',
+      'pages',
+      'redux',
+      'router',
+      'utils',
+      'styles',
+    ].reduce(
+      (acc, name) => ({
+        ...acc,
+        [`~/app-${name}`]: path.resolve(__dirname, '..', 'src', name),
+      }),
+      {}
+    ),
   },
   module: {
     rules: [
