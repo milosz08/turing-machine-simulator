@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          yarn install
+          yarn install --frozen-lockfile
           yarn run build
 
       - name: Copy generated content on server
