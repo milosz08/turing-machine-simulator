@@ -1,11 +1,7 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import { CodeAreaModes } from '~/app-utils/code-area-modes';
-import { MachineModes } from '~/app-utils/machine-modes';
+import { CodeAreaModes } from '@/utils/code-area-modes';
+import { MachineModes } from '@/utils/machine-modes';
 
-export interface IMachineStoreReduxState {
+interface IMachineStoreReduxState {
   tapeValues: {
     initialInput: string;
     valuesArray: string[];
@@ -39,7 +35,7 @@ export interface IMachineStoreReduxState {
   machineCustomMessage: string | null;
 }
 
-export const machineStoreReduxState: IMachineStoreReduxState = {
+const machineStoreReduxState: IMachineStoreReduxState = {
   tapeValues: {
     initialInput: ' ',
     valuesArray: [],
@@ -72,3 +68,5 @@ export const machineStoreReduxState: IMachineStoreReduxState = {
   allBlanksElements: [],
   machineCustomMessage: null,
 };
+
+export { type IMachineStoreReduxState, machineStoreReduxState };

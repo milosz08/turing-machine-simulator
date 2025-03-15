@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { input_rs } from '@/styles/reset-styles';
 import styled from 'styled-components';
-import { input_rs } from '~/app-styles/reset-styles';
 
 export const CheckboxToggleElementContainer = styled.div`
   width: 100%;
@@ -20,6 +16,7 @@ export const CheckboxToggleAsideLeftAndRight = styled.p`
 export const CheckboxToggleInput = styled(input_rs)`
   opacity: 0;
   position: absolute;
+
   &:checked + label div {
     transform: translateX(14px);
   }

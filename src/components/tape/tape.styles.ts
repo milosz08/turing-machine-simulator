@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { BorderElement } from '@/styles/mixins-styles';
 import styled from 'styled-components';
-import { BorderElement } from '~/app-styles/mixins-styles';
 
 export const TapeContainer = styled.section`
   ${({ theme }) =>
@@ -27,12 +23,10 @@ export const TapeSingleCharacter = styled.span<{ $active: boolean }>`
   font-size: 1.3rem;
   border-radius: 3px;
   font-weight: ${props =>
-    props.$active
-      ? props.theme.BUTTON_FONT_WEIGHT
-      : props.theme.INPUT_FONT_WEIGHT};
+    props.$active ? props.theme.BUTTON_FONT_WEIGHT : props.theme.INPUT_FONT_WEIGHT};
   color: ${props => (props.$active ? props.theme.BODY : props.theme.TEXT)};
-  background-color: ${props =>
-    props.$active ? props.theme.TEXT : 'transparent'};
+  background-color: ${props => (props.$active ? props.theme.TEXT : 'transparent')};
+
   &::before,
   &::after {
     position: absolute;
@@ -42,11 +36,13 @@ export const TapeSingleCharacter = styled.span<{ $active: boolean }>`
     height: 0;
     bottom: -17px;
   }
+
   &::before {
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 10px solid ${({ theme }) => theme.TEXT};
   }
+
   &::after {
     content: 'Head';
     width: 50px;

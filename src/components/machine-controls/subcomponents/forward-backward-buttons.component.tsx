@@ -1,16 +1,12 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import type { JSX } from 'react';
 import * as React from 'react';
 import { useEffect } from 'react';
-import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import * as MachineAction from '~/app-redux/machine-store/actions';
-import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
-import { RootState } from '~/app-redux/redux-store';
-import { MachineModes } from '~/app-utils/machine-modes';
+import * as MachineAction from '@/redux/machine-store/actions';
+import { IMachineStoreReduxState } from '@/redux/machine-store/state';
+import { RootState } from '@/redux/redux-store';
+import { MachineModes } from '@/utils/machine-modes';
+import { ActionCreatorWithOptionalPayload } from '@reduxjs/toolkit';
 import { MachineControlButton } from '../machine-controls.styles';
 
 type Props = {
@@ -26,16 +22,14 @@ const ForwardBackwardButtonsComponent: React.FC<Props> = ({
   machineMode,
   disabledItem,
 }): JSX.Element => {
-  const { machineFinish }: IMachineStoreReduxState = useSelector(
+  const { machineFinish }: Partial<IMachineStoreReduxState> = useSelector(
     (state: RootState) => state.machine
   );
   const dispatcher = useDispatch();
 
   const handleForwardBackward = (): void => {
     dispatcher(dispatcherCallback());
-    dispatcher(
-      MachineAction.switchMachineStateAction({ selectedState: machineMode })
-    );
+    dispatcher(MachineAction.switchMachineStateAction({ selectedState: machineMode }));
   };
 
   useEffect(() => {
@@ -49,13 +43,10 @@ const ForwardBackwardButtonsComponent: React.FC<Props> = ({
   }, [machineFinish]);
 
   return (
-    <MachineControlButton
-      $ifSquare={true}
-      onClick={handleForwardBackward}
-      disabled={disabledItem}>
+    <MachineControlButton $ifSquare={true} onClick={handleForwardBackward} disabled={disabledItem}>
       {render()}
     </MachineControlButton>
   );
 };
 
-export default ForwardBackwardButtonsComponent;
+export { ForwardBackwardButtonsComponent };

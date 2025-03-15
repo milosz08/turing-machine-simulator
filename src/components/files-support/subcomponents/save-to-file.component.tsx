@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
-import { RootState } from '~/app-redux/redux-store';
-import { Directions, FilesService } from '~/app-utils/machine-config';
+import { IMachineStoreReduxState } from '@/redux/machine-store/state';
+import { RootState } from '@/redux/redux-store';
+import { Directions, FilesService } from '@/utils/machine-config';
 import {
   FilesSupportAsideTextValue,
   FilesSupportButtonElement,
@@ -15,7 +11,7 @@ import {
 } from '../files-support.styles';
 
 const SaveToFileComponent: React.FC = (): JSX.Element => {
-  const { rawCodeAreaInput }: IMachineStoreReduxState = useSelector(
+  const { rawCodeAreaInput }: Partial<IMachineStoreReduxState> = useSelector(
     (state: RootState) => state.machine
   );
 
@@ -29,9 +25,7 @@ const SaveToFileComponent: React.FC = (): JSX.Element => {
   };
 
   return (
-    <FilesSupportWrapper
-      $direction={Directions.LEFT}
-      $pseudoContent="save program to file">
+    <FilesSupportWrapper $direction={Directions.LEFT} $pseudoContent="save program to file">
       <FilesSupportButtonElement onClick={handleSaveTxtFile}>
         Save to file
       </FilesSupportButtonElement>
@@ -42,4 +36,4 @@ const SaveToFileComponent: React.FC = (): JSX.Element => {
   );
 };
 
-export default SaveToFileComponent;
+export { SaveToFileComponent };

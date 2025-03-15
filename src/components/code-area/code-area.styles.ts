@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { NonChangeValues } from '@/styles/theme-styles';
 import styled from 'styled-components';
-import { NonChangeValues } from '~/app-styles/theme-styles';
 
 export const CodeAreaContainer = styled.section`
   display: flex;
@@ -60,21 +56,25 @@ export const CodeAreaFieldTextarea = styled.textarea<{
   resize: vertical;
   cursor: auto;
   overflow: ${({ $scrollDisabled }) => ($scrollDisabled ? 'hidden' : 'auto')};
+
   &::-webkit-scrollbar {
     width: 15px;
     height: auto;
     background-color: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.BODY_TINT2};
   }
+
   &::-webkit-resizer {
     background-color: ${({ theme }) => theme.BODY};
     border-width: 8px;
     border-style: solid;
-    border-color: transparent ${({ theme }) => theme.BODY_TINT2}
-      ${({ theme }) => theme.BODY_TINT2} transparent;
+    border-color: transparent ${({ theme }) => theme.BODY_TINT2} ${({ theme }) => theme.BODY_TINT2}
+      transparent;
   }
+
   &:disabled {
     resize: none;
     cursor: default;
@@ -85,13 +85,16 @@ export const CodeAreaSingleRowContainer = styled.div`
   position: relative;
   display: flex;
   width: 100%;
+
   &:nth-child(1) {
     span {
       padding-top: 6px;
     }
+
     aside {
       margin-top: 6px;
     }
+
     div {
       top: calc(50% + 3px);
     }
@@ -110,9 +113,7 @@ export const CodeAreaSingleRowIndicator = styled.div<{
   height: 20px;
   left: -59px;
   background-color: ${props =>
-    props.$prev
-      ? NonChangeValues.DEBUG_BAR_COLOUR
-      : NonChangeValues.STATUS_BAR_COLOUR};
+    props.$prev ? NonChangeValues.DEBUG_BAR_COLOUR : NonChangeValues.STATUS_BAR_COLOUR};
   color: ${NonChangeValues.WHITE_COLOUR};
   font-size: 0.8rem;
   font-weight: 300;
@@ -120,6 +121,7 @@ export const CodeAreaSingleRowIndicator = styled.div<{
   padding: 0 6px;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
+
   &::after {
     position: absolute;
     content: '';
@@ -130,15 +132,14 @@ export const CodeAreaSingleRowIndicator = styled.div<{
     border-bottom: 10px solid transparent;
     border-left: 10px solid
       ${props =>
-        props.$prev
-          ? NonChangeValues.DEBUG_BAR_COLOUR
-          : NonChangeValues.STATUS_BAR_COLOUR};
+        props.$prev ? NonChangeValues.DEBUG_BAR_COLOUR : NonChangeValues.STATUS_BAR_COLOUR};
   }
 `;
 
-export const CodeAreaSingleRowIndicatorDualBottom = styled(
-  CodeAreaSingleRowIndicator
-)<{ $prev: boolean; $next: boolean }>`
+export const CodeAreaSingleRowIndicatorDualBottom = styled(CodeAreaSingleRowIndicator)<{
+  $prev: boolean;
+  $next: boolean;
+}>`
   top: calc(50% + 3px);
   left: -56px;
 `;
@@ -192,14 +193,12 @@ export const CodeAreaSingleRowDualHighlighterBottom = styled.div`
   background-color: ${NonChangeValues.STATUS_BAR_COLOUR};
 `;
 
-export const CodeAreaRowsCounter = styled.div.attrs<{ $positionY: number }>(
-  props => ({
-    style: {
-      height: `calc(100% + ${props.$positionY}px)`,
-      transform: `translateY(-${props.$positionY}px)`,
-    },
-  })
-)<{ $positionY: number }>`
+export const CodeAreaRowsCounter = styled.div.attrs<{ $positionY: number }>(props => ({
+  style: {
+    height: `calc(100% + ${props.$positionY}px)`,
+    transform: `translateY(-${props.$positionY}px)`,
+  },
+}))<{ $positionY: number }>`
   padding: 0 6px 0 0;
   text-align: right;
   width: calc(100% - 60px);

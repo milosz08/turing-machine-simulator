@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { BorderElement, MainContainer } from '@/styles/mixins-styles';
 import styled from 'styled-components';
-import { BorderElement, MainContainer } from '~/app-styles/mixins-styles';
 
 export const CurrentStateInfoContainer = styled.section`
   ${MainContainer()};

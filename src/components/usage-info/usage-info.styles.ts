@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import styled from 'styled-components';
 
 export const InfoComponentContainer = styled.section`
@@ -27,6 +23,7 @@ export const InfoComponentUnorderedList = styled.ul`
 
 export const InfoComponentListElement = styled.li`
   padding: 2px 0;
+
   svg {
     font-size: 0.9rem;
     color: ${({ theme }) => theme.TEXT};

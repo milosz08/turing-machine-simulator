@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-
 const NonExportableColors: { [key: string]: string } = {
   WHITE_NONEXP: '#fcfcfc',
   LIGHTBLACK_NONEXP: '#242424',
@@ -59,7 +54,7 @@ const Themes = {
   },
 };
 
-export const NonChangeValues = {
+const NonChangeValues = {
   WHITE_COLOUR: WHITE_NONEXP,
   BORDER_COLOUR: GRAY_NONEXP,
   STATUS_BAR_COLOUR: '#117bc9',
@@ -71,7 +66,7 @@ export const NonChangeValues = {
   ERROR_COLOUR: '#d15545',
 };
 
-export type LightThemeType = typeof Themes.lightTheme;
-export type DarkThemeType = typeof Themes.darkTheme;
+type LightThemeType = typeof Themes.lightTheme;
+type DarkThemeType = typeof Themes.darkTheme;
 
-export default Themes;
+export { NonChangeValues, type LightThemeType, type DarkThemeType, Themes };

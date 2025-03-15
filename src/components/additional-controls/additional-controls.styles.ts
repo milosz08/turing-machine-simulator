@@ -1,11 +1,7 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { MachineControlButton } from '@/components/machine-controls/machine-controls.styles';
+import { BorderElement, MainContainer } from '@/styles/mixins-styles';
+import { input_rs } from '@/styles/reset-styles';
 import styled from 'styled-components';
-import { MachineControlButton } from '~/app-components/machine-controls/machine-controls.styles';
-import { BorderElement, MainContainer } from '~/app-styles/mixins-styles';
-import { input_rs } from '~/app-styles/reset-styles';
 
 export const AdditionalControlsContainer = styled.section`
   ${MainContainer()};
@@ -37,6 +33,7 @@ export const MachineChangeHeadSpeedRangeInput = styled(input_rs)`
   position: relative;
   top: 3px;
   margin: 10px 0;
+
   &::-webkit-slider-thumb {
     appearance: none;
     background-color: ${({ theme }) => theme.TEXT};
@@ -46,6 +43,7 @@ export const MachineChangeHeadSpeedRangeInput = styled(input_rs)`
     cursor: pointer;
     margin-top: -5px;
   }
+
   &::-moz-range-thumb {
     appearance: none;
     background-color: ${({ theme }) => theme.TEXT};
@@ -54,6 +52,7 @@ export const MachineChangeHeadSpeedRangeInput = styled(input_rs)`
     border-radius: 100%;
     cursor: pointer;
   }
+
   &::-ms-thumb {
     appearance: none;
     background-color: ${({ theme }) => theme.TEXT};
@@ -62,6 +61,7 @@ export const MachineChangeHeadSpeedRangeInput = styled(input_rs)`
     border-radius: 100%;
     cursor: pointer;
   }
+
   &::-ms-track {
     cursor: pointer;
     border-color: transparent;
@@ -70,18 +70,21 @@ export const MachineChangeHeadSpeedRangeInput = styled(input_rs)`
     background-color: transparent;
     border-radius: 100px;
   }
+
   &::-webkit-slider-runnable-track {
     height: 3px;
     cursor: pointer;
     background-color: ${({ theme }) => theme.DIS_BUTTON_BACKGROUND};
     border-radius: 100px;
   }
+
   &::-moz-range-track {
     height: 3px;
     cursor: pointer;
     background-color: ${({ theme }) => theme.DIS_BUTTON_BACKGROUND};
     border-radius: 100px;
   }
+
   &::-ms-fill-lower {
     background-color: ${({ theme }) => theme.DIS_BUTTON_BACKGROUND};
   }

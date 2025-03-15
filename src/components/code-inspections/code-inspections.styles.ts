@@ -1,10 +1,6 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { button_rs } from '@/styles/reset-styles';
+import { NonChangeValues } from '@/styles/theme-styles';
 import styled from 'styled-components';
-import { button_rs } from '~/app-styles/reset-styles';
-import { NonChangeValues } from '~/app-styles/theme-styles';
 
 export const CodeInspectionsContainer = styled.div<{
   $openWindow: boolean;
@@ -30,13 +26,14 @@ export const TerminalMode = styled.div`
 export const TerminalLeftContent = styled.div<{ $animationWorking: boolean }>`
   display: flex;
   align-items: center;
+
   svg {
     font-weight: 200;
     font-size: 0.7rem;
     margin: 0 15px;
-    animation: ${props => (props.$animationWorking ? 'circle' : 'none')} 3s
-      infinite linear;
+    animation: ${props => (props.$animationWorking ? 'circle' : 'none')} 3s infinite linear;
   }
+
   @keyframes circle {
     0% {
       transform: rotate(0deg);
@@ -60,9 +57,11 @@ export const SyntaxInfosButton = styled(button_rs)<{
   color: ${NonChangeValues.WHITE_COLOUR};
   border: none;
   cursor: pointer;
+
   &:hover {
     background-color: ${props => props.$background.hover};
   }
+
   &:disabled {
     cursor: text;
   }
@@ -93,6 +92,7 @@ export const SyntaxErrorsUnorderedList = styled.ul`
 export const SyntaxErrorsListElement = styled.li`
   margin-left: 20px;
   color: ${({ theme }) => theme.TEXT};
+
   strong {
     font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
   }

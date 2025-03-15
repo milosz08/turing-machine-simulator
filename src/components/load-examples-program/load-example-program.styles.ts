@@ -1,10 +1,6 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { MachineControlButton } from '@/components/machine-controls/machine-controls.styles';
+import { NonChangeValues } from '@/styles/theme-styles';
 import styled from 'styled-components';
-import { MachineControlButton } from '~/app-components/machine-controls/machine-controls.styles';
-import { NonChangeValues } from '~/app-styles/theme-styles';
 
 export const LoadExamplesProgramContainer = styled.section`
   position: relative;
@@ -15,6 +11,7 @@ export const LoadExamplesProgramContainer = styled.section`
   width: 1300px;
   margin: 50px 0 30px 0;
   padding: 30px 0;
+
   &::after {
     position: absolute;
     content: 'example turing machine simulator programs';

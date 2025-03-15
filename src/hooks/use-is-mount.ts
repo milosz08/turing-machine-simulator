@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { useEffect, useRef } from 'react';
 
 const useIsMount = (): boolean => {
@@ -14,4 +10,4 @@ const useIsMount = (): boolean => {
   return isMountRef.current;
 };
 
-export default useIsMount;
+export { useIsMount };

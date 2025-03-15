@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as MachineAction from '~/app-redux/machine-store/actions';
-import { Directions, FilesService } from '~/app-utils/machine-config';
+import * as MachineAction from '@/redux/machine-store/actions';
+import { Directions, FilesService } from '@/utils/machine-config';
 import {
   FilesSupportAsideTextValue,
   FilesSupportInput,
@@ -16,9 +12,7 @@ import {
 } from '../files-support.styles';
 
 const ReadFromFileComponent: React.FC = (): JSX.Element => {
-  const [showingTxt, setShowingTxt] = useState<FilesService>(
-    FilesService.CLICK_TO_LOAD_PROGRAM
-  );
+  const [showingTxt, setShowingTxt] = useState<FilesService>(FilesService.CLICK_TO_LOAD_PROGRAM);
   const dispatcher = useDispatch();
 
   const handleLoadMachineProgramFromFile = (): void => {
@@ -47,9 +41,7 @@ const ReadFromFileComponent: React.FC = (): JSX.Element => {
   };
 
   return (
-    <FilesSupportWrapper
-      $direction={Directions.RIGHT}
-      $pseudoContent="load program from file">
+    <FilesSupportWrapper $direction={Directions.RIGHT} $pseudoContent="load program from file">
       <FilesSupportInput
         type="file"
         onChange={handleLoadMachineProgramFromFile}
@@ -62,4 +54,4 @@ const ReadFromFileComponent: React.FC = (): JSX.Element => {
   );
 };
 
-export default ReadFromFileComponent;
+export { ReadFromFileComponent };

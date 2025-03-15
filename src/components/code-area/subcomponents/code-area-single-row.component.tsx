@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import {
   CodeAreaSingleRowContainer,
   CodeAreaSingleRowHighlighter,
@@ -17,11 +13,7 @@ type Props = {
   next: boolean;
 };
 
-const CodeAreaSingleRowComponent: React.FC<Props> = ({
-  iterator,
-  prev,
-  next,
-}): JSX.Element => (
+const CodeAreaSingleRowComponent: React.FC<Props> = ({ iterator, prev, next }): JSX.Element => (
   <CodeAreaSingleRowContainer>
     <CodeAreaSingleRowIndicator $prev={prev} $next={next}>
       {prev ? 'prev' : 'next'}
@@ -31,4 +23,4 @@ const CodeAreaSingleRowComponent: React.FC<Props> = ({
   </CodeAreaSingleRowContainer>
 );
 
-export default CodeAreaSingleRowComponent;
+export { CodeAreaSingleRowComponent };

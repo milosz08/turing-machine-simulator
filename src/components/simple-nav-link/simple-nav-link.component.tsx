@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX, ReactNode } from 'react';
+import * as React from 'react';
 import { SimpleNavLinkContainer } from './simple-nav-link.styles';
 
 type Props = {
@@ -19,12 +15,9 @@ const SimpleNavLinkComponent: React.FC<Props> = ({
   selfPage,
   clickHandler,
 }): JSX.Element => (
-  <SimpleNavLinkContainer
-    href={link}
-    target={selfPage ? '_self' : '_blank'}
-    onClick={clickHandler}>
+  <SimpleNavLinkContainer href={link} target={selfPage ? '_self' : '_blank'} onClick={clickHandler}>
     {children}
   </SimpleNavLinkContainer>
 );
 
-export default SimpleNavLinkComponent;
+export { SimpleNavLinkComponent };

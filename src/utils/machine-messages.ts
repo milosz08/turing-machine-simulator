@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { MachineModes } from './machine-modes';
 
 const {
@@ -22,20 +18,17 @@ const {
 } = MachineModes;
 
 export const machineMessages: { [key in keyof typeof MachineModes]: string } = {
-  [IDLE]:
-    'Machine idle. Write or load sample program and compile to run machine.',
+  [IDLE]: 'Machine idle. Write or load sample program and compile to run machine.',
   [STOPPED]: 'Machine stopped.',
   [RUNNING]: 'Machine running...',
-  [RESET]:
-    "Machine reset. Press 'run' or 'steps' to start the machine working.",
+  [RESET]: "Machine reset. Press 'run' or 'steps' to start the machine working.",
   [FINISH]: "Machine has finish work. Press 'Machine Reset' button.",
   [FORWARD]: 'Machine did one step forward.',
   [BACKWARD]: 'Machine did one step backward.',
   [LOOP]: 'Machine stopped! Prevent memory leaks induced by endless loop.',
   [COMPILE_PROGRAM]: 'To run machine, compile your program.',
   [COMPILE_SUCCESSFUL]: "Compile Success. Press 'Machine Reset' button.",
-  [COMPILE_FAILURE]:
-    'Compile Failure. Syntax error/s detected. Check errors box below.',
+  [COMPILE_FAILURE]: 'Compile Failure. Syntax error/s detected. Check errors box below.',
   [DEBUGGING]: 'Machine debugging. Please wait for validate source code.',
   [AJAX_ERROR_LOAD]: 'Error: Load AJAX request program failure. Try again.',
   [SUCCESSFULLY_LOAD_PROGRAM]: 'Machine program was successfully loaded!',

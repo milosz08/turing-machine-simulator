@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { createAction } from '@reduxjs/toolkit';
 import * as ActionType from './action-type';
 
@@ -28,13 +24,9 @@ export const switchMachineStateAction = createAction<
   Actions
 >(Actions.SWITCHING_MACHINE_STATE);
 
-export const oneStepForwardAction = createAction<void, Actions>(
-  Actions.ONE_STEP_FORWARD
-);
+export const oneStepForwardAction = createAction<void, Actions>(Actions.ONE_STEP_FORWARD);
 
-export const oneStepBackwardAction = createAction<void, Actions>(
-  Actions.ONE_STEP_BACKWARD
-);
+export const oneStepBackwardAction = createAction<void, Actions>(Actions.ONE_STEP_BACKWARD);
 
 export const setInitialTapeInputAction = createAction<
   ActionType.SetInitialTapeInputActionType,
@@ -50,18 +42,13 @@ export const machineStartStopTogglingAction = createAction<void, Actions>(
   Actions.MACHINE_START_STOP_TOGGLING
 );
 
-export const compileCodeAreaAction = createAction<void, Actions>(
-  Actions.COMPILE_CODE_AREA
-);
+export const compileCodeAreaAction = createAction<void, Actions>(Actions.COMPILE_CODE_AREA);
 
-export const enableCompileButtonAction = createAction<void, Actions>(
-  Actions.ENABLE_COMPILE_BUTTON
-);
+export const enableCompileButtonAction = createAction<void, Actions>(Actions.ENABLE_COMPILE_BUTTON);
 
-export const insertSourceCodeAction = createAction<
-  ActionType.InsertSourceCodeActionType,
-  Actions
->(Actions.INSERT_SOURCE_CODE);
+export const insertSourceCodeAction = createAction<ActionType.InsertSourceCodeActionType, Actions>(
+  Actions.INSERT_SOURCE_CODE
+);
 
 export const disableAllControlButtonsAction = createAction<void, Actions>(
   Actions.DISABLE_ALL_CONTROL_BUTTONS
@@ -72,19 +59,14 @@ export const loadExampleProgramAction = createAction<
   Actions
 >(Actions.LOAD_EXAMPLE_PROGRAM);
 
-export const setLoadAjaxErrorAction = createAction<void, Actions>(
-  Actions.SET_LOAD_AJAX_ERROR
-);
+export const setLoadAjaxErrorAction = createAction<void, Actions>(Actions.SET_LOAD_AJAX_ERROR);
 
-export const disableControlsBeforeLoadProgramAction = createAction<
-  void,
-  Actions
->(Actions.DISABLE_CONTROLS_BEFORE_LOAD_PROGRAM);
+export const disableControlsBeforeLoadProgramAction = createAction<void, Actions>(
+  Actions.DISABLE_CONTROLS_BEFORE_LOAD_PROGRAM
+);
 
 export const loadInitialInputOnTapeAction = createAction<void, Actions>(
   Actions.LOAD_INITIAL_INPUT_ON_TAPE
 );
 
-export const machineResetAction = createAction<void, Actions>(
-  Actions.MACHINE_RESET
-);
+export const machineResetAction = createAction<void, Actions>(Actions.MACHINE_RESET);

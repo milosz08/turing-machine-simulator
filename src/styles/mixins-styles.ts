@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import styled, { css } from 'styled-components';
 import { NonChangeValues } from './theme-styles';
 
@@ -21,6 +17,7 @@ export const BorderElement = ({
   width: 1300px;
   border: 1px solid ${NonChangeValues.BORDER_COLOUR};
   border-radius: 5px;
+
   &::after {
     position: absolute;
     content: '${_content}';
@@ -67,6 +64,7 @@ export const ControlButton = ({
   margin: 0 5px;
   background-color: ${_bgcColour};
   color: ${_textColour};
+
   &:disabled {
     background-color: ${_disabledColour};
   }

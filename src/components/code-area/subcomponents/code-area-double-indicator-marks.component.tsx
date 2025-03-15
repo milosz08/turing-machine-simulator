@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import {
   CodeAreaSingleRowContainer,
   CodeAreaSingleRowDualHighlighterBottom,
@@ -17,9 +13,7 @@ type Props = {
   iteration: number;
 };
 
-const CodeAreaDoubleIndicatorMarksComponent: React.FC<Props> = ({
-  iteration,
-}): JSX.Element => (
+const CodeAreaDoubleIndicatorMarksComponent: React.FC<Props> = ({ iteration }): JSX.Element => (
   <CodeAreaSingleRowContainer>
     <CodeAreaSingleRowLineNumber>{iteration + 1}</CodeAreaSingleRowLineNumber>
     <CodeAreaSingleRowDualIHighlighter />
@@ -33,4 +27,4 @@ const CodeAreaDoubleIndicatorMarksComponent: React.FC<Props> = ({
   </CodeAreaSingleRowContainer>
 );
 
-export default CodeAreaDoubleIndicatorMarksComponent;
+export { CodeAreaDoubleIndicatorMarksComponent };

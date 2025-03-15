@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import { TapeValues } from '~/app-utils/machine-config';
+import { TapeValues } from '@/utils/machine-config';
 
 class TuringReverseAlgorithm {
   private readonly _allSteps: { [key: string]: string }[];
@@ -26,6 +22,22 @@ class TuringReverseAlgorithm {
     this._allBlanks = allBlanks;
   }
 
+  reverseAlgorithm(allSteps: { [key: string]: string }[]) {
+    this.removeSingleElement();
+    this.replaceSingleCharacter();
+    return {
+      headPosition: this._prevHeadPos,
+      actualState: {
+        prevState: this._prevStep,
+        nextState: this.nextElementSetter(allSteps),
+      },
+      allSteps: this._allSteps,
+      valuesArray: this._tape,
+      allHeadPositions: this._allHeadPos,
+      allBlanksElements: this._allBlanks,
+    };
+  }
+
   private removeSingleElement(): void {
     this._prevStep = this._allSteps.pop();
     this._prevHeadPos = this._allHeadPos.pop();
@@ -47,10 +59,7 @@ class TuringReverseAlgorithm {
     if (signToReplace !== TapeValues.ANY) {
       this._tape![this._prevHeadPos!] = signToReplace;
     }
-    if (
-      this._prevBlank &&
-      this._prevStep!.direction !== TapeValues.LEG_DIR.RIGHT
-    ) {
+    if (this._prevBlank && this._prevStep!.direction !== TapeValues.LEG_DIR.RIGHT) {
       this._tape!.splice(this._prevHeadPos!, 1);
     }
   }
@@ -62,22 +71,6 @@ class TuringReverseAlgorithm {
     }
     return nextElement;
   }
-
-  reverseAlgorithm(allSteps: { [key: string]: string }[]) {
-    this.removeSingleElement();
-    this.replaceSingleCharacter();
-    return {
-      headPosition: this._prevHeadPos,
-      actualState: {
-        prevState: this._prevStep,
-        nextState: this.nextElementSetter(allSteps),
-      },
-      allSteps: this._allSteps,
-      valuesArray: this._tape,
-      allHeadPositions: this._allHeadPos,
-      allBlanksElements: this._allBlanks,
-    };
-  }
 }
 
-export default TuringReverseAlgorithm;
+export { TuringReverseAlgorithm };

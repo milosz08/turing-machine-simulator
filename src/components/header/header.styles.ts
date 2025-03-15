@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -33,6 +29,7 @@ export const HeaderMainTitle = styled(NavLink)`
   font-weight: 500;
   color: ${({ theme }) => theme.TEXT};
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }

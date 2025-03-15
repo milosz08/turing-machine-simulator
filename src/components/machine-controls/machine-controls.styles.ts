@@ -1,14 +1,6 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { BorderElement, ControlButton, MainContainer } from '@/styles/mixins-styles';
+import { button_rs, input_rs } from '@/styles/reset-styles';
 import styled from 'styled-components';
-import {
-  BorderElement,
-  ControlButton,
-  MainContainer,
-} from '~/app-styles/mixins-styles';
-import { button_rs, input_rs } from '~/app-styles/reset-styles';
 
 export const MachineControlsContainer = styled.section`
   ${MainContainer()}
@@ -33,6 +25,7 @@ export const MachineControlsInput = styled(input_rs)`
   text-align: center;
   font-size: 0.9rem;
   font-weight: ${({ theme }) => theme.INPUT_FONT_WEIGHT};
+
   &:focus {
     color: ${({ theme }) => theme.INPUT_FOCUS_COLOUR};
   }

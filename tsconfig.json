@@ -20,14 +20,9 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "~/app-algorithms/*": ["src/algorithms/*"],
-      "~/app-components/*": ["src/components/*"],
-      "~/app-hooks/*": ["src/hooks/*"],
-      "~/app-pages/*": ["src/pages/*"],
-      "~/app-redux/*": ["src/redux/*"],
-      "~/app-router/*": ["src/router/*"],
-      "~/app-utils/*": ["src/utils/*"],
-      "~/app-styles/*": ["src/styles/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "esModuleInterop": true,
     "skipLibCheck": true

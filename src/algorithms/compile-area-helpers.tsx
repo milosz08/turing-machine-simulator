@@ -1,18 +1,10 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { FaCheck, FaExclamationTriangle, FaSyncAlt } from 'react-icons/fa';
-import { NonChangeValues } from '~/app-styles/theme-styles';
-import { CodeAreaModes } from '~/app-utils/code-area-modes';
-import { MachineModes } from '~/app-utils/machine-modes';
+import { NonChangeValues } from '@/styles/theme-styles';
+import { CodeAreaModes } from '@/utils/code-area-modes';
+import { MachineModes } from '@/utils/machine-modes';
 
-const {
-  DEBUG_BAR_COLOUR,
-  COMPILING_BAR_COLOUR,
-  STATUS_BAR_COLOUR,
-  COMPILING_BAR_HOVER_COLOUR,
-} = NonChangeValues;
+const { DEBUG_BAR_COLOUR, COMPILING_BAR_COLOUR, STATUS_BAR_COLOUR, COMPILING_BAR_HOVER_COLOUR } =
+  NonChangeValues;
 
 const { RUNNING, COMPILED } = CodeAreaModes;
 
@@ -46,4 +38,4 @@ class CompileAreaHelpers {
   }
 }
 
-export default CompileAreaHelpers;
+export { CompileAreaHelpers };

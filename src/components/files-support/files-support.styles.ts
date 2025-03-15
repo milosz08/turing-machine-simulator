@@ -1,12 +1,8 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
+import { ControlButton } from '@/styles/mixins-styles';
+import { button_rs, input_rs } from '@/styles/reset-styles';
+import { NonChangeValues } from '@/styles/theme-styles';
+import { Directions } from '@/utils/machine-config';
 import styled from 'styled-components';
-import { ControlButton } from '~/app-styles/mixins-styles';
-import { button_rs, input_rs } from '~/app-styles/reset-styles';
-import { NonChangeValues } from '~/app-styles/theme-styles';
-import { Directions } from '~/app-utils/machine-config';
 
 export const FilesSupportContainer = styled.section`
   display: flex;
@@ -21,13 +17,13 @@ export const FilesSupportWrapper = styled.div<{
   border: 1px solid ${NonChangeValues.BORDER_COLOUR};
   border-radius: 5px;
   padding: 30px 0 20px 0;
-  margin: ${({ $direction }) =>
-    $direction === Directions.LEFT ? '0 20px 0 0' : '0 0 0 20px'};
+  margin: ${({ $direction }) => ($direction === Directions.LEFT ? '0 20px 0 0' : '0 0 0 20px')};
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+
   &::after {
     position: absolute;
     content: '${({ $pseudoContent }) => $pseudoContent}';

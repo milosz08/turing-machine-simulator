@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import styled from 'styled-components';
 
 export const SuspenseLoaderContainer = styled.div`
@@ -18,6 +14,7 @@ export const SuspenseLoaderContainer = styled.div`
 export const SuspenseLoaderSpinner = styled.div`
   width: 120px;
   height: 120px;
+
   &:after {
     content: ' ';
     display: block;
@@ -29,6 +26,7 @@ export const SuspenseLoaderSpinner = styled.div`
     border-color: #fff transparent #fff transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
+
   @keyframes lds-dual-ring {
     0% {
       transform: rotate(0deg);

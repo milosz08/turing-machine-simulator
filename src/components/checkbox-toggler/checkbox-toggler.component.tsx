@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import {
   CheckboxToggleAsideLeftAndRight,
   CheckboxToggleElementContainer,
@@ -29,9 +25,7 @@ const CheckboxTogglerComponent: React.FC<Props> = ({
 }): JSX.Element => (
   <CheckboxToggleElementContainer>
     {leftContent && (
-      <CheckboxToggleAsideLeftAndRight>
-        {leftContent}
-      </CheckboxToggleAsideLeftAndRight>
+      <CheckboxToggleAsideLeftAndRight>{leftContent}</CheckboxToggleAsideLeftAndRight>
     )}
     <CheckboxToggleInput
       type="checkbox"
@@ -40,16 +34,13 @@ const CheckboxTogglerComponent: React.FC<Props> = ({
       onChange={changeCallback}
       disabled={Boolean(disabledItem)}
     />
-    <CheckboxToggleLabel
-      htmlFor={`checkboxToggle_${leftContent}_${rightContent}`}>
+    <CheckboxToggleLabel htmlFor={`checkboxToggle_${leftContent}_${rightContent}`}>
       <CheckboxToggleStyledInput />
     </CheckboxToggleLabel>
     {rightContent && (
-      <CheckboxToggleAsideLeftAndRight>
-        {rightContent}
-      </CheckboxToggleAsideLeftAndRight>
+      <CheckboxToggleAsideLeftAndRight>{rightContent}</CheckboxToggleAsideLeftAndRight>
     )}
   </CheckboxToggleElementContainer>
 );
 
-export default CheckboxTogglerComponent;
+export { CheckboxTogglerComponent };

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { createAction } from '@reduxjs/toolkit';
 import * as ActionType from './action-type';
 
@@ -16,24 +12,19 @@ enum Actions {
   RESET_CURSOR_POSITION = '[MACHINE REDUCER] RESET CURSOR POSITION',
 }
 
-export const switchThemeAction = createAction<
-  ActionType.SwitchThemeActionType,
-  Actions
->(Actions.SWITCHING_THEME);
-
-export const switchHeadSpeedAction = createAction<
-  ActionType.SwitchHeadSpeedActionType,
-  Actions
->(Actions.SWITCHING_HEAD_SPEED);
-
-export const toggleCodeFollowAction = createAction<void, Actions>(
-  Actions.TOGGLE_CODE_FOLLOW
+export const switchThemeAction = createAction<ActionType.SwitchThemeActionType, Actions>(
+  Actions.SWITCHING_THEME
 );
 
-export const changeHeadSpeedAction = createAction<
-  ActionType.ChangeHeadSpeedActionType,
-  Actions
->(Actions.CHANGE_HEAD_SPEED);
+export const switchHeadSpeedAction = createAction<ActionType.SwitchHeadSpeedActionType, Actions>(
+  Actions.SWITCHING_HEAD_SPEED
+);
+
+export const toggleCodeFollowAction = createAction<void, Actions>(Actions.TOGGLE_CODE_FOLLOW);
+
+export const changeHeadSpeedAction = createAction<ActionType.ChangeHeadSpeedActionType, Actions>(
+  Actions.CHANGE_HEAD_SPEED
+);
 
 export const changeCodeAreaScrollPosAction = createAction<
   ActionType.ChangeCodeAreaScrollPosActionType,
@@ -50,6 +41,4 @@ export const toggleErrorsTabVisibilityAction = createAction<
   Actions
 >(Actions.TOGGLE_ERRORS_TAB_VISIBILITY);
 
-export const resetCursorPositionAction = createAction<void, Actions>(
-  Actions.RESET_CURSOR_POSITION
-);
+export const resetCursorPositionAction = createAction<void, Actions>(Actions.RESET_CURSOR_POSITION);

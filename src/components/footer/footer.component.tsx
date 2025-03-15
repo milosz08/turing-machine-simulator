@@ -1,14 +1,6 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
-import {
-  FooterContainer,
-  FooterCopyInfo,
-  FooterSeparator,
-} from './footer.styles';
+import * as React from 'react';
+import { FooterContainer, FooterCopyInfo, FooterSeparator } from './footer.styles';
 
 const FooterComponent: React.FC = (): JSX.Element => {
   const currYear = new Date().getFullYear();
@@ -21,4 +13,4 @@ const FooterComponent: React.FC = (): JSX.Element => {
   );
 };
 
-export default FooterComponent;
+export { FooterComponent };

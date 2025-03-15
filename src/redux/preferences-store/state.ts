@@ -1,10 +1,6 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import { ThemeModes } from '~/app-utils/theme-modes';
+import { ThemeModes } from '@/utils/theme-modes';
 
-export interface IPreferencesStoreReduxState {
+interface IPreferencesStoreReduxState {
   currentThemeMode: ThemeModes;
   ifCodeFollow: boolean;
   headSpeed: number;
@@ -17,7 +13,7 @@ export interface IPreferencesStoreReduxState {
   ifOpenErrors: boolean;
 }
 
-export const preferencesStoreReduxState: IPreferencesStoreReduxState = {
+const preferencesStoreReduxState: IPreferencesStoreReduxState = {
   currentThemeMode: ThemeModes.LIGHT,
   ifCodeFollow: true,
   headSpeed: 100,
@@ -29,3 +25,5 @@ export const preferencesStoreReduxState: IPreferencesStoreReduxState = {
   },
   ifOpenErrors: false,
 };
+
+export { type IPreferencesStoreReduxState, preferencesStoreReduxState };

@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-
 class InputIndicators {
   private readonly _el: any;
 
@@ -11,9 +6,7 @@ class InputIndicators {
   }
 
   convertInputSelection(): { ln: number; col: number } {
-    const currentLine = this._el.value
-      .substring(0, this._el.selectionStart)
-      .split('\n');
+    const currentLine = this._el.value.substring(0, this._el.selectionStart).split('\n');
     const ln = currentLine?.length;
     const col = currentLine[currentLine.length - 1]?.length + 1;
     return { ln: parseInt(ln), col: parseInt(col) };
@@ -24,10 +17,7 @@ class InputIndicators {
       end = 0;
     let normalizedValue, range, textInputRange, len, endRange;
 
-    if (
-      typeof this._el.selectionStart == 'number' &&
-      typeof this._el.selectionEnd == 'number'
-    ) {
+    if (typeof this._el.selectionStart == 'number' && typeof this._el.selectionEnd == 'number') {
       start = this._el.selectionStart;
       end = this._el.selectionEnd;
     } else {
@@ -62,4 +52,4 @@ class InputIndicators {
   }
 }
 
-export default InputIndicators;
+export { InputIndicators };

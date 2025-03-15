@@ -1,8 +1,4 @@
 'use strict';
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 
 const path = require('path');
 const { DefinePlugin } = require('webpack');
@@ -35,7 +31,7 @@ module.exports = isProd => ({
     ].reduce(
       (acc, name) => ({
         ...acc,
-        [`~/app-${name}`]: path.resolve(__dirname, '..', 'src', name),
+        [`@/${name}`]: path.resolve(__dirname, '..', 'src', name),
       }),
       {}
     ),
@@ -100,10 +96,6 @@ module.exports = isProd => ({
         {
           from: path.resolve(__dirname, '..', 'src', 'assets'),
           to: path.resolve(__dirname, '..', 'dist', 'assets'),
-        },
-        {
-          from: path.resolve(__dirname, '..', 'nginx.conf'),
-          to: path.resolve(__dirname, '..', 'dist'),
         },
       ],
     }),

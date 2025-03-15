@@ -1,16 +1,12 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
-import * as React from 'react';
 import type { JSX } from 'react';
+import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
-import { RootState } from '~/app-redux/redux-store';
+import { IMachineStoreReduxState } from '@/redux/machine-store/state';
+import { RootState } from '@/redux/redux-store';
 import { MachineCurrentStateInfoContainer } from '../current-state-info.styles';
 
 const AllStatesCountComponent: React.FC = (): JSX.Element => {
-  const { allStatesCount }: IMachineStoreReduxState = useSelector(
+  const { allStatesCount }: Partial<IMachineStoreReduxState> = useSelector(
     (state: RootState) => state.machine
   );
 
@@ -21,4 +17,4 @@ const AllStatesCountComponent: React.FC = (): JSX.Element => {
   );
 };
 
-export default AllStatesCountComponent;
+export { AllStatesCountComponent };

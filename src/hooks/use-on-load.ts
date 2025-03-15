@@ -1,15 +1,11 @@
-/*
- * Copyright (c) 2023 by MILOSZ GILGA <https://miloszgilga.pl>
- * For check application license, check LICENSE file.
- */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as MachineAction from '~/app-redux/machine-store/actions';
-import { IMachineStoreReduxState } from '~/app-redux/machine-store/state';
-import { RootState } from '~/app-redux/redux-store';
+import * as MachineAction from '@/redux/machine-store/actions';
+import { IMachineStoreReduxState } from '@/redux/machine-store/state';
+import { RootState } from '@/redux/redux-store';
 
 const useOnLoad = (): void => {
-  const { tapeValues }: IMachineStoreReduxState = useSelector(
+  const { tapeValues }: Partial<IMachineStoreReduxState> = useSelector(
     (state: RootState) => state.machine
   );
   const dispatcher = useDispatch();
@@ -19,4 +15,4 @@ const useOnLoad = (): void => {
   }, [tapeValues.initialInput]);
 };
 
-export default useOnLoad;
+export { useOnLoad };
