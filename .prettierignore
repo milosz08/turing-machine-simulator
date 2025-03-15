@@ -1,7 +1,0 @@
-node_modules/
-.husky/
-nginx.conf
-Dockerfile
-LICENSE
-README.md
-yarn.lock
