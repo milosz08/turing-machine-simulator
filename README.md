@@ -1,92 +1,88 @@
 # Turing machine simulator
 
-> More info about this project you will find [on my personal website](https://miloszgilga.pl/project/turing-machine-simulator)
-> <br>
-> See live demo at [turing.miloszgilga.pl](https://turing.miloszgilga.pl)
+[[Docker image](https://hub.docker.com/r/milosz08/turing-machine-simulator-app)] |
+[[About project](https://miloszgilga.pl/project/turing-machine-simulator)]
 
 An advanced, single-tape, deterministic Turing Machine simulator written using the ReactJS library. Available in light
-and dark modes, depending on user preference. This machine is a great foundation for understanding how computer processing
-of algorithms works, found frequently in Computer Science majors at technical colleges.
+and dark modes, depending on user preference. This machine is a great foundation for understanding how computer
+processing of algorithms works, found frequently in Computer Science majors at technical colleges.
 
 ## Table of content
+
 - [Clone script](#clone-script)
 - [Webpack scripts](#webpack-scripts)
-- [Build docker container](#build-docker-container)
+- [Run from Docker container](#run-from-docker-container)
 - [Syntax and compiler](#syntax-and-compiler)
 - [Tech stack](#tech-stack)
 - [Author](#author)
-- [Project status](#project-status)
 - [License](#license)
 
-<a name="clone-script"></a>
 ## Clone script
+
 To install the program on your computer use the command (or use the built-in GIT system in your IDE environment):
+
 ```
-$ git clone https://github.com/Milosz08/tpr-fpr-calculator
+$ git clone https://github.com/milosz08/turing-machine-simulator
 ```
 
-<a name="webpack-scripts"></a>
 ## Webpack scripts
-* To run webpack dev server, type:
+
+1. Install dependencies via:
+
+```bash
+$ yarn install --frozen-lockfile
+```
+
+> NOTE: If you don't have yarn, install it via `npm i -g yarn`.
+
+2. To run webpack dev server, type:
+
 ```
 $ yarn run serve
 ```
-* To run webpack highly optimized production build, type:
+
+> NOTE: Development server should be available at [9091](http://localhost:9091) TCP port.
+
+3. To run webpack highly optimized production build, type:
+
 ```
 $ yarn run build
 ```
-Custom webpack configuration you will find in `_webpack` directory.
 
-<a name="build-docker-container"></a>
-## Build docker container
-* To build image go to root project directory and type:
-```
-$ docker build -t turing-machine-simulator:1.0.0 .
-```
-* If you want use docker compose file to run container, your compose file may look like this:
-```yml
-version: '3.8'
+Custom webpack configuration you will find in `.webpack` directory.
 
-services:
-  turing-machine-simulator:
-    container_name: turing-machine-simulator
-    ports:
-      - '3030:80'
-    build:
-      context: .
-      dockerfile: Dockerfile
-```
-* To run container via composer file, type:
-```
-$ docker-compose up -d
-```
-> NOTE: By default, application will run on NGINX http server. You can modify options in nginx.conf file (ex. change
-> to reverse proxy server in production environment).
+## Run from docker container
 
-<a name="syntax-and-compiler"></a>
+To start application from Docker container, type:
+
+```bash
+$ docker compose up -d
+```
+
+This command should create followed containers:
+
+| Container name               | Port                          | Description                      |
+|------------------------------|-------------------------------|----------------------------------|
+| turing-machine-simulator-app | [9091](http://localhost:9091) | Caddy server (React application) |
+
 ## Syntax and compiler
-This simulator has a syntax taken from @awmorp, slightly modified by me for ease of use. Machine has a code compiler I 
+
+This simulator has a syntax taken from @awmorp, slightly modified by me for ease of use. Machine has a code compiler I
 designed that will not allow the algorithm to run if there are any syntax errors.
 
-<a name="tech-stack"></a>
 ## Tech stack
-* React 18
-* React DOM 18
-* React Router 6
-* Typescript
-* Webpack 5
-* Styled components
-* Redux toolkit
 
-<a name="author"></a>
+* React 18, React Router 6,
+* Typescript,
+* Webpack 5,
+* Styled components,
+* Redux toolkit.
+
 ## Author
+
 Created by Miłosz Gilga. If you have any questions about this application, send message:
-[personal@miloszgilga.pl](mailto:personal@miloszgilga.pl).
+[miloszgilga@gmail.com](mailto:miloszgilga@gmail.com).
 
-<a name="project-status"></a>
-## Project status
-Project is finished.
-
-<a name="license"></a>
 ## License
+
 This application is on Apache 2.0 License.

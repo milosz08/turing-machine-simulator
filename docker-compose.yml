@@ -1,0 +1,14 @@
+services:
+  turing-machine-simulator-app:
+    container_name: turing-machine-simulator-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - ${TURING_MACHINE_SIMULATOR_APP_PORT}:80
+    networks:
+      - turing-machine-simulator-network
+
+networks:
+  turing-machine-simulator-network:
+    driver: bridge

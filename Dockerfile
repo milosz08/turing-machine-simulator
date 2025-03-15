@@ -1,17 +1,32 @@
-FROM node:18.16.0-alpine AS build
+FROM node:18-alpine AS build
 
-WORKDIR /turing-machine-simulator
+ENV BUILD_DIR=/build/turing-machine-simulator
+ENV ENTRY_DIR=/app/turing-machine-simulator
 
-COPY . .
+RUN mkdir -p $BUILD_DIR
+WORKDIR $BUILD_DIR
 
-RUN yarn install
+COPY /package.json $BUILD_DIR/package.json
+COPY /yarn.lock $BUILD_DIR/yarn.lock
+
+RUN yarn install --frozen-lockfile
+
+# copy rest of content
+COPY /src $BUILD_DIR/src/
+COPY /.webpack $BUILD_DIR/.webpack/
+COPY /tsconfig.json $BUILD_DIR/tsconfig.json
+COPY /docker $BUILD_DIR/docker/
+
 RUN yarn run build
 
-FROM nginx:latest AS run
+FROM caddy:latest
 
-LABEL maintainer="Miłosz Gilga <personal@miloszgilga.pl>"
+ENV BUILD_DIR=/build/turing-machine-simulator
+ENV ENTRY_DIR=/app/turing-machine-simulator
 
-COPY --from=build /turing-machine-simulator/dist /usr/share/nginx/html
-COPY --from=build /turing-machine-simulator/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build $BUILD_DIR/dist/ $ENTRY_DIR
+COPY /docker/Caddyfile /etc/caddy/Caddyfile
+
+LABEL maintainer="Miłosz Gilga <miloszgilga@gmail.com>"
 
 EXPOSE 80

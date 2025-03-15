@@ -1,0 +1,11 @@
+FROM caddy:latest
+
+ENV BUILD_DIR=/docker
+ENV ENTRY_DIR=/app/turing-machine-simulator
+
+COPY $BUILD_DIR/dist/ $ENTRY_DIR
+COPY $BUILD_DIR/Caddyfile /etc/caddy/Caddyfile
+
+LABEL maintainer="Miłosz Gilga <miloszgilga@gmail.com>"
+
+EXPOSE 80
