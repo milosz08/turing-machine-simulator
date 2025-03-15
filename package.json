@@ -6,6 +6,7 @@
     "serve": "npx webpack-dev-server --progress --config .webpack/webpack-dev.config.cjs",
     "build": "npx webpack --progress --config .webpack/webpack-prod.config.cjs",
     "lint": "eslint --fix --ext ts,tsx,js,cjs --report-unused-disable-directives --max-warnings 0",
+    "types:check": "npx tsc --noEmit",
     "husky:add-pre-commit": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "husky:add-pre-push": "npx husky add .husky/pre-push \"yarn run types:check\"",
     "configure:husky": "npx husky install && yarn run husky:add-pre-commit && yarn run husky:add-pre-push"
