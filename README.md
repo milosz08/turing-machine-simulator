@@ -33,7 +33,8 @@ $ git clone https://github.com/milosz08/turing-machine-simulator
 $ yarn install --frozen-lockfile
 ```
 
-> NOTE: If you don't have yarn, install it via `npm i -g yarn`.
+> [!TIP]
+> If you don't have yarn, install it via `npm i -g yarn`.
 
 2. To run webpack dev server, type:
 
@@ -41,7 +42,7 @@ $ yarn install --frozen-lockfile
 $ yarn run serve
 ```
 
-> NOTE: Development server should be available at [9091](http://localhost:9091) TCP port.
+Development server should be available at [9091](http://localhost:9091) TCP port.
 
 3. To run webpack highly optimized production build, type:
 
