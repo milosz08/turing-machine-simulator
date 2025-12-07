@@ -1,11 +1,16 @@
-FROM caddy:latest
+FROM caddy:2.10
 
 ENV BUILD_DIR=/docker
 ENV ENTRY_DIR=/app/turing-machine-simulator
 
-COPY $BUILD_DIR/dist/ $ENTRY_DIR
-COPY $BUILD_DIR/Caddyfile /etc/caddy/Caddyfile
+RUN addgroup -S turinggroup && \
+    adduser -S turinguser -G turinggroup
+
+COPY --chown=turinguser:turinggroup $BUILD_DIR/dist/ $ENTRY_DIR
+COPY --chown=turinguser:turinggroup $BUILD_DIR/Caddyfile /etc/caddy/Caddyfile
 
 LABEL maintainer="Miłosz Gilga <miloszgilga@gmail.com>"
 
-EXPOSE 80
+EXPOSE 8080
+
+USER turinguser
