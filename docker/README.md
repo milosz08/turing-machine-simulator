@@ -20,7 +20,7 @@ docker build -t milosz08/turing-machine-simulator-app .
 ```bash
 docker run -d \
   --name turing-machine-simulator-app \
-  -p 9091:80 \
+  -p 8080:8080 \
   milosz08/turing-machine-simulator-app:latest
 ```
 
@@ -32,7 +32,7 @@ services:
     container_name: turing-machine-simulator-app
     image: milosz08/turing-machine-simulator-app:latest
     ports:
-      - '9091:80'
+      - '8080:8080'
     networks:
       - turing-machine-simulator-network
 

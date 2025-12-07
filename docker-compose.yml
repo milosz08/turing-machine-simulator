@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - ${TURING_MACHINE_SIMULATOR_APP_PORT}:80
+      - ${TURING_MACHINE_SIMULATOR_APP_PORT}:8080
     networks:
       - turing-machine-simulator-network
 
