@@ -1,15 +1,15 @@
-name: Build, create Docker image and deploy
+name: Build and deploy to DockerHub
 
 on:
   push:
     branches:
       - master
     paths:
-      - ".github/workflows/build-and-publish.yml"
+      - ".github/workflows/docker-image.yml"
       - ".webpack/**"
       - "src/**"
       - "docker/**"
-      - "!docker/README.md"
+      - "!docker/*.md"
       - "Dockerfile.pipeline"
       - "package.json"
       - "tsconfig.json"
